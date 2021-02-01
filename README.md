@@ -1,45 +1,163 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Milestone Project 2
 
-Welcome USER_NAME,
+<img src=""
+     alt=""
+     style="height: 200px; width: 400px;" />
+     
+<img src=""
+     alt=""
+     style="height: 200px; width: 400px;" />
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+<img src=""
+     alt=""
+     style="height: 200px; width: 400px;" />
 
-## Gitpod Reminders
+<img src=""
+     alt=""
+     style="height: 200px; width: 400px;" />
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+ 
 
-`python3 -m http.server`
 
-A blue button should appear to click: *Make Public*,
 
-Another blue button should appear to click: *Open Browser*.
+[Link to the deployed project]()
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+* [UX](#ux)
+* [Features](#features)
+* [Technologies Used](#technologies-used)
+* [Testing](#testing)
+* [Deployment](#deployment)
+* [Credits](#credits)
 
-A blue button should appear to click: *Make Public*,
+## UX
 
-Another blue button should appear to click: *Open Browser*.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-## Updates Since The Instructional Video
+### User Stories
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+#### Wireframes and Mockups
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+* [Wireframe Mobile]()
+* [Wireframe Tablet]()
+* [Wireframe Desktop]()
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+* [Mockup Mobile]()
+* [Mockup Tablet]()
+* [Mockup Desktop]()
+   
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Features
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### Existing Features
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Index page
 
---------
 
-Happy coding!
+
+#### Game page
+
+
+
+
+### Future Features
+
+
+
+## Technologies Used
+
+* HTML
+
+For the basic structure of the web page.
+
+* CSS
+
+For the styling of the HTML elements.
+
+* JavaScript
+
+To add interactivity to the project.
+
+* [JQuery](https://jquery.com/)
+
+JQuery functions where used to manipulate the DOM and to take actions.
+
+* [Bootstrap](https://getbootstrap.com/)
+
+
+
+* [Google Fonts](https://fonts.google.com/)
+
+
+
+* [Github](https://github.com/)
+
+Github was used to store the repository.
+
+* [Gitpod](https://www.gitpod.io/)
+
+Gitpod was the IDE used to create the project.
+
+* [Git](https://git-scm.com/) 
+
+For version control through the gitpod terminal.
+
+* [Adobe XD](https://www.adobe.com/products/xd.html)
+
+Adobe XD was used to create the wireframes and mockups for the project.
+
+* [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
+
+Chrome DevTools was heavily used throughout the project,  mainly by debugging and testing with help of the console and
+checking the responsiveness of the page with their screen rendering tools.
+
+* http://whatismyscreenresolution.net/multi-screen-test 
+
+For testing the responsiveness across different devices.
+
+## Testing
+
+
+
+### Bugs
+
+
+
+## Deployment
+
+### Publishing the project
+
+
+### Forking the project
+1. Go to and log in to https://github.com/.
+2. Go to the repository: https://github.com/davidlidebrandt/milestone-project-2
+3. Press the fork button located on the right side.
+4. Make your changes to the project.
+5. If you wish to merge your changes to the original project:
+6. Press the pull request button from your forked repository.
+7. Press the button new pull request.
+8. Choose the branches you wish to merge.
+9. Press the Create pull request button.
+
+### Cloning the project
+There are several ways of cloning the project, here I am going to describe how to do it using
+the URL and Git Bash.
+1. Go to the repository: https://github.com/davidlidebrandt/milestone-project-2
+2. Click the Code button.
+3. Choose HTTPS and copy the link that is provided.
+4. Open Git Bash and navigate to the directory where you want to save the cloned project.
+5. Type git clone followed by the url you copied, git clone https://github.com/davidlidebrandt/milestone-project-2.git
+
+## Credits 
+
+### Content
+
+
+
+### Media
+
+
+
+### Acknowledgments
+
