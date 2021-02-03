@@ -35,6 +35,20 @@
 
 ### User Stories
 
+* As a user I want access to others reviews and rating of relevant movies.
+
+* As a user I want to be able to write my own reviews and add my own ratings.
+
+* As a user I want to be able to edit and delete my own reviews.
+
+* As a user I want to option to search for movies as well as being able to scroll through a selection of movies.
+
+* As a user I want a clear response to my actions such as adding, deleting and editing my reviews.
+
+* As a user I want navigation to be clear and consistent across the website.
+
+* As a user I want the top rated movies to be displayed when visiting the website.
+
 
 
 #### Wireframes and Mockups
