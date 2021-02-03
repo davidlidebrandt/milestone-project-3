@@ -29,6 +29,21 @@
 * [Deployment](#deployment)
 * [Credits](#credits)
 
+## Database
+
+The database chosen for the project is MongoDB which is a NoSQL database. The two main enteties stored in the
+datbase will be users and movies. The user entety will simply store the username and password for different users 
+so that users can log in and add and manage their reviews. 
+The movies entety will store both simple key value pairs but will also have a nested structure where objects will
+be stored inside it. The simple key value pairs that will be stored are title, director, rating and year, cast will be 
+stored as a nested object with the key value pair of name. The reviews will be stored a a nested object with the 
+key value pairs of author and description. 
+
+users:  {"Object_id: "", "username": "", "password": ""}
+
+movies: {"Object_id": "", "title": "", "director": "", "rating": "", "year": "", "cast": {"Object_id": "", "name": ""}, 
+"reviews": {"Object_id": {"author":"", "description": ""}}}
+
 ## UX
 
 
