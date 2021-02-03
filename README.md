@@ -16,12 +16,15 @@
      alt=""
      style="height: 200px; width: 400px;" />
 
- 
+ This project is intended to provide a service for movie ratings and reviews. Users can search for different movies
+ and read reviews and see ratings by other users. By registering and loggin in a user can add their own reviews and
+ ratings as well as edit and delete old reviews they have made in the past.
 
 
 
 [Link to the deployed project]()
 
+* [Database](#datbase)
 * [UX](#ux)
 * [Features](#features)
 * [Technologies Used](#technologies-used)
