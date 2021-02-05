@@ -1,7 +1,32 @@
+/*Header*/
 .navbar {
     background-color: #0d47a1;
 }
 
+.navbar-light .navbar-nav .nav-link {
+    color: whitesmoke;
+}
+
+.navbar-light .navbar-brand {
+    color: whitesmoke;
+}
+
+.navbar-light .navbar-toggler {
+    color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+/*Footer*/
 .main-footer {
     background-color: #0d47a1;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-icon {
+    color: whitesmoke;
+    margin: 10px;
+    font-size: 200%;
 }
