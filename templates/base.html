@@ -26,6 +26,7 @@
       <div class="navbar-nav">
         <a class="nav-link" href="#">Home</a>
         <a class="nav-link" href="#">Find Movies</a>
+        <button class="nav-link reg-button">Register</button> 
         <a class="nav-link" href="#">Log Out</a> 
         <a class="nav-link" href="#">Log In</a>
         <a class="nav-link" href="#">Add Movie</a>
@@ -36,8 +37,14 @@
 </header>
 <body>
 <main class="container-fluid">
+<div id="register" class="base-modal">   <form method="POST" action="">
+                    <label for="user"></label>
+                    <input class="" id="user" name="user" type="text" maxlength="" required><br>
+                    <input class="submit-btn" id="" type="submit" value="">
+                </form></div>
 {% block maincontent %}
 {% endblock %}
+
 </main>
 
 <footer class="main-footer">

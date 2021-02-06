@@ -27,9 +27,23 @@ body {
     margin-top: 20px;
 }
 
+.base-modal {
+    display: none;
+    border: solid 1px #000000;
+    position: absolute;
+    box-shadow: 1px 1px 1px #808080;
+    z-index: 100;
+    background-color: #F4FAEF;
+    text-align: center;
+    width: 60%;
+    border-radius: 10px;
+    top: 400px;
+}
+
 /*Main*/
 main {
-    
+    background-color: #eceff1;
+    position: relative;
 }
 
 /*Header*/
@@ -61,7 +75,7 @@ main {
 
 .footer-icon {
     color: whitesmoke;
-    margin: 10px;
+    margin: 20px;
     font-size: 200%;
 }
 
@@ -69,9 +83,8 @@ main {
 .carousel-wrapper {
     width: 50%;
     margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    position: relative;
+    margin-top: 80px;
+    padding-bottom: 80px;
 }
 
 .carousel-img {
