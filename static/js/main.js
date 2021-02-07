@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".reg-button").click(function() {
+    $(".regnav-button").click(function() {
         $("#register").show();
     });
 

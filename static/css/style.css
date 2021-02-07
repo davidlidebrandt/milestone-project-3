@@ -18,26 +18,63 @@ body {
     box-shadow: 1px 1px 1px gray;
 }
 
-.custom-h2 {
+.custom-h2, .custom-h4 {
     text-align: center;
-    font-weight: 600;
     letter-spacing: 1px;
+}
+
+.custom-h2 {
+    font-weight: 600;
     text-shadow: 1px 0px 0px #9e9e9e;
     color: #ffffff;
     margin-top: 20px;
 }
 
+.custom-h4 {
+    margin: 20px;
+    text-transform: uppercase;
+    color: #0d47a1;
+    font-weight: 600;
+    text-shadow: 0.5px 0.5px;
+}
+
+.register-btn {
+    margin: 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    box-shadow: 0.5 0.5 0.5;
+    background-color: #f4511e;
+}
+
+.margin-btm-20 {
+    margin-bottom: 20px;
+}
+
+.redirect-link {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
 .base-modal {
     display: none;
-    border: solid 1px #000000;
+    border: none;
     position: absolute;
     box-shadow: 1px 1px 1px #808080;
     z-index: 100;
-    background-color: #F4FAEF;
+    background-color: #90a4ae;
     text-align: center;
     width: 60%;
     border-radius: 10px;
     top: 400px;
+    left: 20%;
+}
+
+.input-field {
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: none;
 }
 
 /*Main*/
@@ -47,7 +84,12 @@ main {
 }
 
 /*Header*/
-
+.regnav-button {
+    background-color: #0d47a1;
+    border: none;
+    color: whitesmoke;
+    text-align: left;
+}
 
 .navbar {
     background-color: #0d47a1;
