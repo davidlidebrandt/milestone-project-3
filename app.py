@@ -16,9 +16,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo_con = PyMongo(app)
 
 
+@app.route("/index/<choice>", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])
-def index():
-    if request.method == "POST":
+def index(choice=None):
+    if request.method == "POST" and choice == 'login':
         user_exists = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-login").lower()})
         if user_exists:
@@ -26,7 +27,22 @@ def index():
                 session["user"] = user_exists["user_name"]
                 name = session["user"]
                 flash(f"Welcome {name}")
-    return render_template("index.html")
+            else:
+                flash("Incorrect username or password")
+    elif request.method == "POST" and choice == "register":
+        user_taken = mongo_con.db.users.find_one(
+            {"user_name": request.form.get("user-reg")})
+        if user_taken:
+            flash("Username already taken")
+        else:
+            mongo_con.db.users.insert_one({"user_name": request.form.get(
+                "user-reg").lower(), "password": request.form.get(
+                    "password-reg").lower(), "user_email": request.form.get(
+                        "email-reg"), "is_admin": "false"})
+            reg_user = request.form.get("user-reg")
+            session["user"] = request.form.get("user-reg")
+            flash(f"Registration succesful, welcome {reg_user}")
+    return render_template("index.html", choice=choice)
 
 
 @app.route("/findmovies")

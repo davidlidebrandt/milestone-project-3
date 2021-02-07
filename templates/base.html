@@ -37,7 +37,7 @@
 </header>
 <body>
 <main class="container-fluid">
-<div id="register" class="base-modal">   <form class="row" method="POST" action="">
+<div id="register" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index', choice='register') }}">
                     <div class="col-12"><h4 class="custom-h4">Register</h4></div>
                     <div class="col-12"><label for="user-reg">Username</label></div>
                     <div class="col-12"><input class="input-field" id="user-reg" name="user-reg" type="text" minlength="" maxlength="" required><br></div>
@@ -52,7 +52,7 @@
                 <div class="col-12 margin-btm-20"><a class="redirect-link" href="#">Log in</a></div>
                 </div>
             </div>
-<div id="login" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index')}}">
+<div id="login" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index', choice='login') }}">
                     <div class="col-12"><h4 class="custom-h4">Log in</h4></div>
                     <div class="col-12"><label for="user-login">Username</label></div>
                     <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" value="1" required><br></div>
