@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block maincontent %}
-<h4 class="custom-h4">Find Movies</h4>
+<h3 class="custom-h3">Find Movies</h3>
 <form class="row" method="POST" action="">
-    <label for="search">Search for movie</label>
-    <input class="input-field" type="text" name="search" id="search" value="search">
-    <input type="submit" value="Search"></form>
+    <input class="search-field" type="text" name="search" id="search">
+    <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+</form>
 {% endblock %}
