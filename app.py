@@ -16,8 +16,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo_con = PyMongo(app)
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
+    if request.method == "POST":
+        user_exists = mongo_con.db.users.find_one(
+            {"user_name": request.form.get("user-login").lower()})
+        if user_exists:
+            if request.form.get("password-login") == user_exists["password"]:
+                session["user"] = user_exists["user_name"]
+                name = session["user"]
+                flash(f"Welcome {name}")
     return render_template("index.html")
 
 

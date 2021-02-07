@@ -2,6 +2,16 @@
 
 {% block maincontent %}
 <div class="row"><div class="col-12 background-img"></div></div>
+  <div class="row">
+      <div class="col-12">
+      {% with flash_messages = get_flashed_messages() %}
+       {% if flash_messages %}       
+       {% for message in flash_messages %}
+           <h4 class="custom-h4">{{ message }}</h4>
+       {% endfor %}
+       {% endif %}
+    {% endwith %}
+      </div></div>
 <div class="row">
     <div class="col-3 offset-1 logo-wrapper">
     <div class="row">

@@ -52,10 +52,10 @@
                 <div class="col-12 margin-btm-20"><a class="redirect-link" href="#">Log in</a></div>
                 </div>
             </div>
-<div id="login" class="base-modal">   <form class="row" method="POST" action="">
+<div id="login" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index')}}">
                     <div class="col-12"><h4 class="custom-h4">Log in</h4></div>
                     <div class="col-12"><label for="user-login">Username</label></div>
-                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" value="1" required><br></div>
                     <div class="col-12"><label for="password-login">Password</label></div>
                     <div class="col-12"><input class="input-field" id="password-login" name="password-login" type="text" minlength="" maxlength="" required><br></div>
                     <div class="col-12"><input class="login-btn" id="" type="submit" value="Log in"></div>
@@ -69,6 +69,8 @@
 {% endblock %}
 
 </main>
+ 
+
 
 <footer class="main-footer">
 <i class="fab fa-facebook-square footer-icon"></i>
