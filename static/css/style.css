@@ -8,6 +8,10 @@ body {
     min-height: 100vh;
 }
 
+.align-center {
+    text-align: center;
+}
+
 .light-blue {
     background-color: #039be5;
     color: #ffffff;
@@ -85,15 +89,20 @@ body {
 }
 
 .input-field, .search-field {
-    width: 90%;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.input-field {
+    width: 90%;
     border: none;
 }
 
 .search-field {
     margin: 0 auto;
     padding: 0;
+    width: 60%;
+    border: 0.5px solid #000000;
 }
 
 .button:focus {
@@ -200,4 +209,15 @@ main {
 .search-button {
     width: fit-content;
     border: none;
+}
+
+.thumbnail {
+    height: 100px;
+    width: 60px;
+    margin-left: 10px;
+    margin-right: 60px;
+}
+
+.description-item {
+    margin: 30px;
 }
