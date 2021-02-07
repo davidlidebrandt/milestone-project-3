@@ -38,7 +38,7 @@ body {
     text-shadow: 0.5px 0.5px;
 }
 
-.register-btn {
+.register-btn, .login-btn {
     margin: 15px;
     border-radius: 5px;
     border: none;
@@ -77,6 +77,11 @@ body {
     border: none;
 }
 
+.button:focus {
+   outline: none;
+}
+
+
 /*Main*/
 main {
     background-color: #eceff1;
@@ -84,7 +89,7 @@ main {
 }
 
 /*Header*/
-.regnav-button {
+.regnav-button, .loginnav-button {
     background-color: #0d47a1;
     border: none;
     color: whitesmoke;
@@ -95,12 +100,16 @@ main {
     background-color: #0d47a1;
 }
 
+.nav-link:focus {
+    outline: none;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
 }
 
 .navbar-light .navbar-brand {
-    color: whitesmoke;
+    color: #f4511e;
 }
 
 .navbar-light .navbar-toggler {

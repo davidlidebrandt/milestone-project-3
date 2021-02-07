@@ -28,7 +28,7 @@
         <a class="nav-link" href="#">Find Movies</a>
         <button class="nav-link regnav-button">Register</button> 
         <a class="nav-link" href="#">Log Out</a> 
-        <a class="nav-link" href="#">Log In</a>
+        <button class="nav-link loginnav-button">Log In</button> 
         <a class="nav-link" href="#">Add Movie</a>
       </div>
     </div>
@@ -39,17 +39,30 @@
 <main class="container-fluid">
 <div id="register" class="base-modal">   <form class="row" method="POST" action="">
                     <div class="col-12"><h4 class="custom-h4">Register</h4></div>
-                    <div class="col-12"><label for="user">Username</label></div>
-                    <div class="col-12"><input class="input-field" id="user" name="user" type="text" minlength="" maxlength="" required><br></div>
-                    <div class="col-12"><label for="password">Password</label></div>
-                    <div class="col-12"><input class="input-field" id="password" name="password" type="text" minlength="" maxlength="" required><br></div>
-                    <div class="col-12"><label for="email">Email</label></div>
-                    <div class="col-12"><input class="input-field" id="email" name="email" type="email" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><label for="user-reg">Username</label></div>
+                    <div class="col-12"><input class="input-field" id="user-reg" name="user-reg" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><label for="password-reg">Password</label></div>
+                    <div class="col-12"><input class="input-field" id="password-reg" name="password-reg" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><label for="email-reg">Email</label></div>
+                    <div class="col-12"><input class="input-field" id="email-reg" name="email-reg" type="email" minlength="" maxlength="" required><br></div>
                     <div class="col-12"><input class="register-btn" id="" type="submit" value="Register"></div>
                 </form>
                 <div class="row">
                 <div class="col-12"><span>Already have an account?</span></div>
                 <div class="col-12 margin-btm-20"><a class="redirect-link" href="#">Log in</a></div>
+                </div>
+            </div>
+<div id="login" class="base-modal">   <form class="row" method="POST" action="">
+                    <div class="col-12"><h4 class="custom-h4">Log in</h4></div>
+                    <div class="col-12"><label for="user-login">Username</label></div>
+                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><label for="password-login">Password</label></div>
+                    <div class="col-12"><input class="input-field" id="password-login" name="password-login" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="login-btn" id="" type="submit" value="Log in"></div>
+                </form>
+                <div class="row">
+                <div class="col-12"><span>Don't have an account?</span></div>
+                <div class="col-12 margin-btm-20"><a class="redirect-link" href="#">Register</a></div>
                 </div>
             </div>
 {% block maincontent %}
