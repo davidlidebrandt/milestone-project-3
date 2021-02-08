@@ -18,18 +18,25 @@
     <!--Bootstrap navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Movie R&R</a>
+    <a class="navbar-brand" href="{{ url_for('find_movies') }}">Movie R&R</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{{ url_for('find_movies') }}">Home</a>
         <a class="nav-link" href="{{ url_for('find_movies') }}">Find Movies</a>
-        <button class="nav-link regnav-button">Register</button> 
+        {% if session.user %}
         <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a> 
-        <button class="nav-link loginnav-button">Log In</button> 
+        {% if session.admin == True %}
         <a class="nav-link" href="#">Add Movie</a>
+        {% endif %}
+        {% else %}
+        <button class="nav-link regnav-button">Register</button> 
+        <button class="nav-link loginnav-button">Log In</button> 
+        {% endif %}
+        
+        
       </div>
     </div>
   </div>

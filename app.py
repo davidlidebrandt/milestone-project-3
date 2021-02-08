@@ -26,6 +26,8 @@ def index(choice=None):
         if user_exists:
             if request.form.get("password-login") == user_exists["password"]:
                 session["user"] = user_exists["user_name"]
+                if user_exists["is_admin"] == "true":
+                    session["admin"] = True
                 name = session["user"]
                 flash(f"Welcome {name}")
             else:
@@ -51,6 +53,7 @@ def index(choice=None):
 @app.route("/logout")
 def logout():
     session.pop("user", None)
+    session.pop("admin", None)
     return redirect(url_for("index"))
 
 
