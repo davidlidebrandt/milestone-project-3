@@ -241,3 +241,8 @@ main {
 .search-result:hover {
     color: #ffffff;
 }
+
+.poster-image {
+    width: 300px;
+    height: 400px;
+}

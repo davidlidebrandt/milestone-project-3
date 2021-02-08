@@ -60,10 +60,10 @@ def find_movies():
     return render_template("findmovies.html", movies=movies)
 
 
-@app.route("moviepage/<title>", methods=["GET", "POST"])
+@app.route("/moviepage/<title>", methods=["GET", "POST"])
 def movie_page(title):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    render_template("moivepage.html", get_movie=get_movie)
+    return render_template("moviepage.html", get_movie=get_movie)
 
 
 
