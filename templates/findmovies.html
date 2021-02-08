@@ -6,11 +6,33 @@
     <button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
 </form>
 <div class="row">
-<div class="col-12">
-<img class="thumbnail" src="{{ url_for('static', filename='images/matrix.jpg') }}" alt="">
-<span class="description-item">Title: The Matrix</span>
-<span class="description-item">Release Year: 1999</span>
-<span class="description-item">Directors: Lana Wachowski, Lilly Wachowski</span>
+
+
+
+
+    
+    
+{% for i in movies %}
+{% if loop.index % 2 == 0 %}
+<div class="col-12 search-result light-blue-bg">
+<img class="thumbnail" src="{{ i.img_url }}" alt="">
+<span class="description-item">{{ i.title }}</span>
+<span class="description-item">Release Year: {{ i.year }}</span>
+<span class="description-item">Directors: {{ i.directors }}</span>
 </div>
+{% else %}
+<div class="col-12 search-result light-orange-bg">
+<img class="thumbnail" src="{{ i.img_url }}" alt="">
+<span class="description-item">{{ i.title }}</span>
+<span class="description-item">Release Year: {{ i.year }}</span>
+<span class="description-item">Directors: {{ i.directors }}</span>
+</div>
+{% endif %}
+
+{% endfor %}
+
+
+
+
 </div>
 {% endblock %}

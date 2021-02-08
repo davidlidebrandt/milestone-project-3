@@ -17,6 +17,14 @@ body {
     color: #ffffff;
 }
 
+.light-blue-bg {
+   background-color: #039be5;
+}
+
+.light-orange-bg {
+    background-color: #ffb74d ;
+}
+
 .top-mg-100 {
     margin-top: 100px;
 }
@@ -220,4 +228,9 @@ main {
 
 .description-item {
     margin: 30px;
+}
+
+.search-result {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

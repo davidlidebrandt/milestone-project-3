@@ -54,9 +54,10 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route("/findmovies")
+@app.route("/findmovies/")
 def find_movies():
-    return render_template("findmovies.html")
+    movies = mongo_con.db.movies.find()
+    return render_template("findmovies.html", movies=movies)
 
 
 if __name__ == "__main__":
