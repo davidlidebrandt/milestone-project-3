@@ -14,19 +14,19 @@
     
 {% for i in movies %}
 {% if loop.index % 2 == 0 %}
-<div class="col-12 search-result light-blue-bg">
+<a href="#" class="col-12 search-result light-blue-bg">
 <img class="thumbnail" src="{{ i.img_url }}" alt="">
 <span class="description-item">{{ i.title }}</span>
 <span class="description-item">Release Year: {{ i.year }}</span>
 <span class="description-item">Directors: {{ i.directors }}</span>
-</div>
+</a>
 {% else %}
-<div class="col-12 search-result light-orange-bg">
+<a href="#" class="col-12 search-result light-orange-bg">
 <img class="thumbnail" src="{{ i.img_url }}" alt="">
 <span class="description-item">{{ i.title }}</span>
 <span class="description-item">Release Year: {{ i.year }}</span>
 <span class="description-item">Directors: {{ i.directors }}</span>
-</div>
+</a>
 {% endif %}
 
 {% endfor %}

@@ -233,4 +233,11 @@ main {
 .search-result {
     margin-top: 10px;
     margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+    color: #000000;
+}
+
+.search-result:hover {
+    color: #ffffff;
 }
