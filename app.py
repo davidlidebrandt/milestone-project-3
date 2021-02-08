@@ -18,8 +18,9 @@ mongo_con = PyMongo(app)
 
 @app.route("/index/<choice>", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])
+@app.route("/index", methods=['GET', 'POST'])
 def index(choice=None):
-    if request.method == "POST" and choice == 'login':
+    if request.method == "POST" and choice == "login":
         user_exists = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-login").lower()})
         if user_exists:
@@ -29,6 +30,8 @@ def index(choice=None):
                 flash(f"Welcome {name}")
             else:
                 flash("Incorrect username or password")
+        else:
+            flash("Incorrect username or password")
     elif request.method == "POST" and choice == "register":
         user_taken = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-reg")})
@@ -43,6 +46,12 @@ def index(choice=None):
             session["user"] = request.form.get("user-reg")
             flash(f"Registration succesful, welcome {reg_user}")
     return render_template("index.html", choice=choice)
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    return redirect(url_for("index"))
 
 
 @app.route("/findmovies")
