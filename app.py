@@ -60,6 +60,14 @@ def find_movies():
     return render_template("findmovies.html", movies=movies)
 
 
+@app.route("moviepage/<title>", methods=["GET", "POST"])
+def movie_page(title):
+    get_movie = mongo_con.db.movies.find_one({"title": title})
+    render_template("moivepage.html", get_movie=get_movie)
+
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(
         os.environ.get("PORT")), debug=True)
