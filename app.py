@@ -24,7 +24,8 @@ def index(choice=None):
         user_exists = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-login").lower()})
         if user_exists:
-            if request.form.get("password-login") == user_exists["password"]:
+            if check_password_hash(user_exists["password"],
+                                   request.form.get("password-login")):
                 session["user"] = user_exists["user_name"]
                 if user_exists["is_admin"] == "true":
                     session["admin"] = True
@@ -41,9 +42,11 @@ def index(choice=None):
             flash("Username already taken")
         else:
             mongo_con.db.users.insert_one({"user_name": request.form.get(
-                "user-reg").lower(), "password": request.form.get(
-                    "password-reg").lower(), "user_email": request.form.get(
-                        "email-reg"), "is_admin": "false"})
+                "user-reg").lower(), "password": generate_password_hash(
+                    request.form.get(
+                        "password-reg").lower(), method='pbkdf2:sha256',
+                salt_length=12), "user_email": request.form.get(
+                                "email-reg"), "is_admin": "false"})
             reg_user = request.form.get("user-reg")
             session["user"] = request.form.get("user-reg")
             flash(f"Registration succesful, welcome {reg_user}")
