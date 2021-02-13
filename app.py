@@ -73,12 +73,13 @@ def find_movies():
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
 def movie_page(title):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    if request.method == "POST":
+    if request.method == "POST" and session["user"]:
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {
                 "$addToSet": {"reviews": {"description": request.form.get(
                     "review"), "by_user": session["user"]}}})
-        
+        return render_template(
+            "moviepage.html", get_movie=get_movie)
     return render_template(
         "moviepage.html", get_movie=get_movie)
 
