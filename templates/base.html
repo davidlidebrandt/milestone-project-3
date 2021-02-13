@@ -18,13 +18,13 @@
     <!--Bootstrap navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ url_for('find_movies') }}">Movie R&R</a>
+    <a class="navbar-brand" href="{{ url_for('index') }}">Movie R&R</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="{{ url_for('find_movies') }}">Home</a>
+        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
         <a class="nav-link" href="{{ url_for('find_movies') }}">Find Movies</a>
         {% if session.user %}
         <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a> 
@@ -56,20 +56,20 @@
                 </form>
                 <div class="row">
                 <div class="col-12"><span>Already have an account?</span></div>
-                <div class="col-12 margin-btm-20"><a class="redirect-link" href="#">Log in</a></div>
+                <div class="col-12 margin-btm-20"><button id="redirect-login" class="redirect-link">Log in</button></div>
                 </div>
             </div>
 <div id="login" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index', choice='login') }}">
                     <div class="col-12"><h4 class="custom-h4">Log in</h4></div>
                     <div class="col-12"><label for="user-login">Username</label></div>
-                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" value="1" required><br></div>
+                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" required><br></div>
                     <div class="col-12"><label for="password-login">Password</label></div>
                     <div class="col-12"><input class="input-field" id="password-login" name="password-login" type="text" minlength="" maxlength="" required><br></div>
                     <div class="col-12"><input class="login-btn" id="" type="submit" value="Log in"></div>
                 </form>
                 <div class="row">
                 <div class="col-12"><span>Don't have an account?</span></div>
-                <div class="col-12 margin-btm-20"><a class="redirect-link" href="#">Register</a></div>
+                <div class="col-12 margin-btm-20"><button id="redirect-reg" class="redirect-link">Register</button></div>
                 </div>
             </div>
 {% block maincontent %}

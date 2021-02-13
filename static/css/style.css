@@ -85,6 +85,9 @@ body {
 .redirect-link {
     color: #0d47a1;
     font-weight: 600;
+    background-color: #90a4ae;
+    border: none;
+    text-decoration: underline;
 }
 
 .base-modal {
