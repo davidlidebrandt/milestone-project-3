@@ -33,6 +33,11 @@ body {
     margin-top: 20px;
 }
 
+.top-btm-mg-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .logo-wrapper {
     border-radius: 5px;
     background-color: #f4511e;
@@ -266,4 +271,22 @@ main {
 /*moviepage main*/
 .card-body {
     background-color: #e0e0e0;
+}
+
+.edit-button, .delete-button {
+    text-decoration: none;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0.5 0.5 0.5;
+    color: #000000;
+}
+
+.delete-button {
+    border: 2px solid #f4511e;
+}
+
+.edit-button {
+    border: 2px solid #0d47a1;
 }

@@ -4,10 +4,14 @@
 <div class="col-4"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
 <div class="col-8">
 <div class="row">
-<div class="col-12">{{ get_movie.title }}</div>
-<div class="col-12">{{ get_movie.year }}</div>
-<div class="col-12">{{ get_movie.directors }}</div>
+<div class="col-12 top-btm-mg-10">{{ get_movie.title }}</div>
+<div class="col-12 top-btm-mg-10">{{ get_movie.year }}</div>
+<div class="col-12 top-btm-mg-10">{{ get_movie.directors }}</div>
 {% if session.user %}
+{% if session.admin == True %}
+<div class="col-12 top-btm-mg-10"><a class="edit-button" href="">Edit</a> <button class="delete-button">Delete</button></div>
+<div class="col-12 top-btm-mg-10"></div>
+{% endif %}
 <div class="col-6"><div class="card">
   <div class="card-header">
     Add Your Review
