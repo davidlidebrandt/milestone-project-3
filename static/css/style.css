@@ -25,6 +25,11 @@ body {
     background-color: #ffb74d ;
 }
 
+.no-pad-margin {
+    padding: 0;
+    margin: 0;
+}
+
 .top-mg-100 {
     margin-top: 100px;
 }
@@ -43,6 +48,7 @@ body {
     background-color: #f4511e;
     margin-bottom: 10px;
     box-shadow: 1px 1px 1px gray;
+    width: 50%;
 }
 
 .custom-h2, .custom-h4, .custom-h3, .card-header {
@@ -64,6 +70,8 @@ body {
 
 .custom-h3 {
     margin-top: 100px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .custom-h4 {
@@ -133,7 +141,7 @@ body {
 
 /*Main*/
 main {
-    background-color: #eceff1;
+    background-color: #bbdefb;
     position: relative;
      /* this part is also taken from the same post as the mentioned in the body*/
     flex: 1;
@@ -155,12 +163,19 @@ main {
     outline: none;
 }
 
+.nav-link {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
 }
 
 .navbar-light .navbar-brand {
     color: #f4511e;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .navbar-light .navbar-toggler {
@@ -204,8 +219,10 @@ main {
 }
 
 .login-link, .register-link {
-    font-weight: 500;
-    text-decoration: underline;
+    font-weight: 600;
+    background-color: #f4511e;
+    border-radius: 5px;
+    border: none;
 }
 
 .login-link {
@@ -233,14 +250,22 @@ main {
 }
 
 .thumbnail {
-    height: 100px;
-    width: 60px;
-    margin-left: 10px;
-    margin-right: 60px;
+    height: 150px;
 }
 
 .description-item {
-    margin: 30px;
+   font-weight: 600;
+   font-size: 150%;
+   letter-spacing: 1px;
+}
+
+.star-icon {
+    font-size: 200%;
+}
+
+.center {
+    display: flex;
+    align-items: center;
 }
 
 .search-result {
@@ -270,7 +295,9 @@ main {
 
 /*moviepage main*/
 .card-body {
-    background-color: #e0e0e0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 130%;
 }
 
 .edit-button, .delete-button {

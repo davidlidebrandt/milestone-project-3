@@ -15,17 +15,19 @@
 {% for i in movies %}
 {% if loop.index % 2 == 0 %}
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result light-blue-bg">
-<img class="thumbnail" src="{{ i.img_url }}" alt="">
-<span class="description-item">{{ i.title }}</span>
-<span class="description-item">Release Year: {{ i.year }}</span>
-<span class="description-item">Directors: {{ i.directors }}</span>
+<div class="row">
+<div class="col-3 center"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
+<div class="col-3 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+<div class="col-3 center"><i class="fas fa-star star-icon"></i></div>
+</div>
 </a>
 {% else %}
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result light-orange-bg">
-<img class="thumbnail" src="{{ i.img_url }}" alt="">
-<span class="description-item">{{ i.title }}</span>
-<span class="description-item">Release Year: {{ i.year }}</span>
-<span class="description-item">Directors: {{ i.directors }}</span>
+<div class="row">
+<div class="col-3 center"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
+<div class="col-3 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+<div class="col-3 center"><i class="fas fa-star star-icon"></i></div>
+</div>
 </a>
 {% endif %}
 {% endfor %}
