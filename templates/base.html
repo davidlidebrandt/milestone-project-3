@@ -47,11 +47,11 @@
 <div id="register" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index', choice='register') }}">
                     <div class="col-12"><h4 class="custom-h4">Register</h4></div>
                     <div class="col-12"><label for="user-reg">Username</label></div>
-                    <div class="col-12"><input class="input-field" id="user-reg" name="user-reg" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="input-field" id="user-reg" name="user-reg" type="text" minlength="5" maxlength="15" pattern="[A-Za-z0-9]{5,15}" title="Your username needs to be between 5-15 characters long. Only letters A-Z and numbers 0-9 allowed" required><br></div>
                     <div class="col-12"><label for="password-reg">Password</label></div>
-                    <div class="col-12"><input class="input-field" id="password-reg" name="password-reg" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="input-field" id="password-reg" name="password-reg" type="password" minlength="8" maxlength="25" pattern="[A-Za-z0-9]{8,25}" title="Your password needs to be between 8-25 characters long. Only letters A-Z and numbers 0-9 allowed" required><br></div>
                     <div class="col-12"><label for="email-reg">Email</label></div>
-                    <div class="col-12"><input class="input-field" id="email-reg" name="email-reg" type="email" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="input-field" id="email-reg" name="email-reg" type="email" required><br></div>
                     <div class="col-12"><input class="register-btn" id="" type="submit" value="Register"></div>
                 </form>
                 <div class="row">
@@ -62,9 +62,9 @@
 <div id="login" class="base-modal">   <form class="row" method="POST" action="{{ url_for('index', choice='login') }}">
                     <div class="col-12"><h4 class="custom-h4">Log in</h4></div>
                     <div class="col-12"><label for="user-login">Username</label></div>
-                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" required><br></div>
                     <div class="col-12"><label for="password-login">Password</label></div>
-                    <div class="col-12"><input class="input-field" id="password-login" name="password-login" type="text" minlength="" maxlength="" required><br></div>
+                    <div class="col-12"><input class="input-field" id="password-login" name="password-login" type="password" required><br></div>
                     <div class="col-12"><input class="login-btn" id="" type="submit" value="Log in"></div>
                 </form>
                 <div class="row">
