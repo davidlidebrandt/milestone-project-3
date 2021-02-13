@@ -25,7 +25,8 @@
 </div>
 <div class="col-8 offset-2">
   <h4 class="custom-h4">Reviews</h4>
-   <div class="accordion" id="accordionExample">
+   {% if review %}
+  <div class="accordion" id="accordionExample">
  {% for review in get_movie.reviews %}
     <div class="accordion-item">
     <h2 class="accordion-header" id="heading{{ loop.index }}">
@@ -41,6 +42,9 @@
   </div>
 {% endfor %}
     </div> 
+{% else %}
+<p class="no-reviews-text">No reviews yet</p>
+{% endif %}
 
 
 </div>

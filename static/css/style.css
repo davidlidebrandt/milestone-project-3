@@ -253,7 +253,7 @@ main {
     border-radius: 5px;
 }
 
-.no-result-text {
+.no-result-text, .no-reviews-text {
     text-align: center;
     font-size: 200%;
     color: #0d47a1;
