@@ -11,7 +11,7 @@
 
 
     
-    
+{% if movies %}
 {% for i in movies %}
 {% if loop.index % 2 == 0 %}
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result light-blue-bg">
@@ -28,8 +28,11 @@
 <span class="description-item">Directors: {{ i.directors }}</span>
 </a>
 {% endif %}
-
 {% endfor %}
+{% else %}
+<p class="no-result-text">No search results found</p>
+{% endif %}
+
 
 
 

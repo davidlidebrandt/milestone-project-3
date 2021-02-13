@@ -63,9 +63,8 @@ def logout():
 @app.route("/findmovies/", methods=["GET", "POST"])
 def find_movies():
     if request.method == "POST":
-        movies = mongo_con.db.movies.find(
-            {"$text": {"$search": request.form.get("search")}})
-        print(movies)
+        movies = list(mongo_con.db.movies.find(
+            {"$text": {"$search": request.form.get("search")}}))
         return render_template("findmovies.html", movies=movies)
     movies = mongo_con.db.movies.find()
     return render_template("findmovies.html", movies=movies)
