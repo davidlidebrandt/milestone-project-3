@@ -50,7 +50,8 @@ def index(choice=None):
             reg_user = request.form.get("user-reg")
             session["user"] = request.form.get("user-reg")
             flash(f"Registration succesful, welcome {reg_user}")
-    return render_template("index.html", choice=choice)
+    movies = mongo_con.db.movies.find()
+    return render_template("index.html", choice=choice, movies=movies)
 
 
 @app.route("/logout")
