@@ -40,11 +40,15 @@
    {% for movie in movies %}
    {% if loop.index == 1 %}
     <div class="carousel-item active" data-bs-interval="5000">
+        <a href="{{ url_for('movie_page', title=movie.title) }}">
       <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+      </a>
     </div>
     {% else %}
     <div class="carousel-item" data-bs-interval="5000">
+    <a href="{{ url_for('movie_page', title=movie.title) }}">
     <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+    </a>
     </div>
     {% endif %}
     {% endfor %}
