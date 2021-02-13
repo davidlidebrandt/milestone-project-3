@@ -25,7 +25,7 @@
 </div>
 <div class="col-8 offset-2">
   <h4 class="custom-h4">Reviews</h4>
-   {% if review %}
+   {% if get_movie.reviews %}
   <div class="accordion" id="accordionExample">
  {% for review in get_movie.reviews %}
     <div class="accordion-item">
