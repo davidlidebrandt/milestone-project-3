@@ -1,4 +1,5 @@
 import os
+import math
 from flask import Flask, flash, render_template, redirect, request, session, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -62,13 +63,25 @@ def logout():
 
 
 @app.route("/findmovies/", methods=["GET", "POST"])
-def find_movies():
+@app.route("/findmovies/<int:page>", methods=["GET", "POST"])
+def find_movies(page=1):
     if request.method == "POST":
         movies = list(mongo_con.db.movies.find(
             {"$text": {"$search": request.form.get("search")}}))
         return render_template("findmovies.html", movies=movies)
-    movies = mongo_con.db.movies.find()
-    return render_template("findmovies.html", movies=movies)
+    movies = list(mongo_con.db.movies.find())
+    if page == 1:
+        sub_list = movies[0:10]
+    else:
+        start = page * 10 - 10
+        end = start + 10
+        sub_list = movies[start:end]
+    counter = 0
+    for movie in movies:
+        counter += 1
+    counter = counter/10
+    counter = math.ceil(counter)
+    return render_template("findmovies.html", movies=sub_list, pages=counter)
 
 
 @app.route("/moviepage/<title>", methods=["GET", "POST"])

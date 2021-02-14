@@ -247,6 +247,7 @@ main {
 .search-button {
     width: fit-content;
     border: none;
+    background-color: #bbdefb;
 }
 
 .thumbnail {
