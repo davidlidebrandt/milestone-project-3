@@ -93,7 +93,7 @@ body {
     text-transform: uppercase;
 }
 
-.register-btn, .login-btn, .sub-review-btn {
+.register-btn, .login-btn, .sub-review-btn, .add-btn {
     margin: 15px;
     border-radius: 5px;
     border: none;
@@ -372,3 +372,12 @@ main {
     font-weight: 600;
     letter-spacing: 1px;
 }
+
+/*Addmvoie main*/
+.manage-movie-form {
+    margin-top: 100px;
+    background-color: #ffb74d;
+    text-align: center;
+    border-radius: 5px;
+}
+  
