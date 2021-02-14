@@ -68,7 +68,7 @@ def find_movies(page=1):
     if request.method == "POST":
         movies = list(mongo_con.db.movies.find(
             {"$text": {"$search": request.form.get("search")}}))
-        return render_template("findmovies.html", movies=movies)
+        return render_template("findmovies.html", movies=movies, pages=None)
     movies = list(mongo_con.db.movies.find())
     if page == 1:
         sub_list = movies[0:10]

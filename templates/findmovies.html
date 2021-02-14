@@ -6,14 +6,16 @@
     <button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
 </form>
 <div class="row">
-
+<!--Pagination element from Bootstrap-->
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
+    {% if pages %}
     {% for i in range(pages) %}
     <li class="page-item">
       <a class="page-link" href="{{ url_for('find_movies', page=loop.index) }}" tabindex="-1">{{ loop.index }}</a>
    </li>
   {% endfor %}
+  {% endif %}
 </ul>
 </nav>
 
