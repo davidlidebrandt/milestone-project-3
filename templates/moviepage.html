@@ -2,23 +2,25 @@
 {% block maincontent %}
 <div class="row top-mg-100">
 <div class="col-4"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
-<div class="col-8">
+<div class="col-6 description-bg">
 <div class="row">
-<div class="col-12 top-btm-mg-10">{{ get_movie.title }}</div>
-<div class="col-12 top-btm-mg-10">{{ get_movie.year }}</div>
-<div class="col-12 top-btm-mg-10">{{ get_movie.directors }}</div>
+<div class="col-12 top-btm-mg-10"><h5>{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
+<div class="col-2 top-btm-mg-10">Directors:</div>
+<div class="col-10 top-btm-mg-10">{{ get_movie.directors }}</div>
+<div class="col-4 top-btm-mg-10">Main Cast:</div>
+<div class="col-8 top-btm-mg-10"></div>
 {% if session.user %}
 {% if session.admin == True %}
 <div class="col-12 top-btm-mg-10"><a class="edit-button" href="">Edit</a> <a class="delete-button" href="">Delete</a></div>
 <div class="col-12 top-btm-mg-10"></div>
 {% endif %}
-<div class="col-6"><div class="card">
+<div class="col-12"><div class="card review-card">
   <div class="card-header">
     Add Your Review
   </div>
   <div class="card-body">
     <form method="POST">
-    <textarea name="review" id="review" cols="40" rows="6">
+    <textarea name="review" id="review" cols="50" rows="6">
     </textarea>
     <div class="align-center"><button class="sub-review-btn" type="submit">Add Review</button></div>
     </form>

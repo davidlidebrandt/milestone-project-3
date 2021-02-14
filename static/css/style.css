@@ -250,17 +250,6 @@ main {
     background-color: #bbdefb;
 }
 
-.accordion {
-    background-color: #546e7a;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 50px;
-}
-
-.accordion-body {
-    background-color: #c0ddf0;
-}
-
 .thumbnail {
     height: 150px;
 }
@@ -310,6 +299,15 @@ main {
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 130%;
+    border-radius: 5px;
+}
+
+.card-header {
+    color: #000000;
+}
+
+.review-card {
+    margin-bottom: 20px;
 }
 
 .edit-button, .delete-button {
@@ -319,13 +317,35 @@ main {
     border-radius: 5px;
     font-weight: 500;
     box-shadow: 0.5 0.5 0.5;
-    color: #000000;
+    border: none;
+    color: whitesmoke;
 }
 
 .delete-button {
-    border: 2px solid #f4511e;
+    background-color: #f4511e;
 }
 
 .edit-button {
-    border: 2px solid #0d47a1;
+    background-color: #0d47a1;
+}
+
+.description-bg {
+    background-color: #546e7a;
+    color: whitesmoke;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #9e9e9e;
+}
+
+.accordion {
+    background-color: #546e7a;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    box-shadow: 1px 1px 1px #9e9e9e;
+}
+
+.accordion-body {
+    background-color: #c0ddf0;
 }
