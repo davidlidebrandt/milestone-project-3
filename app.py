@@ -98,6 +98,9 @@ def movie_page(title):
         "moviepage.html", get_movie=get_movie)
 
 
+@app.route("/addmovie", methods=["GET", "POST"])
+def add_movie():
+    return render_template("addmovie.html")
 
 
 if __name__ == "__main__":
