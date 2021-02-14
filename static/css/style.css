@@ -12,6 +12,10 @@ body {
     text-align: center;
 }
 
+.mg-0-auto {
+    margin: 0 auto;
+}
+
 .light-blue {
     background-color: #039be5;
     color: #ffffff;

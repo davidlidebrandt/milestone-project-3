@@ -1,5 +1,6 @@
 import os
 import math
+import datetime
 from flask import Flask, flash, render_template, redirect, request, session, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -100,7 +101,9 @@ def movie_page(title):
 
 @app.route("/addmovie", methods=["GET", "POST"])
 def add_movie():
-    return render_template("addmovie.html")
+    this_date = datetime.datetime.now()
+    this_year = this_date.year
+    return render_template("addmovie.html", this_year=this_year)
 
 
 if __name__ == "__main__":
