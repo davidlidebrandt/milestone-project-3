@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block maincontent %}
-<div class="col-6 offset-3 manage-movie-form">
+<div class="row">
+<div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 manage-movie-form">
 <form class="row" method="POST" action="{{ url_for('index', choice='login') }}">
                     <div class="col-12"><h4 class="custom-h4">Add Movie</h4></div>
                     <div class="col-12"><label for="title">Title</label></div>
@@ -13,5 +14,6 @@
                     <div class="col-12"><input class="input-field" id="cast" name="cast" type="text" required><br></div>
                     <div class="col-12"><input class="add-btn" id="" type="submit" value="Add Movie"></div>
                 </form>
+</div>
 </div>
 {% endblock %}
