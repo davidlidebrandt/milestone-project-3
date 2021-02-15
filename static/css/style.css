@@ -65,6 +65,7 @@ body {
     background-color: #f4511e;
     margin-bottom: 10px;
     box-shadow: 1px 1px 1px gray;
+    opacity: 0.8;
 }
 
 .custom-h2, .custom-h4, .custom-h3, .card-header {
@@ -132,10 +133,8 @@ body {
     z-index: 1000;
     background-color: #90a4ae;
     text-align: center;
-    width: 60%;
     border-radius: 10px;
     top: 100px;
-    left: 20%;
 }
 
 .input-field, .search-field {
@@ -260,6 +259,7 @@ main {
 
 .card {
     box-shadow: 1px 1px 1px #808080;
+    opacity: 0.8;
 }
 
 /*Findmvoies main*/
