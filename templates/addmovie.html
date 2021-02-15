@@ -5,16 +5,18 @@ Add Movie
 {% block maincontent %}
 <div class="row">
 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 manage-movie-form">
-<form class="row" method="POST" action="{{ url_for('index', choice='login') }}">
+<form class="row" method="POST" action="{{ url_for('add_movie') }}">
                     <div class="col-12"><h4 class="custom-h4">Add Movie</h4></div>
                     <div class="col-12"><label for="title">Title</label></div>
-                    <div class="col-12"><input class="input-field" id="title" name="Title" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" id="title" name="title" maxlength="20" type="text" required><br></div>
                     <div class="col-12"><label for="year">Year</label></div>
                     <div class="col-12"><input class="input-field" id="year" name="year" type="number" min="1900" max="{{ this_year }}" required><br></div>
                     <div class="col-12"><label for="directors">Directors</label></div>
                     <div class="col-12"><input class="input-field" id="directors" name="directors" type="text" required><br></div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
                     <div class="col-12"><input class="input-field" id="cast" name="cast" type="text" required><br></div>
+                    <div class="col-12"><label for="img_url">Poster URL</label></div>
+                    <div class="col-12"><input class="input-field" id="img_url" name="img_url" type="url" required><br></div>
                     <div class="col-12"><input class="add-btn" id="" type="submit" value="Add Movie"></div>
                 </form>
 </div>

@@ -101,6 +101,22 @@ def movie_page(title):
 
 @app.route("/addmovie", methods=["GET", "POST"])
 def add_movie():
+    if request.method == "POST":
+        already_exist = mongo_con.db.movies.find_one(
+            {"title": request.form.get("title")})
+        if already_exist:
+            flash("Movie already added to database")
+            return redirect(url_for("index"))
+        else:
+            mongo_con.db.movies.insert_one(
+                {"title": request.form.get(
+                    "title"), "directors": request.form.get(
+                        "directors"), "year": request.form.get(
+                            "year"), "cast": request.form.get(
+                                "cast"), "img_url": request.form.get(
+                                    "img_url")})
+            flash("Movie Added")
+            return redirect(url_for("index"))
     this_date = datetime.datetime.now()
     this_year = this_date.year
     return render_template("addmovie.html", this_year=this_year)
