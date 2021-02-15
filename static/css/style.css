@@ -286,7 +286,7 @@ main {
 .search-button {
     width: fit-content;
     border: none;
-    background-color: #bbdefb;
+    background-color: transparent;
 }
 
 .thumbnail {

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block maincontent %}
 <div class="row top-mg-100 align-center">
-<div class="col-10 offset-1 col-lg-4 offset-lg-0 btm-mg-20"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
+<div class="col-12 col-lg-4 btm-mg-20"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
 <div class="col-10 offset-1 col-lg-6 offset-lg-0 btm-mg-20 description-bg">
 <div class="row">
 <div class="col-12 top-btm-mg-10"><h5 class="align-center">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
@@ -38,7 +38,7 @@
 {% endif %}
 </div>
 </div>
-<div class="col-8 offset-2">
+<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
    {% if get_movie.reviews %}
    <h4 class="reviews-h4">Reviews</h4>
   <div class="accordion" id="accordionExample">
@@ -46,9 +46,9 @@
     <div class="accordion-item">
     <h2 class="accordion-header" id="heading{{ loop.index }}">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
-        <div class="col-4 accordion-text">By: {{ review.by_user }}</div> 
+        <div class="col-6 accordion-text">By: {{ review.by_user }}</div> 
         {% if review.by_user == session.user or session.admin == True %}
-        <div class="col-4 offset-4"><a class="edit-button" href="">Edit</a><a class="delete-button">Delete</a> </div>
+        <div class="col-6"><a class="edit-button" href="">Edit</a><a class="delete-button">Delete</a> </div>
         {% endif %}
       </button>
     </h2>
