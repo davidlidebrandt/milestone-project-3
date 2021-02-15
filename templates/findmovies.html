@@ -2,10 +2,10 @@
 {% block maincontent %}
 <h3 class="custom-h3">Find Movies</h3>
 <form class="row" method="POST" action="">
-    <div class="col-12 align-center"><input class="search-field" type="text" name="search" id="search">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1"><input class="search-field" type="text" name="search" id="search">
     <button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
 </form>
-<div class="row">
+<div class="row top-mg-20">
 <!--Pagination element from Bootstrap-->
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
@@ -26,17 +26,17 @@
 {% if loop.index % 2 == 0 %}
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result light-blue-bg">
 <div class="row">
-<div class="col-3 center"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
-<div class="col-3 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div class="col-3 center"><i class="fas fa-star star-icon"></i></div>
+<div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
+<div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+<div class="col-4 center"><i class="fas fa-star star-icon"></i></div>
 </div>
 </a>
 {% else %}
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result light-orange-bg">
 <div class="row">
-<div class="col-3 center"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
-<div class="col-3 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div class="col-3 center"><i class="fas fa-star star-icon"></i></div>
+<div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
+<div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+<div class="col-4 center"><i class="fas fa-star star-icon"></i></div>
 </div>
 </a>
 {% endif %}
