@@ -310,7 +310,7 @@ main {
     display: block;
     text-decoration: none;
     color: #000000;
-    padding: 0;
+    padding-left: 0;
 }
 
 .search-result:hover {

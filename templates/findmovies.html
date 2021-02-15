@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block maincontent %}
-<h3 class="custom-h3">Find Movies</h3>
+<div class="row">
+<div class="col-12"><h3 class="custom-h3">Find Movies</h3></div>
+</div>
 <form class="row" method="POST" action="">
     <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1"><input class="search-field" type="text" name="search" id="search">
     <button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
 </form>
 <div class="row top-mg-20">
 <!--Pagination element from Bootstrap-->
-<nav aria-label="...">
+<div class="col-12"><nav aria-label="...">
   <ul class="pagination pagination-lg">
     {% if pages %}
     {% for i in range(pages) %}
@@ -17,9 +19,7 @@
   {% endfor %}
   {% endif %}
 </ul>
-</nav>
-
-
+</nav></div>
     
 {% if movies %}
 {% for i in movies %}
