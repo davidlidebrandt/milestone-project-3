@@ -159,7 +159,9 @@ body {
 /*Main*/
 main {
     background-color: #bbdefb;
+    background: no-repeat url("../images/bg.png");
     position: relative;
+    background-size: cover;
      /* this part is also taken from the same post as the mentioned in the body*/
     flex: 1;
 }
