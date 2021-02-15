@@ -124,15 +124,17 @@ body {
 
 .base-modal {
     display: none;
-    border: none;
+    border: 0.5px solid #000000;
+    font-weight: 600;
+    letter-spacing: 1px;
     position: absolute;
     box-shadow: 1px 1px 1px #808080;
-    z-index: 100;
+    z-index: 1000;
     background-color: #90a4ae;
     text-align: center;
     width: 60%;
     border-radius: 10px;
-    top: 400px;
+    top: 100px;
     left: 20%;
 }
 
@@ -162,9 +164,10 @@ main {
 }
 
 /*Header*/
-.regnav-button, .loginnav-button {
+.regnav-button, .loginnav-button, .close-btn {
     background-color: #0d47a1;
     border: none;
+    border-radius: 5px;
     color: whitesmoke;
     text-align: left;
 }
