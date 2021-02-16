@@ -79,15 +79,15 @@ def find_movies(page=1):
         sub_list = movies[start:end]
     ratings = []
     count = 0
-    for i in sub_list:
+    for i in movies:
         if i.get("ratings"):
             print(i.get("ratings"))
             for j in i.get("ratings"):
                 print(j.get("rating"))
                 count += float(j.get("rating"))
-            print(len(i.get("ratings")))
-            print(count/len(i.get("ratings")))
-            ratings.append({"title": i.get("title"), "rating": count/len(i.get("ratings"))})
+            ratings.append({"title": i.get(
+                "title"), "rating": count/len(i.get("ratings"))})
+            count = 0
     print(ratings)
     counter = 0
     for movie in movies:
@@ -104,9 +104,10 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
     get_movie = mongo_con.db.movies.find_one({"title": title})
     get_rating = get_movie.get("ratings")
     count = 0
-    for i in get_rating:
-        count += float(i.get("rating"))
-    count = count/len(get_rating)
+    if get_rating:
+        for i in get_rating:
+            count += float(i.get("rating"))
+        count = count/len(get_rating)
 
     if request.method == "POST" and session["admin"] and delete_movie:
         mongo_con.db.movies.delete_one({"title": title})

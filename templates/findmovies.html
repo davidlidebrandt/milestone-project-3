@@ -3,6 +3,7 @@
 Find Movies
 {% endblock %}
 {% block maincontent %}
+<div id="1"></div>
 <div class="row">
 <div class="col-12"><h3 class="custom-h3">Find Movies</h3></div>
 </div>
@@ -31,17 +32,15 @@ Find Movies
 <div class="row">
 <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
 <div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div class="col-4 center"><i class="fas fa-star star-icon"></i>
-
+<div id="{{ loop.index }}" class="col-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
 {% if ratings %}
 {% for rating in ratings %}
 {% if i.title == rating.title %}
 <span>{{ rating.rating }}</span>
-{% else %}
-<span>No Ratings Yet</span>
 {% endif %}
 {% endfor %}
 {% endif %}
+
 </div>
 </div>
 </a>
@@ -50,18 +49,16 @@ Find Movies
 <div class="row">
 <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
 <div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div class="col-4 center"><i class="fas fa-star star-icon"></i>
-
-
+<div id="{{ loop.index }}" class="col-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
 {% if ratings %}
 {% for rating in ratings %}
 {% if i.title == rating.title %}
 <span>{{ rating.rating }}</span>
-{% else %}
-<span>No Ratings Yet</span>
 {% endif %}
 {% endfor %}
 {% endif %}
+
+
 </div>
 </div>
 </a>
@@ -76,4 +73,5 @@ Find Movies
 
 
 </div>
+
 {% endblock %}

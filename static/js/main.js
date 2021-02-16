@@ -38,4 +38,21 @@ $(document).ready(function () {
         $("#confirm-delete-review").click(function() {
         document.getElementById("delete-review-button").click();
     });
+
 });
+
+function checkEmptyRating() {
+  
+    const check = document.querySelectorAll(".rating-wrap");
+    for (let i = 0; i < check.length; i++) {
+    console.log(check[i])
+	 if (check[i].children.length < 2) {
+         let j = i + 1;
+         $("#" + j).html("No Ratings Yet");
+         j = 0;
+     }
+	}
+    
+}
+
+checkEmptyRating();
