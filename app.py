@@ -100,8 +100,8 @@ def movie_page(title, delete_movie=False):
             {"_id": ObjectId(get_movie["_id"])}, {
                 "$addToSet": {"reviews": {"description": request.form.get(
                     "review"), "by_user": session["user"]}}})
-        return render_template(
-            "moviepage.html", get_movie=get_movie)
+        flash("Your review was added")
+        return redirect(url_for("index"))
 
     return render_template(
         "moviepage.html", get_movie=get_movie)
@@ -134,6 +134,7 @@ def add_movie():
 def delete_review(title, user):
     mongo_con.db.movies.update_one(
         {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
+    flash("Review deleted")
     return redirect(url_for("index"))
 
 

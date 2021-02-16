@@ -67,9 +67,9 @@ Movie
     </h2>
     <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        {{ review.description }}
+        <div class="col-12"><p>{{ review.description }}</p></div>
          {% if review.by_user == session.user or session.admin == True %}
-        <div class="col-6"><a href="{{ url_for('delete_review', title=get_movie.title, user=review.by_user) }}" class="delete-review-button delete-button">Delete</a></div>
+        <div class="col-12"><a href="{{ url_for('delete_review', title=get_movie.title, user=review.by_user) }}" class="delete-review-button delete-button">Delete</a></div>
         {% endif %}
       </div>
     </div>
