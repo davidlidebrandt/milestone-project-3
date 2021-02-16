@@ -85,14 +85,16 @@ def find_movies(page=1):
     return render_template("findmovies.html", movies=sub_list, pages=counter)
 
 
-@app.route("/moviepage/<title>/<delete>", methods=["GET", "POST"])
+@app.route("/moviepage/<title>/<delete_movie>", methods=["GET", "POST"])
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
-def movie_page(title, delete=False):
+def movie_page(title, delete_movie=False):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    if request.method == "POST" and session["admin"] and delete:
+
+    if request.method == "POST" and session["admin"] and delete_movie:
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
         return redirect(url_for("index"))
+
     if request.method == "POST" and session["user"]:
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {
@@ -100,6 +102,7 @@ def movie_page(title, delete=False):
                     "review"), "by_user": session["user"]}}})
         return render_template(
             "moviepage.html", get_movie=get_movie)
+
     return render_template(
         "moviepage.html", get_movie=get_movie)
 
@@ -125,6 +128,13 @@ def add_movie():
     this_date = datetime.datetime.now()
     this_year = this_date.year
     return render_template("addmovie.html", this_year=this_year)
+
+
+@app.route("/deletereview/<title>/<user>")
+def delete_review(title, user):
+    mongo_con.db.movies.update_one(
+        {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

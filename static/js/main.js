@@ -29,5 +29,5 @@ $(document).ready(function () {
         $("#cancel-delete-movie").click(function() {
         $("#delete-movie-warn").hide();
     });
-
+   
 });
