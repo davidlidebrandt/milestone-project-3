@@ -90,6 +90,11 @@ def find_movies(page=1):
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
 def movie_page(title, delete_movie=False, rating=False, rate=False):
     get_movie = mongo_con.db.movies.find_one({"title": title})
+    get_rating = get_movie.get("ratings")
+    count = 0
+    for i in get_rating:
+        count += float(i.get("rating"))
+    count = count/len(get_rating)
 
     if request.method == "POST" and session["admin"] and delete_movie:
         mongo_con.db.movies.delete_one({"title": title})
@@ -126,7 +131,7 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
         return redirect(url_for("index"))
 
     return render_template(
-        "moviepage.html", get_movie=get_movie)
+        "moviepage.html", get_movie=get_movie, count=count)
 
 
 @app.route("/addmovie", methods=["GET", "POST"])
