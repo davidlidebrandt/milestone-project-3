@@ -116,13 +116,13 @@ def add_movie():
             flash("Movie already added to database")
             return redirect(url_for("index"))
         else:
+            cast_list = list(request.form.get("cast").split(","))
             mongo_con.db.movies.insert_one(
                 {"title": request.form.get(
                     "title"), "directors": request.form.get(
                         "directors"), "year": request.form.get(
-                            "year"), "cast": request.form.get(
-                                "cast"), "img_url": request.form.get(
-                                    "img_url")})
+                            "year"), "cast": cast_list, "img_url":
+                                request.form.get("img_url")})
             flash("Movie Added")
             return redirect(url_for("index"))
     this_date = datetime.datetime.now()
