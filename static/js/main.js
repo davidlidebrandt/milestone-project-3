@@ -38,21 +38,24 @@ $(document).ready(function () {
         $("#confirm-delete-review").click(function() {
         document.getElementById("delete-review-button").click();
     });
-
+        $(".page-link").click(function() {
+        checkEmptyRating();
+    });
+    checkEmptyRating();
 });
 
+
 function checkEmptyRating() {
-  
-    const check = document.querySelectorAll(".rating-wrap");
-    for (let i = 0; i < check.length; i++) {
-    console.log(check[i])
+    
+    // Checks if div contains raiting span and adds text if no raiting exists
+    const check = document.getElementsByClassName("rating-wrap");
+    for  (let i = 0; i < check.length; i++) {
 	 if (check[i].children.length < 2) {
-         let j = i + 1;
-         $("#" + j).html("No Ratings Yet");
+        j = i + 1;
+         $("#" + j).html("<p>No Ratings Yet</p>");
          j = 0;
      }
-	}
-    
+    }
 }
 
-checkEmptyRating();
+

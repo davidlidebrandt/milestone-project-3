@@ -1,7 +1,8 @@
 import os
 import math
 import datetime
-from flask import Flask, flash, render_template, redirect, request, session, url_for
+from flask import (
+    Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -88,13 +89,11 @@ def find_movies(page=1):
             ratings.append({"title": i.get(
                 "title"), "rating": count/len(i.get("ratings"))})
             count = 0
-    print(ratings)
-    counter = 0
-    for movie in movies:
-        counter += 1
+    counter = len(movies)
     counter = counter/10
     counter = math.ceil(counter)
-    return render_template("findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
+    return render_template(
+        "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
 
 @app.route("/moviepage/<title>/<rating>/<rate>", methods=["GET", "POST"])
