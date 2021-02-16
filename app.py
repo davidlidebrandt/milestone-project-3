@@ -77,12 +77,24 @@ def find_movies(page=1):
         start = page * 10 - 10
         end = start + 10
         sub_list = movies[start:end]
+    ratings = []
+    count = 0
+    for i in sub_list:
+        if i.get("ratings"):
+            print(i.get("ratings"))
+            for j in i.get("ratings"):
+                print(j.get("rating"))
+                count += float(j.get("rating"))
+            print(len(i.get("ratings")))
+            print(count/len(i.get("ratings")))
+            ratings.append({"title": i.get("title"), "rating": count/len(i.get("ratings"))})
+    print(ratings)
     counter = 0
     for movie in movies:
         counter += 1
     counter = counter/10
     counter = math.ceil(counter)
-    return render_template("findmovies.html", movies=sub_list, pages=counter)
+    return render_template("findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
 
 @app.route("/moviepage/<title>/<rating>/<rate>", methods=["GET", "POST"])
