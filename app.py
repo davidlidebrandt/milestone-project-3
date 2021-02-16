@@ -96,6 +96,13 @@ def movie_page(title, delete_movie=False):
         return redirect(url_for("index"))
 
     if request.method == "POST" and session["user"]:
+        check_reviews = mongo_con.db.movies.find_one({"title": title})
+        for review in check_reviews["reviews"]:
+            review["by_user"]
+            if review["by_user"] == session["user"]:
+                flash("You have already made a review for this movie")
+                return redirect(url_for("index"))
+
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {
                 "$addToSet": {"reviews": {"description": request.form.get(
@@ -109,7 +116,7 @@ def movie_page(title, delete_movie=False):
 
 @app.route("/addmovie", methods=["GET", "POST"])
 def add_movie():
-    if request.method == "POST":
+    if request.method == "POST" and session["admin"]:
         already_exist = mongo_con.db.movies.find_one(
             {"title": request.form.get("title")})
         if already_exist:
