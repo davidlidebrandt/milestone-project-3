@@ -129,7 +129,7 @@ body {
     border: 0.5px solid #000000;
     font-weight: 600;
     letter-spacing: 1px;
-    position: absolute;
+    position: fixed;
     box-shadow: 1px 1px 1px #808080;
     z-index: 1000;
     background-color: #90a4ae;
@@ -444,4 +444,5 @@ main {
     font-weight: 600;
     letter-spacing: 1px;
 }
-  
+
+/*Media queries*/
