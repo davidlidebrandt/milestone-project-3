@@ -85,9 +85,14 @@ def find_movies(page=1):
     return render_template("findmovies.html", movies=sub_list, pages=counter)
 
 
+@app.route("/moviepage/<title>/<delete>", methods=["GET", "POST"])
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
-def movie_page(title):
+def movie_page(title, delete=False):
     get_movie = mongo_con.db.movies.find_one({"title": title})
+    if request.method == "POST" and session["admin"] and delete:
+        mongo_con.db.movies.delete_one({"title": title})
+        flash("Movie was deleted")
+        return redirect(url_for("index"))
     if request.method == "POST" and session["user"]:
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {

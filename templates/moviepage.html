@@ -4,6 +4,12 @@ Movie
 {% endblock %}
 {% block maincontent %}
 <div class="row top-mg-100 align-center">
+<div id="delete-movie-warn" class="base-modal"><p>Are you sure you want to delete this movie?</p>
+<form method="POST" action="{{ url_for('movie_page',title = get_movie.title, delete=True) }}">
+    <button class="delete-button" type="submit">Delete</button> 
+</form>
+<button id="cancel-delete-movie" class="cancel-button">Cancel</button>
+</div>
 <div class="col-12 col-lg-4 btm-mg-20"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
 <div class="col-10 offset-1 col-lg-6 offset-lg-0 btm-mg-20 description-bg">
 <div class="row">
@@ -23,7 +29,8 @@ Movie
 
 {% if session.user %}
 {% if session.admin == True %}
-<div class="col-12 top-btm-mg-10"><a class="edit-button" href="">Edit</a> <a class="delete-button" href="">Delete</a></div>
+<div class="col-12 top-btm-mg-10"><a class="edit-button" href="">Edit</a> <button id="delete-movie-btn" class="delete-button">Delete</button></div>
+
 {% endif %}
 <div class="col-6 offset-3">
     <form class="row rating-form">

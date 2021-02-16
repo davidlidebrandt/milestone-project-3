@@ -23,7 +23,11 @@ $(document).ready(function () {
         $("#login").hide();
         $("#register").hide();
     });
-
-
+        $("#delete-movie-btn").click(function() {
+        $("#delete-movie-warn").show();
+    });
+        $("#cancel-delete-movie").click(function() {
+        $("#delete-movie-warn").hide();
+    });
 
 });
