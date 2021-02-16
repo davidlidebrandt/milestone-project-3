@@ -130,12 +130,16 @@ def add_movie():
     return render_template("addmovie.html", this_year=this_year)
 
 
-@app.route("/deletereview/<title>/<user>")
+@app.route("/deletereview/<title>/<user>", methods=["GET", "POST"])
 def delete_review(title, user):
-    mongo_con.db.movies.update_one(
-        {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
-    flash("Review deleted")
-    return redirect(url_for("index"))
+    if user == session["user"] or session["admin"]:
+        mongo_con.db.movies.update_one(
+            {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
+        flash("Review deleted")
+        return redirect(url_for("index"))
+    else:
+        flash("You are not authorized to make changes")
+        return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

@@ -10,6 +10,11 @@ Movie
 </form>
 <button id="cancel-delete-movie" class="cancel-button">Cancel</button>
 </div>
+<div id="delete-review-warn" class="base-modal">
+<p>Are you sure you want to delete this movie?</p>
+<button id="confirm-delete-review" class="delete-button">Delete</button>
+<button id="cancel-delete-review" class="cancel-button">Cancel</button>
+</div>
 <div class="col-12 col-lg-4 btm-mg-20"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
 <div class="col-10 offset-1 col-lg-6 offset-lg-0 btm-mg-20 description-bg">
 <div class="row">
@@ -69,7 +74,10 @@ Movie
       <div class="accordion-body">
         <div class="col-12"><p>{{ review.description }}</p></div>
          {% if review.by_user == session.user or session.admin == True %}
-        <div class="col-12"><a href="{{ url_for('delete_review', title=get_movie.title, user=review.by_user) }}" class="delete-review-button delete-button">Delete</a></div>
+        <div class="col-12"><button id="ensure-delete-review" class="delete-button">Delete</button>
+            <form class="d-none" method="POST" action="{{ url_for('delete_review', title=get_movie.title, user=review.by_user) }}">
+            <button id="delete-review-button" type="submit"></button>
+            </form>
         {% endif %}
       </div>
     </div>
@@ -84,5 +92,5 @@ Movie
 
 </div>
 </div>
-<a href="{{ url_for('delete_review', title='The Matrix', user='amember') }}" class="delete-review-button delete-button">Delete</a>
+
 {% endblock %}

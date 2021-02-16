@@ -29,5 +29,13 @@ $(document).ready(function () {
         $("#cancel-delete-movie").click(function() {
         $("#delete-movie-warn").hide();
     });
-   
+        $("#ensure-delete-review").click(function() {
+        $("#delete-review-warn").show();
+    });
+        $("#cancel-delete-review").click(function() {
+        $("#delete-review-warn").hide();
+    });
+        $("#confirm-delete-review").click(function() {
+        document.getElementById("delete-review-button").click();
+    });
 });
