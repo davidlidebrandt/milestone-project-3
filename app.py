@@ -206,9 +206,8 @@ def edit_movie(title):
                     request.form.get("img_url")}})
         flash("Movie Edited")
         return redirect(url_for("index"))
-    get_movie = mongo_con.db.movies.find_one({"title": title})
-    return redirect("index")
 
+    get_movie = mongo_con.db.movies.find_one({"title": title})
     temp = get_movie.get("cast")
     cast_string = ""
     if temp:
