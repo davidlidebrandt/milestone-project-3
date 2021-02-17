@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+Edit Movie
+{% endblock %}
+{% block maincontent %}
+<div class="row">
+<div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 manage-movie-form">
+<form class="row" method="POST" action="{{ url_for('edit_movie', title=get_movie.title) }}">
+                    <div class="col-12"><h4 class="custom-h4">Edit Movie</h4></div>
+                    <div class="col-12"><label for="title">Title</label></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.title }}" id="title" name="title" maxlength="20" type="text" required><br></div>
+                    <div class="col-12"><label for="year">Year</label></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.year }}" id="year" name="year" type="number" min="1900" max="{{ this_year }}" required><br></div>
+                    <div class="col-12"><label for="directors">Directors</label></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" id="directors" name="directors" type="text" required><br></div>
+                    <div class="col-12"><label for="cast">Main Cast</label></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" id="cast" name="cast" type="text" required><br></div>
+                    <div class="col-12"><label for="img_url">Poster URL</label></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.img_url }}" id="img_url" name="img_url" type="url" required><br></div>
+                    <div class="col-12"><input class="add-btn" type="submit" value="Edit Movie"></div>
+                </form>
+</div>
+</div>
+{% endblock %}

@@ -192,6 +192,30 @@ def delete_review(title, user):
     return redirect(url_for("index"))
 
 
+@app.route("/editmovie/<title>", methods=["GET", "POST"])
+def edit_movie(title):
+    if request.method == "POST" and session["admin"]:
+        cast_list = list(request.form.get("cast").split(","))
+        mongo_con.db.movies.update_one(
+            {"title": title}, {"$set": {"title": request.form.get(
+                "title"), "directors": request.form.get(
+                "directors"), "year": request.form.get(
+                "year"), "cast": cast_list, "img_url":
+             request.form.get("img_url")}})
+        flash("Movie Edited")
+        return redirect(url_for("index"))
+    get_movie = mongo_con.db.movies.find_one({"title": title})
+    temp = get_movie.get("cast")
+    cast_string = ""
+    if temp:
+        for memeber in temp:
+            cast_string += memeber
+            cast_string += ","
+        cast_string = cast_string[0:-1]
+    return render_template(
+        "editmovie.html", get_movie=get_movie, get_cast=cast_string)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(
         os.environ.get("PORT")), debug=True)

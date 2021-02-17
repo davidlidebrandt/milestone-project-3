@@ -48,8 +48,9 @@ Movie
 
 {% if session.user %}
 {% if session.admin == True %}
-<div class="col-12 top-btm-mg-10"><a class="edit-button" href="">Edit</a> <button id="delete-movie-btn" class="delete-button">Delete</button></div>
-
+<div class="col-12 top-btm-mg-10">
+<a class="edit-button" href="{{ url_for('edit_movie', title=get_movie.title) }}">Edit</a> 
+<button id="delete-movie-btn" class="delete-button">Delete</button></div>
 {% endif %}
 <div class="col-6 offset-3">
     <form class="row rating-form" method="POST" action="{{ url_for('movie_page', title=get_movie.title, rating=True, rate=True)}}">
