@@ -22,27 +22,38 @@ mongo_con = PyMongo(app)
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
-    movies = mongo_con.db.movies.find()
+    try:
+        movies = mongo_con.db.movies.find()
+    except Exception as e:
+        flash(
+            f"Error when trying to fetch the movies from the database. Error: {e}")
+        return render_template("index.html")
     return render_template("index.html", movies=movies)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        user_taken = mongo_con.db.users.find_one(
-            {"user_name": request.form.get("user-reg")})
+        try:
+            user_taken = mongo_con.db.users.find_one(
+                {"user_name": request.form.get("user-reg")})
+        except Exception as e:
+            flash(f"Error {e} when trying to retrive username from database")
         if user_taken:
             flash("Username already taken")
         else:
-            mongo_con.db.users.insert_one({"user_name": request.form.get(
-                "user-reg").lower(), "password": generate_password_hash(
+            try:
+                mongo_con.db.users.insert_one({"user_name": request.form.get(
+                    "user-reg").lower(), "password": generate_password_hash(
                     request.form.get(
                         "password-reg").lower(), method='pbkdf2:sha256',
-                salt_length=12), "user_email": request.form.get(
+                    salt_length=12), "user_email": request.form.get(
                                 "email-reg"), "is_admin": "false"})
-            reg_user = request.form.get("user-reg")
-            session["user"] = request.form.get("user-reg")
-            flash(f"Registration succesful, welcome {reg_user}")
+                reg_user = request.form.get("user-reg")
+                session["user"] = request.form.get("user-reg")
+                flash(f"Registration succesful, welcome {reg_user}")
+            except Exception as e:
+                flash(f"Error {e} occured when trying to register, try again")
         return redirect(url_for("index"))
 
 
@@ -70,6 +81,7 @@ def log_in():
 def logout():
     session.pop("user", None)
     session.pop("admin", None)
+    flash("You have been logged out")
     return redirect(url_for("index"))
 
 
@@ -182,9 +194,13 @@ def add_movie():
 def delete_review(title, user):
     if request.method == "POST" and (
             user == session["user"] or session["admin"]):
-        mongo_con.db.movies.update_one(
-            {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
-        flash("Review deleted")
+        try:
+            mongo_con.db.movies.update_one(
+                {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
+            flash("Review deleted")
+        except:
+            flash("An error occured when trying to delete the review")
+
         return redirect(url_for("index"))
     else:
         flash("You are not authorized to make changes")
@@ -196,15 +212,23 @@ def delete_review(title, user):
 def edit_movie(title):
     if request.method == "POST" and session["admin"]:
         cast_list = list(request.form.get("cast").split(","))
-        mongo_con.db.movies.update_one(
-            {"title": title}, {"$set": {"title": request.form.get(
-                "title"), "directors": request.form.get(
-                "directors"), "year": request.form.get(
-                "year"), "cast": cast_list, "img_url":
-             request.form.get("img_url")}})
-        flash("Movie Edited")
+        try:
+            mongo_con.db.movies.update_one(
+                {"title": title}, {"$set": {"title": request.form.get(
+                    "title"), "directors": request.form.get(
+                    "directors"), "year": request.form.get(
+                    "year"), "cast": cast_list, "img_url":
+                    request.form.get("img_url")}})
+            flash("Movie Edited")
+        except Exception as e:
+            flash(f"Error {e} occured when trying to uppdate the movie")
         return redirect(url_for("index"))
-    get_movie = mongo_con.db.movies.find_one({"title": title})
+    try:
+        get_movie = mongo_con.db.movies.find_one({"title": title})
+    except Exception as e:
+        flash(f"Could not retrive the movie. Error: {e}")
+        return redirect("index")
+
     temp = get_movie.get("cast")
     cast_string = ""
     if temp:
