@@ -12,9 +12,9 @@ Add Movie
                     <div class="col-12"><label for="year">Year</label></div>
                     <div class="col-12"><input class="input-field" id="year" name="year" type="number" min="1900" max="{{ this_year }}" required><br></div>
                     <div class="col-12"><label for="directors">Directors</label></div>
-                    <div class="col-12"><input class="input-field" id="directors" name="directors" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" id="directors" maxlength="150" name="directors" type="text" required><br></div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
-                    <div class="col-12"><input class="input-field" id="cast" name="cast" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" id="cast" maxlength="300" name="cast" type="text" required><br></div>
                     <div class="col-12"><label for="img_url">Poster URL</label></div>
                     <div class="col-12"><input class="input-field" id="img_url" name="img_url" type="url" required><br></div>
                     <div class="col-12"><input class="add-btn" type="submit" value="Add Movie"></div>

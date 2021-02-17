@@ -12,9 +12,9 @@ Edit Movie
                     <div class="col-12"><label for="year">Year</label></div>
                     <div class="col-12"><input class="input-field" value="{{ get_movie.year }}" id="year" name="year" type="number" min="1900" max="{{ this_year }}" required><br></div>
                     <div class="col-12"><label for="directors">Directors</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" id="directors" name="directors" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" maxlength="150" id="directors" name="directors" type="text" required><br></div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" id="cast" name="cast" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" maxlength="300" id="cast" name="cast" type="text" required><br></div>
                     <div class="col-12"><label for="img_url">Poster URL</label></div>
                     <div class="col-12"><input class="input-field" value="{{ get_movie.img_url }}" id="img_url" name="img_url" type="url" required><br></div>
                     <div class="col-12"><input class="add-btn" type="submit" value="Edit Movie"></div>
