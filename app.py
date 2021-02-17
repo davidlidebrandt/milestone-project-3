@@ -19,26 +19,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo_con = PyMongo(app)
 
 
-@app.route("/index/<choice>", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
-def index(choice=None):
-    if request.method == "POST" and choice == "login":
-        user_exists = mongo_con.db.users.find_one(
-            {"user_name": request.form.get("user-login").lower()})
-        if user_exists:
-            if check_password_hash(user_exists["password"],
-                                   request.form.get("password-login")):
-                session["user"] = user_exists["user_name"]
-                if user_exists["is_admin"] == "true":
-                    session["admin"] = True
-                name = session["user"]
-                flash(f"Welcome {name}")
-            else:
-                flash("Incorrect username or password")
-        else:
-            flash("Incorrect username or password")
-    elif request.method == "POST" and choice == "register":
+def index():
+    movies = mongo_con.db.movies.find()
+    return render_template("index.html", movies=movies)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
         user_taken = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-reg")})
         if user_taken:
@@ -53,8 +43,27 @@ def index(choice=None):
             reg_user = request.form.get("user-reg")
             session["user"] = request.form.get("user-reg")
             flash(f"Registration succesful, welcome {reg_user}")
-    movies = mongo_con.db.movies.find()
-    return render_template("index.html", choice=choice, movies=movies)
+        return redirect(url_for("index"))
+
+
+@app.route("/login", methods=["GET", "POST"])
+def log_in():
+    if request.method == "POST":
+        user_exists = mongo_con.db.users.find_one(
+            {"user_name": request.form.get("user-login").lower()})
+        if user_exists:
+            if check_password_hash(user_exists["password"],
+                                   request.form.get("password-login")):
+                session["user"] = user_exists["user_name"]
+                if user_exists["is_admin"] == "true":
+                    session["admin"] = True
+                name = session["user"]
+                flash(f"Welcome {name}")
+            else:
+                flash("Incorrect username or password")
+        else:
+            flash("Incorrect username or password")
+        return redirect(url_for("index"))
 
 
 @app.route("/logout")

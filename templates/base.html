@@ -45,7 +45,8 @@
 <body>
 <main class="container-fluid">
 <div class="row">
-<div id="register" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">   <form class="row" method="POST" action="{{ url_for('index', choice='register') }}">
+<div id="register" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">   
+    <form class="row" method="POST" action="{{ url_for('register') }}">
                     <div class="col-12"><h4 class="custom-h4">Register</h4></div>
                     <div class="col-12"><label for="user-reg">Username</label></div>
                     <div class="col-12"><input class="input-field" id="user-reg" name="user-reg" type="text" minlength="5" maxlength="15" pattern="[A-Za-z0-9]{5,15}" title="Your username needs to be between 5-15 characters long. Only letters A-Z and numbers 0-9 allowed" required><br></div>
@@ -61,7 +62,8 @@
                 <div class="col-12 margin-btm-20"><button class="close-btn">Close</button></div>
                 </div>
             </div>
-<div id="login" class="col-12 col-md-8 offset-md-2 col-lg-6 base-modal offset-lg-3">   <form class="row" method="POST" action="{{ url_for('index', choice='login') }}">
+<div id="login" class="col-12 col-md-8 offset-md-2 col-lg-6 base-modal offset-lg-3">   
+    <form class="row" method="POST" action="{{ url_for('log_in') }}">
                     <div class="col-12"><h4 class="custom-h4">Log in</h4></div>
                     <div class="col-12"><label for="user-login">Username</label></div>
                     <div class="col-12"><input class="input-field" id="user-login" name="user-login" type="text" required><br></div>
