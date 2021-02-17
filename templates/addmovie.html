@@ -20,7 +20,7 @@ Add Movie
                     <p class="input-help-text">Write the full name, if more than one director separate them by comma. No more than two directors allowed.</p>
                     </div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
-                    <div class="col-12"><input class="input-field" id="cast" maxlength="300" name="cast" type="text" required><br>
+                    <div class="col-12"><input class="input-field" pattern="[A-Z-a-z]{1,50}[,]?\s?[A-Z-a-z]{1,50}?[,]?\s?[A-Z-a-z]{1,50}?" id="cast" maxlength="300" name="cast" type="text" required><br>
                     <p class="input-help-text">Write the full name, if more than one cast member separate them by comma. No more than three members allowed.</p>
                     </div>
                     <div class="col-12"><label for="img_url">Poster URL</label></div>

@@ -20,7 +20,7 @@ Edit Movie
                     <p class="input-help-text">Write the full name, if more than one director separate them by comma. No more than two directors allowed.</p>
                     </div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" maxlength="300" id="cast" name="cast" type="text" required><br>
+                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" pattern="[A-Z-a-z]{1,50}[,]?\s?[A-Z-a-z]{1,50}?[,]?\s?[A-Z-a-z]{1,50}?" maxlength="300" id="cast" name="cast" type="text" required><br>
                     <p class="input-help-text">Write the full name, if more than one cast member separate them by comma. No more than three members allowed.</p>
                     </div>
                     <div class="col-12"><label for="img_url">Poster URL</label></div>
