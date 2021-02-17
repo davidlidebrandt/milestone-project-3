@@ -8,15 +8,25 @@ Edit Movie
 <form class="row" method="POST" action="{{ url_for('edit_movie', title=get_movie.title) }}">
                     <div class="col-12"><h4 class="custom-h4">Edit Movie</h4></div>
                     <div class="col-12"><label for="title">Title</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_movie.title }}" id="title" name="title" maxlength="20" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.title }}" id="title" name="title" maxlength="20" type="text" required><br>
+                    <p class="input-help-text">Title of the movie, maximum of 20 characters</p>
+                    </div>
                     <div class="col-12"><label for="year">Year</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_movie.year }}" id="year" name="year" type="number" min="1900" max="{{ this_year }}" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.year }}" id="year" name="year" type="number" min="1900" max="{{ this_year }}" required><br>
+                    <p class="input-help-text">Enter the release year, between 1900 and now.</p>
+                    </div>
                     <div class="col-12"><label for="directors">Directors</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" pattern="[A-Z-a-z]{1,50}[,]?\s?[A-Z-a-z]{1,50}?" maxlength="150" id="directors" name="directors" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" pattern="[A-Z-a-z]{1,50}[,]?\s?[A-Z-a-z]{1,50}?" maxlength="150" id="directors" name="directors" type="text" required><br>
+                    <p class="input-help-text">Write the full name, if more than one director separate them by comma. No more than two directors allowed.</p>
+                    </div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" maxlength="300" id="cast" name="cast" type="text" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" maxlength="300" id="cast" name="cast" type="text" required><br>
+                    <p class="input-help-text">Write the full name, if more than one cast member separate them by comma. No more than three members allowed.</p>
+                    </div>
                     <div class="col-12"><label for="img_url">Poster URL</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_movie.img_url }}" id="img_url" name="img_url" type="url" required><br></div>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.img_url }}" id="img_url" name="img_url" type="url" required><br>
+                    <p class="input-help-text">Add a url address to a poster image.</p>
+                    </div>
                     <div class="col-12"><input class="add-btn" type="submit" value="Edit Movie"></div>
                 </form>
 </div>
