@@ -12,6 +12,10 @@ body {
     text-align: center;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .mg-0-auto {
     margin: 0 auto;
 }
@@ -53,6 +57,11 @@ body {
 .top-btm-mg-10 {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.top-btm-mg-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .top-mg-30 {

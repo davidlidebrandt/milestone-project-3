@@ -27,7 +27,7 @@ Movie
 <div class="col-10 offset-1 col-lg-6 offset-lg-0 btm-mg-20 description-bg">
 <div class="row">
 <div class="col-12 top-btm-mg-10"><h5 class="align-center">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
-<div class="col-12 top-btm-mg-10 align-center"><i class="fas fa-star star-icon"></i>
+<div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
     {% if get_movie.ratings %}
     {{ count }}
     {% else %}
@@ -35,9 +35,9 @@ Movie
     {% endif %}
 </div>
 
-<div class="col-12 top-btm-mg-10 top-mg-20">Directors:</div>
+<div class="col-12 top-btm-mg-10 top-mg-20 underline">Directors:</div>
 <div class="col-12 top-btm-mg-10 top-mg-20">{{ get_movie.directors }}</div>
-<div class="col-12 top-btm-mg-10">Main Cast:</div>
+<div class="col-12 top-btm-mg-10 underline">Main Cast:</div>
 <div class="col-12 top-btm-mg-10">
 {% for member in get_movie.cast %}
     {{ member }}
