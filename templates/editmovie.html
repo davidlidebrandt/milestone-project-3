@@ -16,12 +16,12 @@ Edit Movie
                     <p class="input-help-text">Enter the release year, between 1900 and now.</p>
                     </div>
                     <div class="col-12"><label for="directors">Directors</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" pattern="[A-Z-a-z]{1,50}[,]?\s?[A-Z-a-z]{1,50}?" maxlength="150" id="directors" name="directors" type="text" required><br>
-                    <p class="input-help-text">Write the full name, if more than one director separate them by comma. No more than two directors allowed.</p>
+                    <div class="col-12"><input class="input-field" value="{{ get_movie.directors }}" maxlength="150" pattern="[A-Z-a-z]{1,20}\s[A-Z-a-z]{1,20}[,]?\s?([A-Z-a-z]{1,20}\s[A-Z-a-z]{1,20})?"  id="directors" name="directors" type="text" required><br>
+                    <p class="input-help-text">Write the first and name, if more than one director separate them by comma. No more than two directors allowed.</p>
                     </div>
                     <div class="col-12"><label for="cast">Main Cast</label></div>
-                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" pattern="[A-Z-a-z]{1,50}[,]?\s?[A-Z-a-z]{1,50}?[,]?\s?[A-Z-a-z]{1,50}?" maxlength="300" id="cast" name="cast" type="text" required><br>
-                    <p class="input-help-text">Write the full name, if more than one cast member separate them by comma. No more than three members allowed.</p>
+                    <div class="col-12"><input class="input-field" value="{{ get_cast }}" pattern="[A-Z-a-z]{1,20}\s[A-Z-a-z]{1,20}[,]?\s?([A-Z-a-z]{1,20}\s[A-Z-a-z]{1,20})?[,]?\s?([A-Z-a-z]{1,20}\s[A-Z-a-z]{1,20})?" maxlength="300" id="cast" name="cast" type="text" required><br>
+                    <p class="input-help-text">Write the first and last name, if more than one cast member separate them by comma. No more than three members allowed.</p>
                     </div>
                     <div class="col-12"><label for="img_url">Poster URL</label></div>
                     <div class="col-12"><input class="input-field" value="{{ get_movie.img_url }}" id="img_url" name="img_url" type="url" required><br>

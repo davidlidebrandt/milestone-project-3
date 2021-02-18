@@ -122,8 +122,7 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
     if request.method == "POST" and session["admin"] and delete_movie:
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
-        return render_template(
-            "moviepage.html", get_movie=get_movie, count=count)
+        return redirect(url_for("index"))
 
     if request.method == "POST" and session["user"] and rating and rate:
         check_rating = mongo_con.db.movies.find_one({"title": title})
