@@ -93,9 +93,7 @@ def find_movies(page=1):
     count = 0
     for i in movies:
         if i.get("ratings"):
-            print(i.get("ratings"))
             for j in i.get("ratings"):
-                print(j.get("rating"))
                 count += float(j.get("rating"))
             ratings.append({"title": i.get(
                 "title"), "rating": count/len(i.get("ratings"))})
@@ -127,8 +125,8 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
 
     if request.method == "POST" and session["user"] and rating and rate:
         check_rating = mongo_con.db.movies.find_one({"title": title})
-        if check_rating.get("rating"):
-            for rating in check_rating["review"]:
+        if check_rating.get("ratings"):
+            for rating in check_rating.get("ratings"):
                 rating["by_user"]
                 if rating["by_user"] == session["user"]:
                     flash("You have already rated this movie")
@@ -144,12 +142,13 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
 
     if request.method == "POST" and session["user"]:
         check_reviews = mongo_con.db.movies.find_one({"title": title})
-        for review in check_reviews["reviews"]:
-            review["by_user"]
-            if review["by_user"] == session["user"]:
-                flash("You have already made a review for this movie")
-                return render_template(
-                    "moviepage.html", get_movie=get_movie, count=count)
+        if check_reviews.get("reviews"):
+            for review in check_reviews["reviews"]:
+                review["by_user"]
+                if review["by_user"] == session["user"]:
+                    flash("You have already made a review for this movie")
+                    return render_template(
+                        "moviepage.html", get_movie=get_movie, count=count)
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {
                 "$addToSet": {"reviews": {"description": request.form.get(
