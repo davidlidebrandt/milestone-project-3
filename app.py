@@ -99,7 +99,7 @@ def find_movies(page=1):
         start = page * 10 - 10
         end = start + 10
         sub_list = movies[start:end]
- 
+
     counter = len(movies)
     counter = counter/10
     counter = math.ceil(counter)
@@ -180,9 +180,12 @@ def add_movie():
                                 request.form.get("img_url")})
             flash("Movie Added")
             return redirect(url_for("index"))
-    this_date = datetime.datetime.now()
-    this_year = this_date.year
-    return render_template("addmovie.html", this_year=this_year)
+    elif request.method == ["GET"] and session["admin"]:
+        this_date = datetime.datetime.now()
+        this_year = this_date.year
+        return render_template("addmovie.html", this_year=this_year)
+    else:
+        return redirect(url_for("index"))
 
 
 @app.route("/deletereview/<title>/<user>", methods=["GET", "POST"])
@@ -211,17 +214,19 @@ def edit_movie(title):
                     request.form.get("img_url")}})
         flash("Movie Edited")
         return redirect(url_for("index"))
-
-    get_movie = mongo_con.db.movies.find_one({"title": title})
-    temp = get_movie.get("cast")
-    cast_string = ""
-    if temp:
-        for memeber in temp:
-            cast_string += memeber
-            cast_string += ","
+    elif request.method == ["GET"] and session["admin"]:
+        get_movie = mongo_con.db.movies.find_one({"title": title})
+        temp = get_movie.get("cast")
+        cast_string = ""
+        if temp:
+            for memeber in temp:
+                cast_string += memeber
+                cast_string += ","
         cast_string = cast_string[0:-1]
-    return render_template(
-        "editmovie.html", get_movie=get_movie, get_cast=cast_string)
+        return render_template(
+            "editmovie.html", get_movie=get_movie, get_cast=cast_string)
+    else:
+        return redirect(url_for("index"))
 
 
 @app.errorhandler(404)
