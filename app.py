@@ -122,7 +122,8 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
     if request.method == "POST" and session["admin"] and delete_movie:
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
-        return redirect(url_for("index"))
+        return render_template(
+            "moviepage.html", get_movie=get_movie, count=count)
 
     if request.method == "POST" and session["user"] and rating and rate:
         check_rating = mongo_con.db.movies.find_one({"title": title})
@@ -131,13 +132,15 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
                 rating["by_user"]
                 if rating["by_user"] == session["user"]:
                     flash("You have already rated this movie")
-                    return redirect(url_for("index"))
+                    return render_template(
+                        "moviepage.html", get_movie=get_movie, count=count)
         mongo_con.db.movies.update_one(
             {"title": title}, {
                 "$addToSet": {"ratings": {"rating": request.form.get(
                     "rating"), "by_user": session["user"]}}})
         flash("Your rating was added")
-        return redirect(url_for("index"))
+        return render_template(
+            "moviepage.html", get_movie=get_movie, count=count)
 
     if request.method == "POST" and session["user"]:
         check_reviews = mongo_con.db.movies.find_one({"title": title})
@@ -145,13 +148,15 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
             review["by_user"]
             if review["by_user"] == session["user"]:
                 flash("You have already made a review for this movie")
-                return redirect(url_for("index"))
+                return render_template(
+                    "moviepage.html", get_movie=get_movie, count=count)
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {
                 "$addToSet": {"reviews": {"description": request.form.get(
                     "review"), "by_user": session["user"]}}})
         flash("Your review was added")
-        return redirect(url_for("index"))
+        return render_template(
+            "moviepage.html", get_movie=get_movie, count=count)
 
     return render_template(
         "moviepage.html", get_movie=get_movie, count=count)

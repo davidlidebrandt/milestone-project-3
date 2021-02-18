@@ -9,7 +9,7 @@ Home
       {% with flash_messages = get_flashed_messages() %}
        {% if flash_messages %}       
        {% for message in flash_messages %}
-           <h4 class="welcome-h4">{{ message }}</h4>
+           <h4 class="display-flash">{{ message }}</h4>
        {% endfor %}
        {% endif %}
     {% endwith %}
