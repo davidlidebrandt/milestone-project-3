@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    $(".regnav-button").click(function() {
+    $(".regnav-button, .register-link").click(function() {
         $("#login").hide();
         $("#register").show();
         $(".collapse").removeClass("show");
     });
-    $(".loginnav-button").click(function() {
+    $(".loginnav-button, .login-link").click(function() {
         $("#register").hide();
         $("#login").show();
         $(".collapse").removeClass("show");
