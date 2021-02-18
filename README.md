@@ -22,7 +22,7 @@
 
 
 
-[Link to the deployed project]()
+[Link to the deployed project](https://movie-r-and-r.herokuapp.com/)
 
 * [Database](#datbase)
 * [UX](#ux)
