@@ -80,9 +80,10 @@ body {
 .logo-wrapper {
     border-radius: 5px;
     background-color: #f4511e;
+    margin-top: 20px;
     margin-bottom: 10px;
+    max-width: 400px;
     box-shadow: 1px 1px 1px gray;
-    opacity: 0.8;
 }
 
 .custom-h2, .custom-h4, .custom-h3, .card-header {
@@ -304,7 +305,6 @@ main {
 
 .card {
     box-shadow: 1px 1px 1px #808080;
-    opacity: 0.8;
 }
 
 /*Findmvoies main*/
@@ -397,9 +397,9 @@ main {
 }
 
 .card-body {
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 1px;
-    font-size: 130%;
+    font-size: 110%;
     border-radius: 5px;
 }
 
