@@ -180,7 +180,7 @@ def add_movie():
                                 request.form.get("img_url")})
             flash("Movie Added")
             return redirect(url_for("index"))
-    elif request.method == ["GET"] and session["admin"]:
+    if session["admin"]:
         this_date = datetime.datetime.now()
         this_year = this_date.year
         return render_template("addmovie.html", this_year=this_year)
