@@ -107,24 +107,26 @@ def find_movies(page=1):
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
 
-@app.route("/moviepage/<title>/<delete_movie>", methods=["GET", "POST"])
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
-def movie_page(title, delete_movie=False,):
+def movie_page(title):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    has_rating = list(get_movie.get("ratings"))
+    has_rating = get_movie.get("ratings")
     rating = 0
     if has_rating:
         for i in get_movie.get("ratings"):
             rating += float(i.get("rating"))
         rating = rating/len(has_rating)
 
-    if request.method == "POST" and session["admin"] and delete_movie:
-        mongo_con.db.movies.delete_one({"title": title})
-        flash("Movie was deleted")
-        return redirect(url_for("index"))
-
     return render_template(
         "moviepage.html", get_movie=get_movie, rating=rating)
+
+
+@app.route("/moviepage/delete_movie/<title>", methods=["GET", "POST"])
+def delete_movie(title):
+    if request.method == "POST" and session["admin"]:
+        mongo_con.db.movies.delete_one({"title": title})
+        flash("Movie was deleted")
+    return redirect(url_for("index"))
 
 
 @app.route("/moviepage/rate/<title>", methods=["GET", "POST"])
@@ -224,8 +226,8 @@ def edit_movie(title):
                     "year"), "cast": cast_list, "img_url":
                     request.form.get("img_url")}})
         flash("Movie Edited")
-        return redirect(url_for("index"))
-    elif request.method == ["GET"] and session["admin"]:
+        return redirect(url_for("movie_page", title=title))
+    if session["admin"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         temp = get_movie.get("cast")
         cast_string = ""

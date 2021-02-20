@@ -14,7 +14,7 @@ Movie
 <div id="delete-movie-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
 <div class="row">
 <div class="col-12"><p>Are you sure you want to delete this movie?</p></div>
-<div class="col-12"><form method="POST" action="{{ url_for('movie_page',title = get_movie.title, delete_movie=True) }}">
+<div class="col-12"><form method="POST" action="{{ url_for('delete_movie', title = get_movie.title) }}">
     <button class="delete-button" type="submit">Delete</button> 
 </form></div>
 <div class="col-12"><button id="cancel-delete-movie" class="cancel-button">Cancel</button></div>
