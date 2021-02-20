@@ -111,10 +111,10 @@ def find_movies(page=1):
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
 def movie_page(title, delete_movie=False,):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    has_rating = get_movie.get("ratings")
+    has_rating = list(get_movie.get("ratings"))
     rating = 0
     if has_rating:
-        for i in has_rating:
+        for i in get_movie.get("ratings"):
             rating += float(i.get("rating"))
         rating = rating/len(has_rating)
 
@@ -122,23 +122,6 @@ def movie_page(title, delete_movie=False,):
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
         return redirect(url_for("index"))
-
-    if request.method == "POST" and session["user"]:
-        check_reviews = mongo_con.db.movies.find_one({"title": title})
-        if check_reviews.get("reviews"):
-            for review in check_reviews["reviews"]:
-                review["by_user"]
-                if review["by_user"] == session["user"]:
-                    flash("You have already made a review for this movie")
-                    return render_template(
-                        "moviepage.html", get_movie=get_movie, rating=rating)
-        mongo_con.db.movies.update_one(
-            {"_id": ObjectId(get_movie["_id"])}, {
-                "$addToSet": {"reviews": {"description": request.form.get(
-                    "review"), "by_user": session["user"]}}})
-        flash("Your review was added")
-        return render_template(
-            "moviepage.html", get_movie=get_movie, rating=rating)
 
     return render_template(
         "moviepage.html", get_movie=get_movie, rating=rating)
@@ -167,6 +150,26 @@ def rate_movie(title):
         flash("Your rating was added")
         return redirect(url_for(
                         "movie_page", title=get_movie.get("title")))
+    return redirect(url_for("index"))
+
+
+@app.route("/moviepage/review/<title>", methods=["GET", "POST"])
+def review_movie(title):
+    get_movie = mongo_con.db.movies.find_one({"title": title})
+    has_review = get_movie.get("reviews")
+    if request.method == "POST" and session["user"]:
+        if has_review:
+            for review in has_review:
+                if review["by_user"] == session["user"]:
+                    flash("You have already made a review for this movie")
+                    return redirect(url_for(
+                        "movie_page", title=get_movie.get("title")))
+        mongo_con.db.movies.update_one(
+            {"_id": ObjectId(get_movie["_id"])}, {
+                "$addToSet": {"reviews": {"description": request.form.get(
+                    "review"), "by_user": session["user"]}}})
+        flash("Your review was added")
+        return redirect(url_for("movie_page", title=get_movie.get("title")))
     return redirect(url_for("index"))
 
 
