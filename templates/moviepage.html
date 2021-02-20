@@ -22,6 +22,7 @@ Movie
 </div>
 
 
+
 <div id="delete-review-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
 <div class="row">
 <div class="col-12"><p>Are you sure you want to delete this review?</p></div>
@@ -29,12 +30,14 @@ Movie
 <div class="col-12"><button id="cancel-delete-review" class="cancel-button">Cancel</button></div>
 </div>
 </div>
+</div>
 
-<div class="row description-bg col-10 offset-1">
+<div class="row">
+<div class="description-bg col-10 offset-1">
 <div class="col-12 col-lg-4 btm-mg-20"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
 <div class="col-10 offset-1 col-lg-6 offset-lg-0 btm-mg-20">
 <div class="row">
-<div class="col-12 top-btm-mg-10"><h5 class="align-center">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
+<div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
 <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
     {% if get_movie.ratings %}
     {{ rating }}
@@ -67,6 +70,8 @@ Movie
         <div class="col-12"><button class="rate-btn" type="submit">Rate</button></div> 
     </form>
 </div>
+</div>
+<div class="row">
 <div class="col-12"><div class="card review-card">
   <div class="card-header">
     Add Your Review
@@ -79,10 +84,13 @@ Movie
     </form>
   </div>
 </div></div>
+</div>
 {% endif %}
 </div>
 </div>
 </div>
+
+<div class="row">
 <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
    {% if get_movie.reviews %}
    <h4 class="reviews-h4">Reviews</h4>
@@ -112,8 +120,7 @@ Movie
 {% else %}
 <p class="no-reviews-text">No reviews yet</p>
 {% endif %}
-
-
+</div>
 </div>
 </div>
 

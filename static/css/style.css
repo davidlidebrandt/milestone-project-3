@@ -22,6 +22,10 @@ body {
     align-items: center;
 }
 
+.thick-text {
+    font-weight: 600;
+}
+
 .mg-0-auto {
     margin: 0 auto;
 }
