@@ -16,7 +16,7 @@ Home
       </div></div>
 
     
-    <div class="card col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <div class="card col-10 offset-1 col-md-8 offset-md-2 col-lg-4 offset-lg-4">
      <div class="row">
     <div class="col-12 top-btm-mg-20">
     <h2 class="custom-h2">Movie R&R <i class="fas fa-film large-icon"><span class="sr-only">Film icon</span></i></h2>
@@ -32,9 +32,42 @@ Home
   </div>
 </div>
 
-
+<div class="row align-center">
 <!--Bootstrap carousel-->
-<div class="carousel-wrapper col-8 col-md-4 col-lg-3">
+<div class="carousel-wrapper d-none d-md-block col-lg-4">
+<div id="carouselExampleFade3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+   
+   {% for movie in movies %}
+   {% if movie.title %}
+   {% if loop.index == 1 %}
+    <div class="carousel-item active" data-bs-interval="5000">
+        <a href="{{ url_for('movie_page', title=movie.title) }}">
+      <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+      </a>
+    </div>
+    {% else %}
+    <div class="carousel-item" data-bs-interval="5000">
+    <a href="{{ url_for('movie_page', title=movie.title) }}">
+    <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+    </a>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade3" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade3" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+</div>
+<div class="carousel-wrapper col-8 col-md-4 col-lg-4">
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
    
@@ -68,4 +101,38 @@ Home
 </div>
 </div>
 
+<div class="carousel-wrapper d-none d-md-block col-lg-4">
+<div id="carouselExampleFade2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+   
+   {% for movie in movies %}
+   {% if movie.title %}
+   {% if loop.index == 1 %}
+    <div class="carousel-item active" data-bs-interval="5000">
+        <a href="{{ url_for('movie_page', title=movie.title) }}">
+      <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+      </a>
+    </div>
+    {% else %}
+    <div class="carousel-item" data-bs-interval="5000">
+    <a href="{{ url_for('movie_page', title=movie.title) }}">
+    <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+    </a>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade2" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade2" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+</div>
+</div>
 {% endblock %}

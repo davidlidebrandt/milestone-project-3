@@ -23,7 +23,7 @@ mongo_con = PyMongo(app)
 @app.route("/index", methods=['GET', 'POST'])
 def index():
 
-    movies = mongo_con.db.movies.find()
+    movies = list(mongo_con.db.movies.find())
     return render_template("index.html", movies=movies)
 
 
