@@ -37,7 +37,7 @@ Movie
 <div class="col-12 top-btm-mg-10"><h5 class="align-center">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
 <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
     {% if get_movie.ratings %}
-    {{ count }}
+    {{ rating }}
     {% else %}
     No Ratings Yet
     {% endif %}
@@ -61,7 +61,7 @@ Movie
 <button id="delete-movie-btn" class="delete-button">Delete</button></div>
 {% endif %}
 <div class="col-6 offset-3">
-    <form class="row rating-form" method="POST" action="{{ url_for('movie_page', title=get_movie.title, rating=True, rate=True)}}">
+    <form class="row rating-form" method="POST" action="{{ url_for('rate_movie', title=get_movie.title)}}">
         <div class="col-12"><label for="rating">Rate this movie</label></div>
         <div class="col-12"><input type="range" name="rating" id="rating" min="0" max="10" step="0.1" required></div> 
         <div class="col-12"><button class="rate-btn" type="submit">Rate</button></div> 

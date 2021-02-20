@@ -107,39 +107,21 @@ def find_movies(page=1):
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
 
-@app.route("/moviepage/<title>/<rating>/<rate>", methods=["GET", "POST"])
 @app.route("/moviepage/<title>/<delete_movie>", methods=["GET", "POST"])
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
-def movie_page(title, delete_movie=False, rating=False, rate=False):
+def movie_page(title, delete_movie=False,):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    get_rating = get_movie.get("ratings")
-    count = 0
-    if get_rating:
-        for i in get_rating:
-            count += float(i.get("rating"))
-        count = count/len(get_rating)
+    has_rating = get_movie.get("ratings")
+    rating = 0
+    if has_rating:
+        for i in has_rating:
+            rating += float(i.get("rating"))
+        rating = rating/len(has_rating)
 
     if request.method == "POST" and session["admin"] and delete_movie:
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
         return redirect(url_for("index"))
-
-    if request.method == "POST" and session["user"] and rating and rate:
-        check_rating = mongo_con.db.movies.find_one({"title": title})
-        if check_rating.get("ratings"):
-            for rating in check_rating.get("ratings"):
-                rating["by_user"]
-                if rating["by_user"] == session["user"]:
-                    flash("You have already rated this movie")
-                    return render_template(
-                        "moviepage.html", get_movie=get_movie, count=count)
-        mongo_con.db.movies.update_one(
-            {"title": title}, {
-                "$addToSet": {"ratings": {"rating": request.form.get(
-                    "rating"), "by_user": session["user"]}}})
-        flash("Your rating was added")
-        return render_template(
-            "moviepage.html", get_movie=get_movie, count=count)
 
     if request.method == "POST" and session["user"]:
         check_reviews = mongo_con.db.movies.find_one({"title": title})
@@ -149,17 +131,43 @@ def movie_page(title, delete_movie=False, rating=False, rate=False):
                 if review["by_user"] == session["user"]:
                     flash("You have already made a review for this movie")
                     return render_template(
-                        "moviepage.html", get_movie=get_movie, count=count)
+                        "moviepage.html", get_movie=get_movie, rating=rating)
         mongo_con.db.movies.update_one(
             {"_id": ObjectId(get_movie["_id"])}, {
                 "$addToSet": {"reviews": {"description": request.form.get(
                     "review"), "by_user": session["user"]}}})
         flash("Your review was added")
         return render_template(
-            "moviepage.html", get_movie=get_movie, count=count)
+            "moviepage.html", get_movie=get_movie, rating=rating)
 
     return render_template(
-        "moviepage.html", get_movie=get_movie, count=count)
+        "moviepage.html", get_movie=get_movie, rating=rating)
+
+
+@app.route("/moviepage/rate/<title>", methods=["GET", "POST"])
+def rate_movie(title):
+    get_movie = mongo_con.db.movies.find_one({"title": title})
+    has_rating = get_movie.get("ratings")
+    rating = 0
+    if has_rating:
+        for i in has_rating:
+            rating += float(i.get("rating"))
+        rating = rating/len(has_rating)
+    if request.method == "POST" and session["user"]:
+        if has_rating:
+            for rating in has_rating:
+                if rating["by_user"] == session["user"]:
+                    flash("You have already rated this movie")
+                    return redirect(url_for(
+                        "movie_page", title=get_movie.get("title")))
+        mongo_con.db.movies.update_one(
+            {"title": title}, {
+                "$addToSet": {"ratings": {"rating": request.form.get(
+                    "rating"), "by_user": session["user"]}}})
+        flash("Your rating was added")
+        return redirect(url_for(
+                        "movie_page", title=get_movie.get("title")))
+    return redirect(url_for("index"))
 
 
 @app.route("/addmovie", methods=["GET", "POST"])
