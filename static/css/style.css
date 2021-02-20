@@ -99,7 +99,7 @@ body {
 
 .custom-h2 {
     text-shadow: 1px 0px 0px #9e9e9e;
-    color: #ffffff;
+    color: #f4511e;
 }
 
 .custom-h3 {
@@ -124,6 +124,11 @@ body {
     background-color: #f4511e;
     box-shadow: 1px 1px 1px #9e9e9e;
     padding: 7px;
+}
+
+.large-icon {
+    color: #f4511e;
+    font-size: 110%;
 }
 
 .margin-btm-20 {
@@ -185,11 +190,7 @@ body {
 
 
 /*Main*/
-main {
-    background-color: #bbdefb;
-    background: no-repeat url("../images/bg.png");
-    position: relative;
-    background-size: cover;
+.main {
      /* this part is also taken from the same post as the mentioned in the body*/
     flex: 1;
 }
@@ -305,6 +306,7 @@ main {
 
 .card {
     box-shadow: 1px 1px 1px #808080;
+    background-color: #eceff1;
 }
 
 /*Findmvoies main*/
