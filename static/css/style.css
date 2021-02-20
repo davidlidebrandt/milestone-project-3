@@ -92,7 +92,7 @@ body {
     box-shadow: 1px 1px 1px gray;
 }
 
-.custom-h2, .custom-h4, .custom-h3, .card-header {
+.custom-h2, .custom-h4, .custom-h3, .card-header, .carousel-h5 {
     text-align: center;
     letter-spacing: 1px;
     font-weight: 600;
