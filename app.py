@@ -79,6 +79,29 @@ def logout():
 @app.route("/findmovies/<int:page>", methods=["GET", "POST"])
 def find_movies(page=1):
     movies = list(mongo_con.db.movies.find())
+    if request.method == "POST":
+        movies = list(mongo_con.db.movies.find(
+            {"$text": {"$search": request.form.get("search")}}))
+        ratings = []
+        count = 0
+        for i in movies:
+            if i.get("ratings"):
+                for j in i.get("ratings"):
+                    count += float(j.get("rating"))
+                ratings.append({"title": i.get(
+                    "title"), "rating": count/len(i.get("ratings"))})
+            count = 0
+        return render_template(
+            "findmovies.html", movies=movies, pages=None, ratings=ratings)
+    if page == 1:
+        sub_list = movies[0:10]
+    else:
+        start = page * 10 - 10
+        end = start + 10
+        sub_list = movies[start:end]
+    counter = len(movies)
+    counter = counter/10
+    counter = math.ceil(counter)
     ratings = []
     count = 0
     for i in movies:
@@ -88,21 +111,6 @@ def find_movies(page=1):
             ratings.append({"title": i.get(
                 "title"), "rating": count/len(i.get("ratings"))})
             count = 0
-    if request.method == "POST":
-        movies = list(mongo_con.db.movies.find(
-            {"$text": {"$search": request.form.get("search")}}))
-        return render_template(
-            "findmovies.html", movies=movies, pages=None, ratings=ratings)
-    if page == 1:
-        sub_list = movies[0:10]
-    else:
-        start = page * 10 - 10
-        end = start + 10
-        sub_list = movies[start:end]
-
-    counter = len(movies)
-    counter = counter/10
-    counter = math.ceil(counter)
     return render_template(
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 

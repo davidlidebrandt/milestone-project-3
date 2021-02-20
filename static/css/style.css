@@ -379,12 +379,9 @@ main {
     font-size: 150%;
     font-weight: 550;
     letter-spacing: 1px;
-    background-color: #c0ddf0;
-    opacity: 0.7;
     color: #000000;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
     padding: 10px;
 }
 
