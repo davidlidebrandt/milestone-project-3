@@ -16,6 +16,12 @@ body {
     text-decoration: underline;
 }
 
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mg-0-auto {
     margin: 0 auto;
 }
@@ -251,6 +257,8 @@ body {
 .carousel-wrapper {
     margin-top: 80px;
     padding-bottom: 80px;
+    padding-left: 40px;
+    padding-right: 40px
 }
 
 .display-flash {
