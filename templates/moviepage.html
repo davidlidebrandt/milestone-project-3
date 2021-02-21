@@ -34,10 +34,11 @@ Movie
 
 <div class="row">
 <div class="description-bg col-10 offset-1">
-<div class="col-12 col-lg-4 btm-mg-20"><img class="poster-image" src="{{ get_movie.img_url }}" alt=""></div>
-<div class="col-10 offset-1 col-lg-6 offset-lg-0 btm-mg-20">
 <div class="row">
-<div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
+<div id="poster-wrap" class="col-12 col-md-4"><img class="poster-image" src="{{ get_movie.img_url }}" alt="Movie poster"></div>
+<div class="col-10 offset-1 col-md-6 offset-md-0 btm-mg-20">
+<div class="row">
+<div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text top-mg-20">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
 <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
     {% if get_movie.ratings %}
     {{ rating }}
@@ -46,17 +47,17 @@ Movie
     {% endif %}
 </div>
 
-<div class="col-12 top-btm-mg-10 top-mg-20 underline">Directors:</div>
-<div class="col-12 top-btm-mg-10 top-mg-20">{{ get_movie.directors }}</div>
-<div class="col-12 top-btm-mg-10 underline">Main Cast:</div>
-<div class="col-12 top-btm-mg-10">
+<div class="col-12 top-btm-mg-10 top-mg-20 align-center underline">Directors:</div>
+<div class="col-12 top-btm-mg-10 top-mg-20 align-center">{{ get_movie.directors }}</div>
+<div class="col-12 top-btm-mg-10 underline align-center">Main Cast:</div>
+<div class="col-12 top-btm-mg-10 align-center">
 {% for member in get_movie.cast %}
     {{ member }}
     {% if not loop.last %},
     {% endif %}
 {% endfor %}
 </div>
-
+</div>
 {% if session.user %}
 {% if session.admin == True %}
 <div class="col-12 top-btm-mg-10">
@@ -71,6 +72,10 @@ Movie
     </form>
 </div>
 </div>
+{% endif %}
+</div>
+
+{% if session.user %}
 <div class="row">
 <div class="col-12"><div class="card review-card">
   <div class="card-header">
@@ -88,7 +93,6 @@ Movie
 {% endif %}
 </div>
 </div>
-</div>
 
 <div class="row">
 <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -99,7 +103,7 @@ Movie
     <div class="accordion-item">
     <h2 class="accordion-header" id="heading{{ loop.index }}">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
-        <div class="col-6 accordion-text">By: {{ review.by_user }}</div> 
+        <div class="col-12 accordion-text">By: {{ review.by_user }}</div> 
       </button>
     </h2>
     <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample">

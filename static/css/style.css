@@ -457,12 +457,11 @@ main {
 }
 
 .accordion-body {
-    background-color: #c0ddf0;
+    background-color: #eceff1;
 }
 
 .accordion-text {
-    text-align: left;
-    color: whitesmoke;
+    text-align: center;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -477,6 +476,10 @@ main {
 
 #delete-review-warn, #delete-movie-warn {
     background-color: #ffb74d;;
+}
+
+#poster-wrap {
+    padding: 0px;
 }
 
 /*Addmvoie main*/
@@ -499,5 +502,9 @@ main {
 
     .display-flash {
         margin-bottom: 0;
+    }
+
+    #poster-wrap {
+        text-align: center;
     }
 }
