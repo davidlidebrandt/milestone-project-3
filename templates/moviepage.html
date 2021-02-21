@@ -13,7 +13,7 @@ Movie
     {% endwith %}
 <div id="delete-movie-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
 <div class="row">
-<div class="col-12"><p>Are you sure you want to delete this movie?</p></div>
+<div class="col-12"><p class="top-mg-10 thick-text">Are you sure you want to delete this movie?</p></div>
 <div class="col-12"><form method="POST" action="{{ url_for('delete_movie', title = get_movie.title) }}">
     <button class="delete-button" type="submit">Delete</button> 
 </form></div>
@@ -25,7 +25,7 @@ Movie
 
 <div id="delete-review-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
 <div class="row">
-<div class="col-12"><p>Are you sure you want to delete this review?</p></div>
+<div class="col-12"><p class="top-mg-10 thick-text">Are you sure you want to delete this review?</p></div>
 <div class="col-12"><button id="confirm-delete-review" class="delete-button">Delete</button></div>
 <div class="col-12"><button id="cancel-delete-review" class="cancel-button">Cancel</button></div>
 </div>

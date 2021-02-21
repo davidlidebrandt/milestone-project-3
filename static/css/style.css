@@ -68,6 +68,10 @@ body {
     margin-top: 20px;
 }
 
+.top-mg-10 {
+    margin-top: 10px;
+}
+
 .btm-mg-20 {
     margin-bottom: 20px;
 }
@@ -486,7 +490,8 @@ main {
 }
 
 #delete-review-warn, #delete-movie-warn {
-    background-color: #ffb74d;;
+    border: #fb8c00 2px solid;
+    border-radius: 0;
 }
 
 #poster-wrap {
