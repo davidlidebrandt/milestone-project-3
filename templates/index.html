@@ -38,7 +38,7 @@ Home
 <div id="carouselExampleFade3" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
    
-   {% for movie in movies %}
+   {% for movie in recently_added_movies %}
    {% if movie.title %}
    {% if loop.index == 1 %}
     <div class="carousel-item active" data-bs-interval="5000">
@@ -107,7 +107,7 @@ Home
 <div id="carouselExampleFade2" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
    
-   {% for movie in movies %}
+   {% for movie in newest_movies %}
    {% if movie.title %}
    {% if loop.index == 1 %}
     <div class="carousel-item active" data-bs-interval="5000">
