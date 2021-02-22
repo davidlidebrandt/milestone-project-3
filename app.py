@@ -93,7 +93,8 @@ def find_movies(page=1):
                 ratings.append({"title": movie.get(
                     "title"), "rating": movie.get("rating")})
         return render_template(
-            "findmovies.html", movies=sub_list, pages=None, ratings=ratings, post=True)
+            "findmovies.html", movies=sub_list,
+            pages=None, ratings=ratings, post=True)
     if page == 1:
         sub_list = movies[0:10]
     else:
@@ -284,11 +285,19 @@ def delete_review(title, user):
         mongo_con.db.movies.update_one(
                 {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
         flash("Review deleted")
-        return redirect(url_for("index"))
+        return redirect(url_for("movie_page", title=title))
     else:
         flash("You are not authorized to make changes")
         return redirect(url_for("index"))
     return redirect(url_for("index"))
+
+
+@app.route("/editreview/<title>/<user>/<description>", methods=["GET", "POST"])
+def edit_review(title, user, description):
+    if session["user"] == user:
+        get_movie = mongo_con.db.movies.find_one({"title": title})
+        return render_template(
+            "editreview.html", get_movie=get_movie, description=description)
 
 
 @app.route("/editmovie/<title>", methods=["GET", "POST"])
