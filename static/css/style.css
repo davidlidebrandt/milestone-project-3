@@ -30,38 +30,12 @@ body {
     margin: 0 auto;
 }
 
-.light-blue {
-    background-color: #039be5;
-    color: #ffffff;
-}
-
-.light-blue-bg {
-   background-color: #039be5;
-}
-
-.light-orange-bg {
-    background-color: #ffe0b2;
-}
-
-.light-grey-bg {
-    background-color: #eceff1;
-}
-
 .no-padding {
     padding: 0;
 }
 
-.no-pad-margin {
-    padding: 0;
-    margin: 0;
-}
-
 .top-mg-100 {
     margin-top: 100px;
-}
-
-.top-mg-80 {
-    margin-top: 80px;
 }
 
 .top-mg-20 {
@@ -84,10 +58,6 @@ body {
 .top-btm-mg-20 {
     margin-top: 20px;
     margin-bottom: 20px;
-}
-
-.top-mg-30 {
-    margin-top: 30px;
 }
 
 .star-icon {
@@ -274,7 +244,6 @@ main {
 }
 
 .display-flash {
-    /*background-color: #c0ddf0;*/
     opacity: 0.7;
     color: #000000;
     margin-top: 20px;
@@ -283,7 +252,6 @@ main {
     font-weight: 600;
     letter-spacing: 1px;
     border-radius: 5px;
-
 }
 
 .carousel-img {

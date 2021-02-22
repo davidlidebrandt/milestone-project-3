@@ -47,8 +47,6 @@ $(document).ready(function () {
     let slider = document.getElementById("rating");
     let output = document.getElementById("display");
     output.innerHTML = slider.value; 
-
-    
     slider.oninput = function() {
     output.innerHTML = this.value;
     }
