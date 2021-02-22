@@ -23,6 +23,19 @@ Find Movies
   {% endif %}
 </ul>
 </nav></div>
+<div class="col-12 align-center">
+<!--Bootstrap dropdown-->
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort by
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Date added</a>
+    <a class="dropdown-item" href="#">Rating</a>
+    <a class="dropdown-item" href="#">Release year</a>
+  </div>
+</div>
+</div>
     
 {% if movies %}
 {% for i in movies %}
