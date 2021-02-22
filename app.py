@@ -136,6 +136,28 @@ def find_recent(page=1):
         pages=counter, ratings=ratings)
 
 
+@app.route("/findmovies/rating")
+@app.route("/findmovies/rating/<int:page>")
+def find_rating(page=1):
+    movies = list(mongo_con.db.movies.find().sort(
+        "rating", -1))
+    if page == 1:
+        sub_list = movies[0:10]
+    else:
+        start = page * 10 - 10
+        end = start + 10
+        sub_list = movies[start:end]
+    counter = len(movies)
+    counter = counter/10
+    counter = math.ceil(counter)
+    ratings = []
+    for movie in sub_list:
+        if movie.get("rating"):
+            ratings.append({"title": movie.get(
+                "title"), "rating": movie.get("rating")})
+    return render_template(
+        "findrating.html", movies=sub_list,
+        pages=counter, ratings=ratings)
 
 
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
@@ -168,9 +190,10 @@ def rate_movie(title):
                         "movie_page", title=get_movie.get("title")))
         new_rating = None
         if has_rating:
-            new_rating = (float(has_rating) + request.form.get("rating"))/2
+            new_rating = (float(has_rating) + float(
+                request.form.get("rating")))/2
         else:
-            new_rating = request.form.get("rating")
+            new_rating = float(request.form.get("rating"))
         user = session["user"]
         mongo_con.db.movies.update_one(
             {"title": title}, {
