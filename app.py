@@ -112,6 +112,32 @@ def find_movies(page=1):
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
 
+@app.route("/findmovies/recent")
+@app.route("/findmovies/recent/<int:page>")
+def find_recent(page=1):
+    movies = list(mongo_con.db.movies.find().sort(
+        "_id", -1))
+    if page == 1:
+        sub_list = movies[0:10]
+    else:
+        start = page * 10 - 10
+        end = start + 10
+        sub_list = movies[start:end]
+    counter = len(movies)
+    counter = counter/10
+    counter = math.ceil(counter)
+    ratings = []
+    for movie in sub_list:
+        if movie.get("rating"):
+            ratings.append({"title": movie.get(
+                "title"), "rating": movie.get("rating")})
+    return render_template(
+        "findrecent.html", movies=sub_list,
+        pages=counter, ratings=ratings)
+
+
+
+
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
 def movie_page(title):
     get_movie = mongo_con.db.movies.find_one({"title": title})
