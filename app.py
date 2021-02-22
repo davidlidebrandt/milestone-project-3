@@ -143,24 +143,28 @@ def delete_movie(title):
 
 @app.route("/moviepage/rate/<title>", methods=["GET", "POST"])
 def rate_movie(title):
-    get_movie = mongo_con.db.movies.find_one({"title": title})
-    has_rating = get_movie.get("ratings")
-    rating = 0
-    if has_rating:
-        for i in has_rating:
-            rating += float(i.get("rating"))
-        rating = rating/len(has_rating)
     if request.method == "POST" and session["user"]:
-        if has_rating:
-            for rating in has_rating:
-                if rating["by_user"] == session["user"]:
+        get_movie = mongo_con.db.movies.find_one({"title": title})
+        has_rating = get_movie.get("ratings")
+        check_rating_exists = get_movie.get("rated_by_users")
+        if check_rating_exists:
+            for user in check_rating_exists:
+                if user == session["user"]:
                     flash("You have already rated this movie")
                     return redirect(url_for(
                         "movie_page", title=get_movie.get("title")))
+        new_rating = None
+        if has_rating:
+            new_rating = (float(has_rating) + request.form.get("rating"))/2
+        else:
+            new_rating = request.form.get("rating")
+        user = session["user"]
         mongo_con.db.movies.update_one(
             {"title": title}, {
-                "$addToSet": {"ratings": {"rating": request.form.get(
-                    "rating"), "by_user": session["user"]}}})
+                "$push": {"rated_by_users": user}})
+        mongo_con.db.movies.update_one({"title": title}, {
+            "$set": {"rating": new_rating}
+        })
         flash("Your rating was added")
         return redirect(url_for(
                         "movie_page", title=get_movie.get("title")))
