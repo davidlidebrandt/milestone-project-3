@@ -40,7 +40,7 @@ Movie
 <div class="row">
 <div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text top-mg-20">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
 <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
-    {% if get_movie.ratings %}
+    {% if rating %}
     {{ rating }}
     {% else %}
     No Ratings Yet

@@ -84,19 +84,15 @@ def logout():
 def find_movies(page=1):
     movies = list(mongo_con.db.movies.find())
     if request.method == "POST":
-        movies = list(mongo_con.db.movies.find(
+        sub_list = list(mongo_con.db.movies.find(
             {"$text": {"$search": request.form.get("search")}}))
         ratings = []
-        count = 0
-        for i in movies:
-            if i.get("ratings"):
-                for j in i.get("ratings"):
-                    count += float(j.get("rating"))
-                ratings.append({"title": i.get(
-                    "title"), "rating": count/len(i.get("ratings"))})
-            count = 0
+        for movie in sub_list:
+            if movie.get("rating"):
+                ratings.append({"title": movie.get(
+                    "title"), "rating": movie.get("rating")})
         return render_template(
-            "findmovies.html", movies=movies, pages=None, ratings=ratings)
+            "findmovies.html", movies=sub_list, pages=None, ratings=ratings)
     if page == 1:
         sub_list = movies[0:10]
     else:
@@ -107,14 +103,10 @@ def find_movies(page=1):
     counter = counter/10
     counter = math.ceil(counter)
     ratings = []
-    count = 0
-    for i in movies:
-        if i.get("ratings"):
-            for j in i.get("ratings"):
-                count += float(j.get("rating"))
-            ratings.append({"title": i.get(
-                "title"), "rating": count/len(i.get("ratings"))})
-            count = 0
+    for movie in sub_list:
+        if movie.get("rating"):
+            ratings.append({"title": movie.get(
+                "title"), "rating": movie.get("rating")})
     return render_template(
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
@@ -122,15 +114,9 @@ def find_movies(page=1):
 @app.route("/moviepage/<title>", methods=["GET", "POST"])
 def movie_page(title):
     get_movie = mongo_con.db.movies.find_one({"title": title})
-    has_rating = get_movie.get("ratings")
-    rating = 0
-    if has_rating:
-        for i in get_movie.get("ratings"):
-            rating += float(i.get("rating"))
-        rating = rating/len(has_rating)
-
+    has_rating = get_movie.get("rating")
     return render_template(
-        "moviepage.html", get_movie=get_movie, rating=rating)
+        "moviepage.html", get_movie=get_movie, rating=has_rating)
 
 
 @app.route("/moviepage/delete_movie/<title>", methods=["GET", "POST"])
