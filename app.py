@@ -22,13 +22,14 @@ mongo_con = PyMongo(app)
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
-    movies = list(mongo_con.db.movies.find())
+    top_rated_movies = list(
+        mongo_con.db.movies.find().sort("rating", -1).limit(5))
     newest_movies = list(mongo_con.db.movies.find().sort("year", -1).limit(5))
     recently_added_movies = list(mongo_con.db.movies.find().sort(
         "_id", -1).limit(5))
     return render_template(
         "index.html", recently_added_movies=recently_added_movies,
-        newest_movies=newest_movies, movies=movies)
+        newest_movies=newest_movies, top_rated_movies=top_rated_movies)
 
 
 @app.route("/register", methods=["GET", "POST"])
