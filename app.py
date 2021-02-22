@@ -93,7 +93,7 @@ def find_movies(page=1):
                 ratings.append({"title": movie.get(
                     "title"), "rating": movie.get("rating")})
         return render_template(
-            "findmovies.html", movies=sub_list, pages=None, ratings=ratings)
+            "findmovies.html", movies=sub_list, pages=None, ratings=ratings, post=True)
     if page == 1:
         sub_list = movies[0:10]
     else:
@@ -157,6 +157,30 @@ def find_rating(page=1):
                 "title"), "rating": movie.get("rating")})
     return render_template(
         "findrating.html", movies=sub_list,
+        pages=counter, ratings=ratings)
+
+
+@app.route("/findmovies/year")
+@app.route("/findmovies/year/<int:page>")
+def find_year(page=1):
+    movies = list(mongo_con.db.movies.find().sort(
+        "year", -1))
+    if page == 1:
+        sub_list = movies[0:10]
+    else:
+        start = page * 10 - 10
+        end = start + 10
+        sub_list = movies[start:end]
+    counter = len(movies)
+    counter = counter/10
+    counter = math.ceil(counter)
+    ratings = []
+    for movie in sub_list:
+        if movie.get("rating"):
+            ratings.append({"title": movie.get(
+                "title"), "rating": movie.get("rating")})
+    return render_template(
+        "findyear.html", movies=sub_list,
         pages=counter, ratings=ratings)
 
 
