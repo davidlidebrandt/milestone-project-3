@@ -7,6 +7,8 @@ from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from secrets import choice
+import string
 if os.path.exists("env.py"):
     import env
 
@@ -35,6 +37,7 @@ mail = Mail(app)
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
+    print(generate_random_string(10))
     top_rated_movies = list(
         mongo_con.db.movies.find().sort("rating", -1).limit(5))
     newest_movies = list(mongo_con.db.movies.find().sort("year", -1).limit(5))
@@ -98,6 +101,14 @@ def send_welcome(user, email):
     msg = Message(f"Welcome to Movie Ratings and Reviews {user}",
                   sender="my-flask-manager@outlook.com", recipients=[email])
     mail.send(msg)
+
+
+# Answer by user MSeifert was used to generate a random string
+# https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
+def generate_random_string(length):
+    reset_link = "".join([choice(string.ascii_uppercase + string.digits)
+                         for i in range(length)])
+    return reset_link
 
 
 @app.route("/findmovies/", methods=["GET", "POST"])
