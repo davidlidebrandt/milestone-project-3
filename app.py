@@ -292,12 +292,27 @@ def delete_review(title, user):
     return redirect(url_for("index"))
 
 
-@app.route("/editreview/<title>/<user>/<description>", methods=["GET", "POST"])
+@app.route("/editreview/<title>/<user>/<description>")
 def edit_review(title, user, description):
     if session["user"] == user:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         return render_template(
-            "editreview.html", get_movie=get_movie, description=description)
+            "editreview.html", get_movie=get_movie,
+            description=description, user=user)
+    return redirect(url_for("index"))
+
+
+@app.route("/sendreview/<title>/<user>", methods=["POST"])
+def send_review(title, user):
+    if user == session["user"]:
+        mongo_con.db.movies.update_one(
+            {"title": title, "reviews.by_user": user},
+            {"$set": {"reviews.$.description": request.form.get(
+                "review")}})
+        flash("Your review was edited")
+        return redirect(url_for("movie_page", title=title))
+    flash("You are not authorized to make changes")
+    return redirect(url_for("index"))
 
 
 @app.route("/editmovie/<title>", methods=["GET", "POST"])
