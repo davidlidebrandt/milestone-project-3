@@ -3,6 +3,7 @@ import math
 import datetime
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
+from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,7 +17,19 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+# This turtorial was used to help set up sending emails:
+# https://overiq.com/flask-101/sending-email-in-flask/
+app.config["MAIL_SERVER"] = "smtp.office365.com."
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_SSL"] = False
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
+app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_DEFAULT_SENDER")
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+
 mongo_con = PyMongo(app)
+
+mail = Mail(app)
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -49,6 +62,7 @@ def register():
             reg_user = request.form.get("user-reg")
             session["user"] = request.form.get("user-reg")
             flash(f"Registration succesful, welcome {reg_user}")
+            send_welcome(reg_user, request.form.get("email-reg"))
         return redirect(url_for("index"))
 
 
@@ -78,6 +92,12 @@ def logout():
     session.pop("admin", None)
     flash("You have been logged out")
     return redirect(url_for("index"))
+
+
+def send_welcome(user, email):
+    msg = Message(f"Welcome to Movie Ratings and Reviews {user}",
+                  sender="my-flask-manager@outlook.com", recipients=[email])
+    mail.send(msg)
 
 
 @app.route("/findmovies/", methods=["GET", "POST"])
