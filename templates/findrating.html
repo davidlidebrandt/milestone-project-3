@@ -13,7 +13,7 @@ Find Movies
 <div class="row top-mg-20">
 <!--Pagination element from Bootstrap-->
 <div class="col-12"><nav aria-label="...">
-  <ul class="pagination pagination-lg">
+  <ul class="pagination">
     {% if pages %}
     {% for i in range(pages) %}
     <li class="page-item">
@@ -26,7 +26,7 @@ Find Movies
 <div class="col-12 align-center">
 <!--Bootstrap dropdown-->
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle sort-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Sort by
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
