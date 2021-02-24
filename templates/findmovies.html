@@ -28,7 +28,7 @@ Find Movies
 <div class="col-12 align-center">
 <!--Bootstrap dropdown-->
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle sort-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Sort by
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -51,7 +51,7 @@ Find Movies
 {% if ratings %}
 {% for rating in ratings %}
 {% if i.title == rating.title %}
-<span>{{ rating.rating }}</span>
+<span class="margin-left-10">{{ rating.rating }}</span>
 {% endif %}
 {% endfor %}
 {% endif %}
@@ -68,7 +68,7 @@ Find Movies
 {% if ratings %}
 {% for rating in ratings %}
 {% if i.title == rating.title %}
-<span>{{ rating.rating }}</span>
+<span class="margin-left-10">{{ rating.rating }}</span>
 {% endif %}
 {% endfor %}
 {% endif %}
