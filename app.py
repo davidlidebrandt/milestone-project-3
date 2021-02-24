@@ -34,10 +34,9 @@ mongo_con = PyMongo(app)
 mail = Mail(app)
 
 
-@app.route("/", methods=['GET', 'POST'])
-@app.route("/index", methods=['GET', 'POST'])
+@app.route("/")
+@app.route("/index")
 def index():
-    print(generate_random_string(10))
     top_rated_movies = list(
         mongo_con.db.movies.find().sort("rating", -1).limit(5))
     newest_movies = list(mongo_con.db.movies.find().sort("year", -1).limit(5))
@@ -48,7 +47,7 @@ def index():
         newest_movies=newest_movies, top_rated_movies=top_rated_movies)
 
 
-@app.route("/register", methods=["GET", "POST"])
+@app.route("/register", methods=["POST"])
 def register():
     if request.method == "POST":
         user_taken = mongo_con.db.users.find_one(
@@ -69,7 +68,7 @@ def register():
         return redirect(url_for("index"))
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["POST"])
 def log_in():
     if request.method == "POST":
         user_exists = mongo_con.db.users.find_one(
@@ -98,8 +97,9 @@ def logout():
 
 
 def send_welcome(user, email):
-    msg = Message(f"Welcome to Movie Ratings and Reviews {user}",
+    msg = Message(f"Welcome {user}",
                   sender="my-flask-manager@outlook.com", recipients=[email])
+    msg.body = "Welcome to Movie Ratings And Reviews"
     mail.send(msg)
 
 
@@ -111,21 +111,10 @@ def generate_random_string(length):
     return reset_link
 
 
-@app.route("/findmovies/", methods=["GET", "POST"])
-@app.route("/findmovies/<int:page>", methods=["GET", "POST"])
+@app.route("/findmovies/")
+@app.route("/findmovies/<int:page>")
 def find_movies(page=1):
     movies = list(mongo_con.db.movies.find())
-    if request.method == "POST":
-        sub_list = list(mongo_con.db.movies.find(
-            {"$text": {"$search": request.form.get("search")}}))
-        ratings = []
-        for movie in sub_list:
-            if movie.get("rating"):
-                ratings.append({"title": movie.get(
-                    "title"), "rating": movie.get("rating")})
-        return render_template(
-            "findmovies.html", movies=sub_list,
-            pages=None, ratings=ratings, post=True)
     if page == 1:
         sub_list = movies[0:10]
     else:
@@ -142,6 +131,21 @@ def find_movies(page=1):
                 "title"), "rating": movie.get("rating")})
     return render_template(
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
+
+
+@app.route("/findmvoies/search", methods=["POST"])
+def search_movies():
+    if request.method == "POST":
+        sub_list = list(mongo_con.db.movies.find(
+            {"$text": {"$search": request.form.get("search")}}))
+        ratings = []
+        for movie in sub_list:
+            if movie.get("rating"):
+                ratings.append({"title": movie.get(
+                    "title"), "rating": movie.get("rating")})
+        return render_template(
+            "findmovies.html", movies=sub_list,
+            pages=None, ratings=ratings, post=True)
 
 
 @app.route("/findmovies/recent")
@@ -216,7 +220,7 @@ def find_year(page=1):
         pages=counter, ratings=ratings)
 
 
-@app.route("/moviepage/<title>", methods=["GET", "POST"])
+@app.route("/moviepage/<title>")
 def movie_page(title):
     get_movie = mongo_con.db.movies.find_one({"title": title})
     has_rating = get_movie.get("rating")
@@ -224,7 +228,7 @@ def movie_page(title):
         "moviepage.html", get_movie=get_movie, rating=has_rating)
 
 
-@app.route("/moviepage/delete_movie/<title>", methods=["GET", "POST"])
+@app.route("/moviepage/delete_movie/<title>", methods=["POST"])
 def delete_movie(title):
     if request.method == "POST" and session["admin"]:
         mongo_con.db.movies.delete_one({"title": title})
@@ -232,7 +236,7 @@ def delete_movie(title):
     return redirect(url_for("index"))
 
 
-@app.route("/moviepage/rate/<title>", methods=["GET", "POST"])
+@app.route("/moviepage/rate/<title>", methods=["POST"])
 def rate_movie(title):
     if request.method == "POST" and session["user"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
@@ -263,11 +267,11 @@ def rate_movie(title):
     return redirect(url_for("index"))
 
 
-@app.route("/moviepage/review/<title>", methods=["GET", "POST"])
+@app.route("/moviepage/review/<title>", methods=["POST"])
 def review_movie(title):
-    get_movie = mongo_con.db.movies.find_one({"title": title})
-    has_review = get_movie.get("reviews")
     if request.method == "POST" and session["user"]:
+        get_movie = mongo_con.db.movies.find_one({"title": title})
+        has_review = get_movie.get("reviews")
         if has_review:
             for review in has_review:
                 if review["by_user"] == session["user"]:
@@ -289,7 +293,7 @@ def add_movie():
         already_exist = mongo_con.db.movies.find_one(
             {"title": request.form.get("title")})
         if already_exist:
-            flash("Movie already added to database")
+            flash("Movie already exists")
             return redirect(url_for("index"))
         else:
             cast_list = list(request.form.get("cast").split(","))
@@ -309,7 +313,7 @@ def add_movie():
         return redirect(url_for("index"))
 
 
-@app.route("/deletereview/<title>/<user>", methods=["GET", "POST"])
+@app.route("/deletereview/<title>/<user>", methods=["POST"])
 def delete_review(title, user):
     if request.method == "POST" and (
             user == session["user"] or session["admin"]):
@@ -317,9 +321,7 @@ def delete_review(title, user):
                 {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
         flash("Review deleted")
         return redirect(url_for("movie_page", title=title))
-    else:
-        flash("You are not authorized to make changes")
-        return redirect(url_for("index"))
+    flash("You are not authorized to make changes")
     return redirect(url_for("index"))
 
 
