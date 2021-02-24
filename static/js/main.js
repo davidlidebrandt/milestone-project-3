@@ -41,6 +41,7 @@ $(document).ready(function () {
         $(".page-link").click(function() {
         checkEmptyRating();
     });
+    
     checkEmptyRating();
 
     // This part was taken from this w3schools article on how to dynamically display the sliders value https://www.w3schools.com/howto/howto_js_rangeslider.asp
