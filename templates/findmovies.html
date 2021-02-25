@@ -7,8 +7,9 @@ Find Movies
 <div class="col-12"><h3 class="custom-h3">Find Movies</h3></div>
 </div>
 <form class="row" method="POST" action="{{ url_for('search_movies') }}">
-    <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1"><input class="search-field" type="text" name="search" id="search">
-    <button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
+    <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1 no-padding align-center"><input class="search-field" type="text" name="search" id="search"></div>
+    <div class="col-12 col-md-1 no-padding search-wrap"><button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
+    
 </form>
 <div class="row top-mg-20">
 <!--Pagination element from Bootstrap-->
