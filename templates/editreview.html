@@ -73,7 +73,9 @@ Edit review
     <textarea class="review-text-area" title="Max of 800 characters" maxlength="800" name="review" id="review" rows="6">
     {{ description }}
     </textarea>
-    <div class="align-center"><button class="sub-review-btn" type="submit">Edit Review</button></div>
+    <div class="align-center"><button class="sub-review-btn" type="submit">Edit</button>
+    <a href="{{ url_for('movie_page', title=get_movie.title) }}" class="cancel-button">Cancel</a>
+    </div>
     </form>
   </div>
 </div></div>

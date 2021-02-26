@@ -265,7 +265,8 @@ main {
     font-weight: 600;
     letter-spacing: 1px;
     border-radius: 15px;
-    background-color: #ffe0b2;
+    background-color: #90a4ae;
+    opacity: 0.9;
     display: inline-block;
     padding: 40px;
     position: absolute;

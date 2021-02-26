@@ -27,7 +27,9 @@ Edit Movie
                     <div class="col-12"><input class="input-field" value="{{ get_movie.img_url }}" id="img_url" name="img_url" type="url" required><br>
                     <p class="input-help-text">Add a url address to a poster image.</p>
                     </div>
-                    <div class="col-12"><input class="add-btn" type="submit" value="Edit Movie"></div>
+                    <div class="col-12"><input class="add-btn" type="submit" value="Edit">
+                    <a href="{{ url_for('movie_page', title=get_movie.title) }}" class="cancel-button">Cancel</a>
+                    </div>
                 </form>
 </div>
 </div>
