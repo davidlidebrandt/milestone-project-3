@@ -190,6 +190,7 @@ body {
 main {
      /* this part is also taken from the same post as the mentioned in the body*/
     flex: 1;
+    background-color: #cfd8dc;
 }
 
 /*Header*/
@@ -245,6 +246,10 @@ main {
 }
 
 /*Index main*/
+.light-grey-bg {
+    background-color: #455a64;
+}
+
 .carousel-wrapper {
     margin-top: 80px;
     padding-bottom: 80px;
@@ -260,10 +265,9 @@ main {
     font-weight: 600;
     letter-spacing: 1px;
     border-radius: 15px;
-    background-color: #eceff1;
+    background-color: #ffe0b2;
     display: inline-block;
     padding: 40px;
-    opacity: 0.8;
     position: absolute;
     top: 100px;
     z-index: 100;
@@ -374,7 +378,15 @@ main {
 }
 
 .search-result:hover {
-    color: #b0bec5;
+    color: #607d8b;
+}
+
+.dark-grey-bg {
+    background-color: #b0bec5;
+}
+
+.dark-grey-bg:hover {
+    color: #eceff1;
 }
 
 .no-result-text, .no-reviews-text {
@@ -441,7 +453,10 @@ main {
 
 .edit-button {
     color: #607d8b;
+}
 
+.edit-button:hover {
+    color: #607d8b;
 }
 
 .cancel-button {

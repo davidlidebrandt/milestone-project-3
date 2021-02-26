@@ -3,14 +3,15 @@
 Movie
 {% endblock %}
 {% block maincontent %}
-<div class="row top-mg-100 align-center">
-  {% with flash_messages = get_flashed_messages() %}
+ {% with flash_messages = get_flashed_messages() %}
        {% if flash_messages %}       
        {% for message in flash_messages %}
            <h4 class="display-flash">{{ message }}</h4>
        {% endfor %}
        {% endif %}
     {% endwith %}
+<div class="row top-mg-100 align-center">
+
 <div id="delete-movie-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
 <div class="row">
 <div class="col-12"><p class="top-mg-10 thick-text">Are you sure you want to delete this movie?</p></div>
