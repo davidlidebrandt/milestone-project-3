@@ -9,7 +9,10 @@ Find Movies
 <form class="row" method="POST" action="{{ url_for('search_movies') }}">
     <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1 no-padding align-center"><input class="search-field" type="text" name="search" id="search"></div>
     <div class="col-12 col-md-1 no-padding search-wrap"><button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
-    
+    {% if pages == None %}
+    <div class="col-12 top-mg-20 align-center"><a class="back-link" href="{{ url_for('find_movies') }}">Back to all movies</a></div>
+    {% endif %}
+
 </form>
 <div class="row top-mg-20">
 <!--Pagination element from Bootstrap-->

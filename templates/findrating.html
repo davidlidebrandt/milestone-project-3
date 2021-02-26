@@ -57,7 +57,7 @@ Find Movies
 </div>
 </a>
 {% else %}
-<a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result">
+<a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result dark-grey-bg">
 <div class="row">
 <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
 <div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
