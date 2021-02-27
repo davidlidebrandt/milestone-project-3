@@ -43,7 +43,7 @@ $(document).ready(function () {
           console.log(`https://5000-ac467a76-c3c1-46a1-a10c-89dcb7d2d4f0.ws-eu03.gitpod.io/moviepage/delete_movie/${$("#title").text()}`)
         $.ajax({
               method: "DELETE",
-              url: `https://movie-r-and-r.herokuapp.com//moviepage/delete_movie/${$("#title").text()}`
+              url: `https://movie-r-and-r.herokuapp.com//moviepage/delete_movie/${$("#title").text()}/`
           })
               .done(function () {
                   alert("Success");
