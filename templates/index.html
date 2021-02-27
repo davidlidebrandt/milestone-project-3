@@ -16,18 +16,23 @@ Home
     <div class="row">
     <div class="card mg-to-navbar col-10 offset-1 col-md-8 offset-md-2 col-lg-4 offset-lg-4">
      <div class="row">
-    <div class="col-12 top-btm-mg-20">
+    <div class="col-12 top-btm-mg-10">
     <h2 class="custom-h2">Movie R&R <i class="fas fa-film large-icon"><span class="sr-only">Film icon</span></i></h2>
     </div>
     <div class="col-10 offset-1">
+    <p class="padding-20">
     Welcome to Movie Ratings And Reviews, search for movies to find reviews and ratings or register and 
-    log in to add your own. 
+    log in to add your own.
+    </p>
+    {% if not session.user %}
     <div class="row top-btm-mg-20"><div class="col-6"><button class="login-link">Log In</button> 
     </div>
     <div class="col-6"><button class="register-link"><span>Register</span>
    </button></div>
    </div>
-  </div>
+   {%  endif %}
+  
+</div>
   </div>
 </div>
 

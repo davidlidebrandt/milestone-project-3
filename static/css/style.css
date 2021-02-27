@@ -34,6 +34,10 @@ body {
     padding: 0;
 }
 
+.padding-20 {
+    padding: 20px;
+}
+
 .top-mg-100 {
     margin-top: 100px;
 }
