@@ -22,6 +22,8 @@
 
 [Link to the deployed project](https://movie-r-and-r.herokuapp.com/)
 
+# Table Of Contents
+
 * [Database](#datbase)
 * [UX](#ux)
 * [Features](#features)
@@ -46,7 +48,10 @@ rated a particular movie in an array.
 
 
 
+
 ### User Stories
+
+#### Regular user
 
 * As a user I want access to others reviews and rating of relevant movies.
 
@@ -62,17 +67,24 @@ rated a particular movie in an array.
 
 * As a user I want the top rated movies to be displayed when visiting the website.
 
+#### Administrative user
+
+* As an administrator I want to be able to add new movies to the database.
+
+* As an administrator I want to be able to edit already added movies.
+
+* As an administrator I want to be able to delete reviews made by other users.
 
 
 #### Wireframes and Mockups
 
-* [Wireframe Mobile]()
-* [Wireframe Tablet]()
-* [Wireframe Desktop]()
+* [Wireframe Mobile](/images/wireframes-mockups/wireframe-mobile.png)
+* [Wireframe Tablet](/images/wireframes-mockups/wireframe-tablet.png)
+* [Wireframe Desktop](/images/wireframes-mockups/wireframe-desktop.png)
 
-* [Mockup Mobile]()
-* [Mockup Tablet]()
-* [Mockup Desktop]()
+* [Mockup Mobile](/images/wireframes-mockups/mockup-mobile.png)
+* [Mockup Tablet](/images/wireframes-mockups/mockup-tablet.png)
+* [Mockup Desktop](/images/wireframes-mockups/mockup-desktop.png)
    
 
 ## Features
