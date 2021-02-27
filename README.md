@@ -91,13 +91,50 @@ rated a particular movie in an array.
 
 ### Existing Features
 
+* A navigation bar at the top where users can navigate the site, looks the same accross the pages.
+
+* A footer with social media links which sits at the bottom of the screen and looks the same across the pages.
+(Do not link to an actual account since the purpose of the site is educational)
+
 #### Index page
 
+* Three carousels which displays movies based on date added, release year and ratings.
 
+* A register form where new users can register an account. When a user registers succesfully they will 
+recive a welcome email.
 
-#### Game page
+* A log in form where users can log in to an existing account.
 
+### Findmovies page
 
+* A list of links to all the movies in the database that displays their title, release year and raiting.
+
+* Pagination which limits the above movie list to only display ten movies at a time.
+
+* A dropdown with options to sort the movie list by date added, release year and rating.
+
+* A search bar where users can search for particular movies.
+
+* A link to return to display all movies if a search has been made.
+
+#### Moviepage
+
+* A page for each movie wich displays descriptions of the movie, ratings and reviews.
+
+* A slider where logged in users can add their own rating.
+
+* A text form where logged in users can write and submit their own reviews.
+
+* An accordion with all the current reviews for that movie.
+
+* Abiilty to edit and delete reviews made by the user themselves.
+
+#### Administrative features
+
+* An add movie page where admins can add new movie by filling out a form.
+
+* Links from the movie page where admins can delete movies and reviews as well as
+edit movies.
 
 
 ### Future Features
