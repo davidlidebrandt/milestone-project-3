@@ -63,10 +63,11 @@ Movie
 <a class="edit-button" href="{{ url_for('edit_movie', title=get_movie.title) }}">Edit</a> 
 <button id="delete-movie-btn" class="delete-button">Delete</button></div>
 {% endif %}
-</div>
 <hr>
+</div>
 {% endif %}
 </div>
+
 
 
 {% if session.user %}
