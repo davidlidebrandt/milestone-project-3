@@ -136,9 +136,11 @@ recive a welcome email.
 * Links from the movie page where admins can delete movies and reviews as well as
 edit movies.
 
-
 ### Future Features
 
+* Abiilty to reset a lost password for already registered users by sending a reset password link.
+
+* Embedding trailers/video clips of the movies from services as YouTube.
 
 
 ## Technologies Used
@@ -161,11 +163,9 @@ JQuery functions where used to manipulate the DOM and to take actions.
 
 * [Bootstrap](https://getbootstrap.com/)
 
-
-
-* [Google Fonts](https://fonts.google.com/)
-
-
+Bootstrap was used to provide structure and responsiveness to the site by using their container
+, row and col classes. Carousels, a dropdown, a
+accordion, a pagination element and some cards were components that where inclued from Bootstrap.
 
 * [Github](https://github.com/)
 
@@ -182,6 +182,10 @@ For version control through the gitpod terminal.
 * [Adobe XD](https://www.adobe.com/products/xd.html)
 
 Adobe XD was used to create the wireframes and mockups for the project.
+
+* [Materialize](https://materializecss.com/)
+
+Materialize was not used directly in the project but the colors were chosen by using their color palette.
 
 * [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
 
