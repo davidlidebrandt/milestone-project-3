@@ -40,13 +40,13 @@ $(document).ready(function () {
     });
     
       $("#confirm-delete-movie").click(function() {
-          console.log(`https://movie-r-and-r.herokuapp.com/moviepage/delete_movie/${$("#title").text()}/`)
         $.ajax({
               method: "DELETE",
-              url: `https://movie-r-and-r.herokuapp.com/moviepage/delete_movie/${$("#title").text()}/`
+              url: `/moviepage/delete_movie/${$("#title").text()}`,
+              xhrFields: {withCredentials: true}
           })
               .done(function () {
-                  alert("Success");
+                  window.location.href="/index"
               });
       });
 

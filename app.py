@@ -2,7 +2,8 @@ import os
 import math
 import datetime
 from flask import (
-    Flask, flash, render_template, redirect, request, session, url_for)
+    Flask, flash, render_template, redirect, request, session, url_for,
+    make_response)
 from flask_mail import Mail, Message
 from flask_cors import CORS
 from flask_pymongo import PyMongo
@@ -16,7 +17,6 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-CORS(app)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -31,10 +31,18 @@ app.config["MAIL_USE_SSL"] = False
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
 app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_DEFAULT_SENDER")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
-
 mongo_con = PyMongo(app)
 
 mail = Mail(app)
+
+CORS(app, support_credentials=True)
+
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    return response
 
 
 @app.route("/")
@@ -277,7 +285,7 @@ def delete_movie(title):
         print("Delete triggered")
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
-    return redirect(url_for("index"))
+    return render_template("index.html")
 
 
 @app.route("/moviepage/rate/<title>", methods=["POST"])
