@@ -75,6 +75,9 @@ body {
 .rating-wrap {
     font-weight: 600;
     font-size: 120%;
+    justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .star-icon {
