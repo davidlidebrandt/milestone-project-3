@@ -268,9 +268,10 @@ def movie_page(title):
         "moviepage.html", get_movie=get_movie, rating=has_rating)
 
 
-@app.route("/moviepage/delete_movie/<title>", methods=["POST"])
+@app.route("/moviepage/delete_movie/<title>", methods=["DELETE"])
 def delete_movie(title):
-    if request.method == "POST" and session["admin"]:
+    if request.method == "DELETE" and session["admin"]:
+        print("Delete triggered")
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
     return redirect(url_for("index"))

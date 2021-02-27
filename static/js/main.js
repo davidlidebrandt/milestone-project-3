@@ -23,7 +23,7 @@ $(document).ready(function () {
         $("#login").hide();
         $("#register").hide();
     });
-        $("#delete-movie-btn").click(function() {
+        $("#ensure-delete-movie").click(function() {
         $("#delete-movie-warn").show();
     });
         $("#cancel-delete-movie").click(function() {
@@ -38,19 +38,24 @@ $(document).ready(function () {
         $("#confirm-delete-review").click(function() {
         document.getElementById("delete-review-button").click();
     });
+    
+      $("#confirm-delete-movie").click(function() {
+          console.log(`https://5000-ac467a76-c3c1-46a1-a10c-89dcb7d2d4f0.ws-eu03.gitpod.io/moviepage/delete_movie/${$("#title").text()}`)
+        $.ajax({
+              method: "DELETE",
+              url: `https://5000-ac467a76-c3c1-46a1-a10c-89dcb7d2d4f0.ws-eu03.gitpod.io/moviepage/delete_movie/${$("#title").text()}`
+          })
+              .done(function () {
+                  alert("Success");
+              });
+      });
+
         $(".page-link").click(function() {
         checkEmptyRating();
     });
     
     checkEmptyRating();
 
-    // This part was taken from this w3schools article on how to dynamically display the sliders value https://www.w3schools.com/howto/howto_js_rangeslider.asp
-    let slider = document.getElementById("rating");
-    let output = document.getElementById("display");
-    output.innerHTML = slider.value; 
-    slider.oninput = function() {
-    output.innerHTML = this.value;
-    }
 });
 
 
