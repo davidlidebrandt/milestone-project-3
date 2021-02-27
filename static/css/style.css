@@ -46,6 +46,10 @@ body {
     margin-top: 20px;
 }
 
+.top-mg-40 {
+    margin-top: 40px;
+}
+
 .top-mg-10 {
     margin-top: 10px;
 }
@@ -583,11 +587,13 @@ main {
 /*Media queries*/
 @media only screen and (max-width: 767.5px) {
     .mg-to-navbar {
-        margin-top: 80px;
+        margin-top: 40px;
+        margin-bottom: 20px;
     }
 
     .display-flash {
         margin-bottom: 0;
+        width: 80%;
     }
 
     .poster-image {
@@ -601,5 +607,11 @@ main {
     .search-wrap {
         text-align: center;
         margin-top: 5px;
+    }
+
+    .carousel-wrapper {
+        margin-top: 20px;
+        padding-bottom: 0px;
+        margin-bottom: 20px;
     }
 }
