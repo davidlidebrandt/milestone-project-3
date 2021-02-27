@@ -37,6 +37,12 @@ mail = Mail(app)
 @app.route("/")
 @app.route("/index")
 def index():
+    
+    """
+    Triggers when user accesses URL, retrives lists of movies from a database and
+    renders a HTML template.
+    """
+    
     top_rated_movies = list(
         mongo_con.db.movies.find().sort("rating", -1).limit(5))
     newest_movies = list(mongo_con.db.movies.find().sort("year", -1).limit(5))
@@ -49,6 +55,13 @@ def index():
 
 @app.route("/register", methods=["POST"])
 def register():
+    
+    """
+    Triggers when a user posts the register form.
+    Checks if the user already exists, otherwise 
+    adds a new account and logs in the new user.
+    """
+    
     if request.method == "POST":
         user_taken = mongo_con.db.users.find_one(
                 {"user_name": request.form.get("user-reg")})
@@ -70,6 +83,13 @@ def register():
 
 @app.route("/login", methods=["POST"])
 def log_in():
+    
+    """
+    Triggers when a user posts the log in form.
+    Checks if user and password is correct and
+    logs in a valid user.
+    """
+    
     if request.method == "POST":
         user_exists = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-login").lower()})
@@ -97,6 +117,12 @@ def logout():
 
 
 def send_welcome(user, email):
+    
+    """
+    Sends a welcome mail to newly registered users.
+    Takes to arguments, user and email. 
+    """
+    
     msg = Message(f"Welcome {user}",
                   sender="my-flask-manager@outlook.com", recipients=[email])
     msg.body = "Welcome to Movie Ratings And Reviews"
@@ -106,6 +132,12 @@ def send_welcome(user, email):
 # Answer by user MSeifert was used to generate a random string
 # https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
 def generate_random_string(length):
+
+    """
+    Generates a random string.
+    Takes 1 argument, length.
+    """
+
     reset_link = "".join([choice(string.ascii_uppercase + string.digits)
                          for i in range(length)])
     return reset_link
