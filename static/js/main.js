@@ -45,9 +45,9 @@ $(document).ready(function () {
               url: `/moviepage/delete_movie/${$("#title").text()}`,
               xhrFields: {withCredentials: true}
           })
-              .done(function () {
-                  window.location.href="/index"
-              });
+             .done(function() {
+                 window.location = "/index"
+             });
       });
 
         $(".page-link").click(function() {

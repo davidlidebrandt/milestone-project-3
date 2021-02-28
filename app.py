@@ -282,10 +282,9 @@ def movie_page(title):
 @app.route("/moviepage/delete_movie/<title>", methods=["DELETE"])
 def delete_movie(title):
     if request.method == "DELETE" and session["admin"]:
-        print("Delete triggered")
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
-    return render_template("index.html")
+    return "Movie was deleted"
 
 
 @app.route("/moviepage/rate/<title>", methods=["POST"])
