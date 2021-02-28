@@ -36,8 +36,17 @@ $(document).ready(function () {
         $("#delete-review-warn").hide();
     });
         $("#confirm-delete-review").click(function() {
-        document.getElementById("delete-review-button").click();
-    });
+            console.log(`${$(this).parent().parent().parent(".accordion-text").text()}`)
+         /*$.ajax({
+              method: "DELETE",
+              url: `/deletereview/${$("#title").text()}/${$(this).parent(".accordion-text")}`,
+              xhrFields: {withCredentials: true}
+          })
+             .done(function() {
+                 window.location = `/moviepage/${$("#title").text()}`
+             });*/
+      });
+    
     
       $("#confirm-delete-movie").click(function() {
         $.ajax({

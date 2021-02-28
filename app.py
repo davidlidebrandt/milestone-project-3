@@ -364,16 +364,14 @@ def add_movie():
         return redirect(url_for("index"))
 
 
-@app.route("/deletereview/<title>/<user>", methods=["POST"])
+@app.route("/deletereview/<title>/<user>", methods=["DELETE"])
 def delete_review(title, user):
-    if request.method == "POST" and (
+    if request.method == "DELETE" and (
             user == session["user"] or session["admin"]):
         mongo_con.db.movies.update_one(
                 {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
         flash("Review deleted")
-        return redirect(url_for("movie_page", title=title))
-    flash("You are not authorized to make changes")
-    return redirect(url_for("index"))
+        return "Review deleted"
 
 
 @app.route("/editreview/<title>/<user>/<description>")
