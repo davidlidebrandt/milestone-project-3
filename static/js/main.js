@@ -103,8 +103,22 @@ function checkEmptyRating() {
 });
   
     function updateReview(form) {
-           console.log(form.review.value)
-           console.log(`/updatereview/${$("#title").text()}/${form.user.value}`)
+           
+        $.ajax({
+            method: "PUT",
+            url: `/updatereview/${$("#title").text()}/${form.user.value}`,
+            data: JSON.stringify({description: form.review.value}),
+            contentType:"application/json; charset=utf-8",
+            xhrFields: {withCredentials: true}
+        })
+        .done(function() {
+            window.location = "/index"
+         });
+    }
+
+     
+    function updateMovie(form) {
+           
         $.ajax({
             method: "PUT",
             url: `/updatereview/${$("#title").text()}/${form.user.value}`,

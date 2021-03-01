@@ -390,7 +390,8 @@ def update_review(title, user):
         print(request.get_json()["description"])
         mongo_con.db.movies.update_one(
             {"title": title, "reviews.by_user": user},
-            {"$set": {"reviews.$.description": request.get_json()["description"]}})
+            {"$set": {"reviews.$.description": request.get_json(
+            )["description"]}})
         print("Updated")
         print(type(request.get_json()["description"]))
         flash("Your review was edited")
