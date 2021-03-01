@@ -43,8 +43,8 @@ Find Movies
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result">
 <div class="row">
 <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
-<div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div id="{{ loop.index }}" class="col-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
+<div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+<div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
 {% if ratings %}
 {% for rating in ratings %}
 {% if i.title == rating.title %}
@@ -60,8 +60,8 @@ Find Movies
 <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result dark-grey-bg">
 <div class="row">
 <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
-<div class="col-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div id="{{ loop.index }}" class="col-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
+<div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+<div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
 {% if ratings %}
 {% for rating in ratings %}
 {% if i.title == rating.title %}
