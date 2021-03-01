@@ -1,68 +1,56 @@
+localStorage.setItem("user", "")
+
 $(document).ready(function () {
     $(".regnav-button, .register-link").click(function() {
         $("#login").hide();
         $("#register").show();
         $(".collapse").removeClass("show");
     });
+    
     $(".loginnav-button, .login-link").click(function() {
         $("#register").hide();
         $("#login").show();
         $(".collapse").removeClass("show");
     });
-     $("#redirect-login").click(function() {
+    
+    $("#redirect-login").click(function() {
         $("#register").hide();
         $("#login").show();
         $(".collapse").removeClass("show");
     });
-     $("#redirect-reg").click(function() {
+    
+    $("#redirect-reg").click(function() {
         $("#login").hide();
         $("#register").show();
         $(".collapse").removeClass("show");
     });
-     $(".close-btn").click(function() {
+    
+    $(".close-btn").click(function() {
         $("#login").hide();
         $("#register").hide();
     });
-        $("#ensure-delete-movie").click(function() {
+    
+    $("#ensure-delete-movie").click(function() {
         $("#delete-movie-warn").show();
     });
-        $("#cancel-delete-movie").click(function() {
+    
+    $("#cancel-delete-movie").click(function() {
         $("#delete-movie-warn").hide();
     });
-        $("#ensure-delete-review").click(function() {
-        $("#delete-review-warn").show();
-    });
-        $("#cancel-delete-review").click(function() {
+    
+    $("#ensure-delete-review").click(deleteReviewWarning);
+    
+    $("#cancel-delete-review").click(function() {
         $("#delete-review-warn").hide();
+        localStorage.setItem("user", "")
     });
-        $("#confirm-delete-review").click(function() {
-            console.log(`${$(this).parent().parent().parent(".accordion-text").text()}`)
-         /*$.ajax({
-              method: "DELETE",
-              url: `/deletereview/${$("#title").text()}/${$(this).parent(".accordion-text")}`,
-              xhrFields: {withCredentials: true}
-          })
-             .done(function() {
-                 window.location = `/moviepage/${$("#title").text()}`
-             });*/
-      });
-    
-    
-      $("#confirm-delete-movie").click(function() {
-        $.ajax({
-              method: "DELETE",
-              url: `/moviepage/delete_movie/${$("#title").text()}`,
-              xhrFields: {withCredentials: true}
-          })
-             .done(function() {
-                 window.location = "/index"
-             });
-      });
 
-        $(".page-link").click(function() {
-        checkEmptyRating();
-    });
+    $("#confirm-delete-review").click(confirmDeleteReview);
     
+    $("#confirm-delete-movie").click(confirmDeleteMovie);
+
+    $(".page-link").click(checkEmptyRating);
+
     checkEmptyRating();
 
 });
@@ -81,4 +69,32 @@ function checkEmptyRating() {
     }
 }
 
+  function deleteReviewWarning() {
+        user = $(this).siblings(".d-none").text()
+        localStorage.setItem("user", user)
+        $("#delete-review-warn").show();
+    }
 
+  function confirmDeleteReview() {
+         $.ajax({
+              method: "DELETE",
+              url: `/deletereview/${$("#title").text()}/${localStorage.getItem("user")}`,
+              xhrFields: {withCredentials: true}
+          })
+             .done(function() {
+                 window.location = `/moviepage/${$("#title").text()}`
+                 localStorage.setItem("user", "")
+             });
+    }
+
+    function confirmDeleteMovie() {
+           $.ajax({
+              method: "DELETE",
+              url: `/moviepage/delete_movie/${$("#title").text()}`,
+              xhrFields: {withCredentials: true}
+          })
+             .done(function() {
+                 window.location = "/index"
+             });
+    }
+  
