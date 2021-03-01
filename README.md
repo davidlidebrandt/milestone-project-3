@@ -47,7 +47,21 @@ rated a particular movie in an array.
 ## UX
 
 The goal of the project is to create a fullstack website for accessing ratings and reviews for movies.
+Any user should have the abbiltiy to see reviews and raitings for the avalible movies. Users should be able
+to list all avalible movies in a sorted way as well as searching for particular ones. To add their own reviews
+and ratings a user will be able to register and log in to an account. All users will have the option to delete 
+and edit old reviews they have made. Any administrative user will have the abbiltiy to add new movies to the database
+as well as editing and deleting old movies and deleting reviews made by other users.
 
+The goal of the developer is to showcase proficancy in creating a fullstack website. The project will inclued
+writing HTML, CSS and JavaScript code for the frontend as well as writing Python code and
+working with the MongoDB database and Flask framework on the backend. The file structure of the project has been
+kept simple because of time restrictions, even though it is not the best practice. A better way would have been to use Flask Blueprints and
+the Flask Applications Factory https://flask.palletsprojects.com/en/1.1.x/patterns/appfactories/.
+
+The Calibre font was used throughout the website to add some uniqueness to the site 
+while still being very clear and readable. A few design alterations was made from the initial mockups as in a few color
+alterations but the main structure and design follows the wireframes and mockups.
 
 
 ### User Stories
@@ -161,8 +175,12 @@ To add interactivity to the project.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
 Flask was used in conjunction with the [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) templating language
-to generate the HTML templates on the backend. It was also used to access the data sent from the frontend to 
+to generate the HTML templates on the backend. It was also used to access and process the data sent from the frontend to 
 the server. 
+
+* [Python](https://www.python.org/)
+
+Custom Python code was written in conjunction with Flask to handle all of the backend processes.
 
 * [JQuery](https://jquery.com/)
 
@@ -203,7 +221,21 @@ checking the responsiveness of the page with their screen rendering tools.
 
 For testing the responsiveness across different devices.
 
+* https://en.bestfonts.pro/font/calibre
+
+For downloading the Calibre font.
+
 ## Testing
+
+The CSS was run through the https://jigsaw.w3.org/css-validator/ without any errors found.
+
+The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
+the Jinja2 templating language. Since Flask is creating HTML files by using templates and injecting variables
+from the backend the validator gives errors that are not acually present at runtime.
+
+The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
+unused variables, these can be ignored since these functions are used and called when submitting forms.
+
 
 
 
@@ -240,11 +272,13 @@ the URL and Git Bash.
 
 ### Content
 
-
+All of the content where created by the developer.
 
 ### Media
-https://www.pexels.com/photo/abstract-analog-art-camera-390089/
 
+Main image on index page by user geralt:
+https://pixabay.com/sv/illustrations/filmen-biograf-video-kamera-1328405/
 
 ### Acknowledgments
 
+Thanks to my tutors and my mentor at Code Institute for help throughout the project.

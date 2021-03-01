@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='fonts/calibre/style.css') }}" type="text/css">
 </head>
+<body>
 <header>
     <!--Bootstrap navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
@@ -37,14 +38,11 @@
         <button class="nav-link regnav-button">Register</button> 
         <button class="nav-link loginnav-button">Log In</button> 
         {% endif %}
-        
-        
       </div>
     </div>
   </div>
 </nav>
 </header>
-<body>
 <main class="container-fluid">
 <div class="row">
 <div id="register" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">   
@@ -82,11 +80,7 @@
 </div>
 {% block maincontent %}
 {% endblock %}
-
 </main>
- 
-
-
 <footer class="main-footer">
 <a href="https://www.facebook.com/" target="_BLANK"><i class="fab fa-facebook-square footer-icon"><span class="sr-only">Facebook icon/link</span></i></a>
 <a href="https://twitter.com/" target="_BLANK"><i class="fab fa-twitter-square footer-icon"><span class="sr-only">Twitter icon/link</span></i></a>

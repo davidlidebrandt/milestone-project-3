@@ -1,4 +1,4 @@
-localStorage.setItem("user", "")
+localStorage.setItem("user", "");
 
 $(document).ready(function () {
     $(".regnav-button, .register-link").click(function() {
@@ -42,7 +42,7 @@ $(document).ready(function () {
     
     $("#cancel-delete-review").click(function() {
         $("#delete-review-warn").hide();
-        localStorage.setItem("user", "")
+        localStorage.setItem("user", "");
     });
 
     $("#confirm-delete-review").click(confirmDeleteReview);
@@ -62,7 +62,7 @@ function checkEmptyRating() {
     const check = document.getElementsByClassName("rating-wrap");
     for  (let i = 0; i < check.length; i++) {
 	 if (check[i].children.length < 2) {
-        j = i + 1;
+        let j = i + 1;
          $("#" + j).html("<p>No Ratings Yet</p>");
          j = 0;
      }
@@ -70,8 +70,8 @@ function checkEmptyRating() {
 }
 
   function deleteReviewWarning() {
-        user = $(this).siblings(".d-none").text()
-        localStorage.setItem("user", user)
+        let user = $(this).siblings(".d-none").text();
+        localStorage.setItem("user", user);
         $("#delete-review-warn").show();
     }
 
@@ -82,8 +82,8 @@ function checkEmptyRating() {
               xhrFields: {withCredentials: true}
           })
              .done(function() {
-                 window.location = `/moviepage/${$("#title").text()}`
-                 localStorage.setItem("user", "")
+                 window.location = `/moviepage/${$("#title").text()}`;
+                 localStorage.setItem("user", "");
              });
     }
 
@@ -94,7 +94,7 @@ function checkEmptyRating() {
             xhrFields: {withCredentials: true}
         })
         .done(function() {
-            window.location = "/index"
+            window.location = "/index";
          });
     }
 
@@ -112,7 +112,7 @@ function checkEmptyRating() {
             xhrFields: {withCredentials: true}
         })
         .done(function() {
-            window.location = "/index"
+            window.location = "/index";
          });
     }
 
@@ -127,6 +127,6 @@ function checkEmptyRating() {
             xhrFields: {withCredentials: true}
         })
         .done(function() {
-            window.location = "/index"
+            window.location = "/index";
          });
     }
