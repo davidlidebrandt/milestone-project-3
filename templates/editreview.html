@@ -36,7 +36,7 @@ Edit review
 <div id="poster-wrap" class="col-12 col-md-4"><img class="poster-image" src="{{ get_movie.img_url }}" alt="Movie poster"></div>
 <div class="col-10 offset-1 col-md-6 btm-mg-20">
 <div class="row">
-<div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text top-mg-20">{{ get_movie.title }} ({{ get_movie.year }})</h5></div>
+<div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text top-mg-20"><span id="title">{{ get_movie.title }}</span> ({{ get_movie.year }})</h5></div>
 <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
     {% if rating %}
     {{ rating }}
@@ -69,10 +69,12 @@ Edit review
     Edit Your Review
   </div>
   <div class="card-body align-center">
-    <form method="POST" action="{{ url_for('send_review', title=get_movie.title, user=user) }}">
+    <form method="POST" id="update-review" onsubmit="return updateReview(this)">
     <textarea class="review-text-area" title="Max of 800 characters" maxlength="800" name="review" id="review" rows="6">
     {{ description }}
     </textarea>
+    <input id="title" name="title" value="{{ get_movie.title }}" type="hidden">
+    <input id="user" name="user" value="{{ user }}" type="hidden">
     <div class="align-center"><button class="sub-review-btn" type="submit">Edit</button>
     <a href="{{ url_for('movie_page', title=get_movie.title) }}" class="cancel-button">Cancel</a>
     </div>
