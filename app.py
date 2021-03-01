@@ -350,7 +350,7 @@ def add_movie():
             cast_list = list(request.form.get("cast").split(","))
             mongo_con.db.movies.insert_one(
                 {"title": request.form.get(
-                    "title"), "directors": request.form.get(
+                    "title").strip(), "directors": request.form.get(
                         "directors"), "year": request.form.get(
                             "year"), "cast": cast_list, "img_url":
                                 request.form.get("img_url")})
