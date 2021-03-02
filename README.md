@@ -253,21 +253,74 @@ the Python code throughout the project.
 * Clicking the links for Home, Findmovies, Add movies and brand logo link.
 
 **Intented:** all links should load the intended page.  
+
 **Result:** every link loads their intended page.
 
 * Clicking the Log in and Register links.
 
 **Intended:** both links skould open their respective modal for logging in and registering.  
+
 **Result:** both links open their respective modal.
+
+* Clicking the Log out link
+
+**Intended:** Index page should be loaded, an alert message should be displayed and the user should be logged out
+by removing the session cookie "user" and "admin" incase the user is and admin.
+
+**Results:** The index page loads, an alert message saying the user has been logged out displays, all links
+to logged in functions dissapears and the session cookie "user" dissapears as well as the "admin" session cookie
+incase the user was an admin.
 
 * Filling out and submitting Log in form.
 
-**Intended:** form should only be submittable with all fields being filled in. If a correct password and username is
+**Intended:** the form should only be submittable with all fields being filled in. If a correct password and username is
 entered the index page should load and a welcome message would be displayed. If an incorrect password or username
 is entered the index page should be loaded with and error message being displayed.  
-**Result:** 
+
+**Result:** form is only submittable when all fields are filled in, if a correct password and username is provided
+the index page loads and an welcome message diplays. If an incorrect password or username is entered the index page
+loads and an errror message is displayed.
+
+* Filling out and submitting Register form.
+
+**Intended:** The form should only be submittable if all the fields are filled in as well as containing values
+which matched the specified patterns. If a username is taken the index page should load and an error message should
+be displayed. If the registration is succesfull the index page should load and a welcome message should be displayed,
+a welcome mail should also be sent to the users email address.
+
+**Result:**: The form is only submittable when all of the fields are entered, it also requires that the format 
+of the input matches the pattern specified. When trying to register an account with a already taken username the
+index page loads and an error message is displayed. When a registration is succesfull the index page loads and
+a welcome message is displayed. A welcome mail is also recived to the submitted email address but sometimes 
+appears in the junk mail folder.
+
+* Clicking the redirect links from the Log in and Register modals
+
+**Intended:** The links skould open the opposite modal as well as closing the current one.
+
+**Results:** Both links open the opposite modal and closes the current one.
+
+* Clicking the close button from the Log in and Register modals.
+
+**Intended** Clicking the button should close the current modal.
+
+**Results:** The current modal closes.
 
 #### Footer 
+
+* Clicking any of the social media links
+
+**Intended:** All links skould open the index page of their respective brands website in a new tab.
+
+**Results:** All links open their respective brands websites index page in a new tab.
+
+#### Index page
+
+* Clicking the Log in and Reggister buttons on the main card.
+
+**Intended:** Links skould open their respective Log in and Register modal.
+
+**Result**: Both links open their intended modal.
 
 
 ### Answering User Stories
