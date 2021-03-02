@@ -242,7 +242,22 @@ from the backend the validator gives errors that are not acually present at runt
 * The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
 unused variables, these can be ignored since these functions are used and called when submitting forms.
 
+* The cornflakes(flake8) linter was installed as an extension to the development environment and validated
+the Python code throughout the project.
+
+
 ### Manual tests of functions and features
+
+#### Navigation bar
+
+* The links for Home, Findmovies, Add movies as well as the brand logo link skould load the intended page:
+All of the links loads the correct page.
+
+* The Log in modal should be opened when pressed, the close button should close the button, the link to
+the register modal should open up the Register modal and close the Log in modal, the form should only be 
+submitable when 
+
+#### Footer 
 
 
 ### Answering User Stories
