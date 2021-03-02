@@ -250,12 +250,22 @@ the Python code throughout the project.
 
 #### Navigation bar
 
-* The links for Home, Findmovies, Add movies as well as the brand logo link skould load the intended page:
-All of the links loads the correct page.
+* Clicking the links for Home, Findmovies, Add movies and brand logo link.
 
-* The Log in modal should be opened when pressed, the close button should close the button, the link to
-the register modal should open up the Register modal and close the Log in modal, the form should only be 
-submitable when 
+**Intented:** all links should load the intended page.  
+**Result:** every link loads their intended page.
+
+* Clicking the Log in and Register links.
+
+**Intended:** both links skould open their respective modal for logging in and registering.  
+**Result:** both links open their respective modal.
+
+* Filling out and submitting Log in form.
+
+**Intended:** form should only be submittable with all fields being filled in. If a correct password and username is
+entered the index page should load and a welcome message would be displayed. If an incorrect password or username
+is entered the index page should be loaded with and error message being displayed.  
+**Result:** 
 
 #### Footer 
 
