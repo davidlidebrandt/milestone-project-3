@@ -46,6 +46,8 @@ rated a particular movie in an array.
 
 ## UX
 
+### Overall purpose
+
 The goal of the project is to create a fullstack website for accessing ratings and reviews for movies.
 Any user should have the abbiltiy to see reviews and raitings for the avalible movies. Users should be able
 to list all avalible movies in a sorted way as well as searching for particular ones. To add their own reviews
@@ -53,11 +55,15 @@ and ratings a user will be able to register and log in to an account. All users 
 and edit old reviews they have made. Any administrative user will have the abbiltiy to add new movies to the database
 as well as editing and deleting old movies and deleting reviews made by other users.
 
+### Goal of the developer
+
 The goal of the developer is to showcase proficancy in creating a fullstack website. The project will inclued
 writing HTML, CSS and JavaScript code for the frontend as well as writing Python code and
 working with the MongoDB database and Flask framework on the backend. The file structure of the project has been
 kept simple because of time restrictions, even though it is not the best practice. A better way would have been to use Flask Blueprints and
 the Flask Applications Factory https://flask.palletsprojects.com/en/1.1.x/patterns/appfactories/.
+
+### Design
 
 The Calibre font was used throughout the website to add some uniqueness to the site 
 while still being very clear and readable. A few design alterations was made from the initial mockups as in a few color
@@ -227,16 +233,67 @@ For downloading the Calibre font.
 
 ## Testing
 
-The CSS was run through the https://jigsaw.w3.org/css-validator/ without any errors found.
+* The CSS was run through the https://jigsaw.w3.org/css-validator/ without any errors found.
 
-The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
+* The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
 the Jinja2 templating language. Since Flask is creating HTML files by using templates and injecting variables
 from the backend the validator gives errors that are not acually present at runtime.
 
-The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
+* The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
 unused variables, these can be ignored since these functions are used and called when submitting forms.
 
+### Manual tests of functions and features
 
+
+### Answering User Stories
+
+#### Regular user
+
+* As a user I want access to others reviews and rating of relevant movies:
+All reviews and ratings can be easily found by scrolling through or searching for movies
+and accessing their particular page.
+
+* As a user I want to be able to write my own reviews and add my own ratings:
+My enabling a user to register and log in to an account a user can write their own reviews and add their own
+rating to any movie of choice.
+
+* As a user I want to be able to edit and delete my own reviews:
+When logged in a user can locate a particular movies page and from there edit and delete any previous review made.
+
+* As a user I want to option to search for movies as well as being able to scroll through a selection of movies:
+By navigating to the Findmovies page from the navigation bar a user can display a list of all avalible movies
+and even sort the list by date added, ratings or release year. A user also have the option to search for particular
+movies by using the search bar.
+
+* As a user I want a clear response to my actions such as adding, deleting and editing my reviews:
+All actions such as adding, deleting, editing, logging in, registering and logging out are followed by
+a short confirmation message.
+
+* As a user I want navigation to be clear and consistent across the website:
+The navigation bar sits at a fixed position on the top of the screen for easy access and looks the same 
+across the pages to provide consistens and familiatary for the user.
+
+* As a user I want the top rated movies to be displayed when visiting the website:
+On the index page a carousel diplays the five top rated movies, there are also two carousels displaying
+the most recently added movies and the movies with the newest release date respectivly.
+
+#### Administrative user
+
+* As an administrator I want to be able to add new movies to the database:
+A user with administrative abbilties is able to new movies by navigating to the Add movie page from the
+navigation bar. By filling out a form with correct values and submitting it the movie is added 
+unless it already exists in the database.
+
+* As an administrator I want to be able to edit already added movies:
+An admin can navigate to a particular movies page, press the edit button below the description of the movie
+and be redirected to a page where the movie can be edited. The current values for the different fields are 
+pre filled in the form and any alterations that fit the required form format can be made and the form can be
+submitted and the information for the movie is updated.
+
+* As an administrator I want to be able to delete reviews made by other users:
+When opening up a review made by another user an admin user sees a delete button/link which can be
+pressed. A confirmation modal is opened an the review can be deleted or the admin can chose to cancel the
+operation.
 
 
 ### Bugs
