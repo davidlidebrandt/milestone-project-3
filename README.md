@@ -245,6 +245,11 @@ unused variables, these can be ignored since these functions are used and called
 * The cornflakes(flake8) linter was installed as an extension to the development environment and validated
 the Python code throughout the project.
 
+* The responsiveness was tested by simulating a vide variety of devices such as phones, tablets and desktops using
+the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test.
+
+* The site was tested on three different browsers: Google Chrome, Mozilla Fireforx and Microsoft Edge.
+
 
 ### Manual tests of functions and features
 
@@ -252,19 +257,19 @@ the Python code throughout the project.
 
 * Clicking the links for Home, Findmovies, Add movies and brand logo link.
 
-**Intented:** all links should load the intended page.  
+**Expected:** all links should load the intended page.  
 
 **Result:** every link loads their intended page.
 
 * Clicking the Log in and Register links.
 
-**Intended:** both links skould open their respective modal for logging in and registering.  
+**Expected:** both links skould open their respective modal for logging in and registering.  
 
 **Result:** both links open their respective modal.
 
 * Clicking the Log out link
 
-**Intended:** Index page should be loaded, an alert message should be displayed and the user should be logged out
+**Expected:** Index page should be loaded, an alert message should be displayed and the user should be logged out
 by removing the session cookie "user" and "admin" incase the user is and admin.
 
 **Results:** The index page loads, an alert message saying the user has been logged out displays, all links
@@ -273,7 +278,7 @@ incase the user was an admin.
 
 * Filling out and submitting Log in form.
 
-**Intended:** the form should only be submittable with all fields being filled in. If a correct password and username is
+**Expected:** the form should only be submittable with all fields being filled in. If a correct password and username is
 entered the index page should load and a welcome message would be displayed. If an incorrect password or username
 is entered the index page should be loaded with and error message being displayed.  
 
@@ -283,7 +288,7 @@ loads and an errror message is displayed.
 
 * Filling out and submitting Register form.
 
-**Intended:** The form should only be submittable if all the fields are filled in as well as containing values
+**Expected:** The form should only be submittable if all the fields are filled in as well as containing values
 which matched the specified patterns. If a username is taken the index page should load and an error message should
 be displayed. If the registration is succesfull the index page should load and a welcome message should be displayed,
 a welcome mail should also be sent to the users email address.
@@ -296,13 +301,13 @@ appears in the junk mail folder.
 
 * Clicking the redirect links from the Log in and Register modals
 
-**Intended:** The links skould open the opposite modal as well as closing the current one.
+**Expected:** The links skould open the opposite modal as well as closing the current one.
 
 **Results:** Both links open the opposite modal and closes the current one.
 
 * Clicking the close button from the Log in and Register modals.
 
-**Intended** Clicking the button should close the current modal.
+**Expected** Clicking the button should close the current modal.
 
 **Results:** The current modal closes.
 
@@ -310,7 +315,7 @@ appears in the junk mail folder.
 
 * Clicking any of the social media links
 
-**Intended:** All links skould open the index page of their respective brands website in a new tab.
+**Expected:** All links skould open the index page of their respective brands website in a new tab.
 
 **Results:** All links open their respective brands websites index page in a new tab.
 
@@ -318,7 +323,7 @@ appears in the junk mail folder.
 
 * Clicking the Log in and Reggister buttons on the main card.
 
-**Intended:** Links skould open their respective Log in and Register modal.
+**Expected:** Links skould open their respective Log in and Register modal.
 
 **Result**: Both links open their intended modal.
 
