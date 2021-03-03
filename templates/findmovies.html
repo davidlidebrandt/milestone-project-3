@@ -3,6 +3,7 @@
 Find Movies
 {% endblock %}
 {% block maincontent %}
+<!--row,col and offset classes from Boostrap-->
 <div class="row">
     <div class="col-12">
         <h3 class="custom-h3">Find Movies</h3>
@@ -58,7 +59,10 @@ Find Movies
         <div class="row">
             <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
             <div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-            <div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
+            <div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap">
+                <i class="fas fa-star star-icon">
+                <span class="sr-only">Star icon</span>
+                </i>
                 {% if ratings %}
                 {% for rating in ratings %}
                 {% if i.title == rating.title %}
@@ -74,7 +78,10 @@ Find Movies
         <div class="row">
             <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
             <div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-            <div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
+            <div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap">
+                <i class="fas fa-star star-icon">
+                <span class="sr-only">Star icon</span>
+                </i>
                 {% if ratings %}
                 {% for rating in ratings %}
                 {% if i.title == rating.title %}

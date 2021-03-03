@@ -3,6 +3,7 @@
 Edit review
 {% endblock %}
 {% block maincontent %}
+<!--row,col and offset classes from Boostrap-->
 <div class="row top-mg-100 align-center">
     {% with flash_messages = get_flashed_messages() %}
     {% if flash_messages %}
@@ -47,7 +48,9 @@ Edit review
                         <h5 class="align-center thick-text top-mg-20"><span id="title">{{ get_movie.title }}</span>
                             ({{ get_movie.year }})</h5>
                     </div>
-                    <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
+                    <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon">
+                        <span class="sr-only">Star icon</span>
+                    </i>
                         {% if rating %}
                         {{ rating }}
                         {% else %}
@@ -74,6 +77,7 @@ Edit review
 
         <div class="row top-mg-20">
             <div class="col-12 no-padding">
+                <!--Bootstrap card-->
                 <div class="card review-card">
                     <div class="card-header">
                         Edit Your Review

@@ -10,6 +10,7 @@ Movie
 {% endfor %}
 {% endif %}
 {% endwith %}
+<!--row, col and offset classes from Bootstrap-->
 <div class="row top-mg-100 align-center">
     <div id="delete-movie-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
         <div class="row">
@@ -44,14 +45,16 @@ Movie
                         <h5 class="align-center thick-text top-mg-20"><span id="title">{{ get_movie.title }}</span>
                             ({{ get_movie.year }})</h5>
                     </div>
-                    <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
+                    <div class="col-12 top-btm-mg-20 align-center">
+                        <i class="fas fa-star star-icon">
+                        <span class="sr-only">Star icon</span>
+                        </i>
                         {% if rating %}
                         {{ rating }}
                         {% else %}
                         No Ratings Yet
                         {% endif %}
                     </div>
-
                     <div class="col-12 top-btm-mg-10 top-mg-20 align-center underline">Directors:</div>
                     <div class="col-12 top-btm-mg-10 top-mg-20 align-center">{{ get_movie.directors }}</div>
                     <div class="col-12 top-btm-mg-10 underline align-center">Main Cast:</div>
@@ -87,6 +90,7 @@ Movie
         </div>
         <div class="row">
             <div class="col-12 no-padding">
+                <!--Bootstrap card-->
                 <div class="card review-card">
                     <div class="card-header">
                         Add Your Review
@@ -109,6 +113,7 @@ Movie
     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         {% if get_movie.reviews %}
         <h4 class="reviews-h4">Reviews</h4>
+        <!--Bootstrap accordion-->
         <div class="accordion" id="accordionExample">
             {% for review in get_movie.reviews %}
             <div class="accordion-item">
@@ -130,8 +135,9 @@ Movie
                                 href="{{ url_for('edit_review', title=get_movie.title, user=review.by_user, description=review.description) }}"
                                 class="edit-button">Edit</a>
                             <div class="col-12 align-center"><button id="ensure-delete-review"
-                                    class="delete-button">Delete</button> <span
-                                    class="d-none">{{ review.by_user }}</span>
+                                    class="delete-button">Delete</button> 
+                                    <!--d-none class from Boostrap-->
+                                    <span class="d-none">{{ review.by_user }}</span>
                                 {% endif %}
                             </div>
                         </div>
