@@ -3,7 +3,7 @@ import math
 import datetime
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for,
-    make_response)
+    )
 from flask_mail import Mail, Message
 from flask_cors import CORS
 from flask_pymongo import PyMongo
@@ -22,7 +22,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-# This turtorial was used to help set up sending emails:
+# This turtorial was used to help set up how to send emails:
 # https://overiq.com/flask-101/sending-email-in-flask/
 app.config["MAIL_SERVER"] = "smtp.office365.com."
 app.config["MAIL_PORT"] = 587
@@ -35,14 +35,14 @@ mongo_con = PyMongo(app)
 
 mail = Mail(app)
 
-CORS(app, support_credentials=True)
+# CORS(app, support_credentials=True)
 
 
-@app.after_request
+"""@app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    return response
+    return response """
 
 
 @app.route("/")
@@ -50,7 +50,7 @@ def after_request(response):
 def index():
 
     """
-    Triggers when user accesses URL,
+    Triggers when user accesses URL specified in route,
     retrives lists of movies from a database and
     renders a HTML template.
     """
@@ -74,23 +74,22 @@ def register():
     adds a new account and logs in the new user.
     """
 
-    if request.method == "POST":
-        user_taken = mongo_con.db.users.find_one(
+    user_taken = mongo_con.db.users.find_one(
                 {"user_name": request.form.get("user-reg")})
-        if user_taken:
-            flash("Username already taken")
-        else:
-            mongo_con.db.users.insert_one({"user_name": request.form.get(
+    if user_taken:
+        flash("Username already taken")
+    else:
+        mongo_con.db.users.insert_one({"user_name": request.form.get(
                     "user-reg").lower(), "password": generate_password_hash(
                     request.form.get(
                         "password-reg").lower(), method='pbkdf2:sha256',
                     salt_length=12), "user_email": request.form.get(
                                 "email-reg"), "is_admin": "false"})
-            reg_user = request.form.get("user-reg")
-            session["user"] = request.form.get("user-reg")
-            flash(f"Registration succesful, welcome {reg_user}")
-            send_welcome(reg_user, request.form.get("email-reg"))
-        return redirect(url_for("index"))
+        reg_user = request.form.get("user-reg")
+        session["user"] = request.form.get("user-reg")
+        flash(f"Registration succesful, welcome {reg_user}")
+        send_welcome(reg_user, request.form.get("email-reg"))
+    return redirect(url_for("index"))
 
 
 @app.route("/login", methods=["POST"])
@@ -98,30 +97,35 @@ def log_in():
 
     """
     Triggers when a user posts the log in form.
-    Checks if user and password is correct and
-    logs in a valid user.
+    Checks if username and password is correct and
+    logs in a valid user or displays an error if incorrect.
     """
 
-    if request.method == "POST":
-        user_exists = mongo_con.db.users.find_one(
+    user_exists = mongo_con.db.users.find_one(
             {"user_name": request.form.get("user-login").lower()})
-        if user_exists:
-            if check_password_hash(user_exists["password"],
-                                   request.form.get("password-login")):
-                session["user"] = user_exists["user_name"]
-                if user_exists["is_admin"] == "true":
-                    session["admin"] = True
-                name = session["user"]
-                flash(f"Welcome {name}")
-            else:
-                flash("Incorrect username or password")
+    if user_exists:
+        if check_password_hash(user_exists["password"],
+                               request.form.get("password-login")):
+            session["user"] = user_exists["user_name"]
+            if user_exists["is_admin"] == "true":
+                session["admin"] = True
+            name = session["user"]
+            flash(f"Welcome {name}")
         else:
             flash("Incorrect username or password")
-        return redirect(url_for("index"))
+    else:
+        flash("Incorrect username or password")
+    return redirect(url_for("index"))
 
 
 @app.route("/logout")
 def logout():
+
+    """
+    Triggers when the Log out button is pressed,
+    Logs out the user and renders the index template.
+    """
+
     session.pop("user", None)
     session.pop("admin", None)
     flash("You have been logged out")
@@ -133,33 +137,6 @@ def logout():
     return render_template(
         "index.html", recently_added_movies=recently_added_movies,
         newest_movies=newest_movies, top_rated_movies=top_rated_movies)
-
-
-def send_welcome(user, email):
-
-    """
-    Sends a welcome mail to newly registered users.
-    Takes to arguments, user and email.
-    """
-
-    msg = Message(f"Welcome {user}",
-                  sender="my-flask-manager@outlook.com", recipients=[email])
-    msg.body = "Welcome to Movie Ratings And Reviews"
-    mail.send(msg)
-
-
-# Answer by user MSeifert was used to generate a random string
-# https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
-def generate_random_string(length):
-
-    """
-    Generates a random string.
-    Takes 1 argument, length.
-    """
-
-    reset_link = "".join([choice(string.ascii_uppercase + string.digits)
-                         for i in range(length)])
-    return reset_link
 
 
 @app.route("/findmovies/")
@@ -366,16 +343,30 @@ def add_movie():
 
 @app.route("/deletereview/<title>/<user>", methods=["DELETE"])
 def delete_review(title, user):
-    if request.method == "DELETE" and (
-            user == session["user"] or session["admin"]):
+
+    """
+    Triggers when the delete review button is pressed.
+    Checks if the user sending the request is the same as
+    the user that is logged in or is an admin. Deletes
+    the review if true.
+    """
+
+    if user == session["user"] or session["admin"]:
         mongo_con.db.movies.update_one(
-                {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
+            {"title": title}, {"$pull": {"reviews": {"by_user": user}}})
         flash("Review deleted")
         return "Review deleted"
 
 
-@app.route("/editreview/<title>/<user>/<description>", methods=["GET", "POST"])
+@app.route("/editreview/<title>/<user>/<description>")
 def edit_review(title, user, description):
+
+    """
+    Triggers when a user presses the edit review button.
+    Renders a template with a form prefilled with the
+    old review.
+    """
+
     if session["user"] == user:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         return render_template(
@@ -386,6 +377,12 @@ def edit_review(title, user, description):
 
 @app.route("/updatereview/<title>/<user>", methods=["PUT"])
 def update_review(title, user):
+
+    """
+    Triggers when a logged in user submits an updated version
+    of an already made review.
+    """
+
     if user == session["user"]:
         print(request.get_json()["description"])
         mongo_con.db.movies.update_one(
@@ -400,6 +397,13 @@ def update_review(title, user):
 
 @app.route("/editmovie/<title>", methods=["GET", "POST"])
 def edit_movie(title):
+
+    """
+    Triggers when the edit movie button is pressed by an admin.
+    Renders the editmovie template with the present values prefilled.
+    Updates the movie fields upon submitting the form.
+    """
+
     if request.method == "POST" and session["admin"]:
         cast_list = list(request.form.get("cast").split(","))
         mongo_con.db.movies.update_one(
@@ -427,9 +431,42 @@ def edit_movie(title):
 
 @app.errorhandler(404)
 def no_such_page(error):
+
+    """
+    Triggers when a page is not found or
+    is sent a request with a method not allowed.
+    """
+
     return render_template("404.html", error=error)
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(
         os.environ.get("PORT")), debug=True)
+
+
+def send_welcome(user, email):
+
+    """
+    Sends a welcome mail to newly registered users.
+    Takes two arguments, user and email.
+    """
+
+    msg = Message(f"Welcome {user}",
+                  sender="my-flask-manager@outlook.com", recipients=[email])
+    msg.body = "Welcome to Movie Ratings And Reviews"
+    mail.send(msg)
+
+
+# Answer by user MSeifert was used to generate a random string
+# https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
+def generate_random_string(length):
+
+    """
+    Generates a random string.
+    Takes 1 argument, length.
+    """
+
+    reset_link = "".join([choice(string.ascii_uppercase + string.digits)
+                         for i in range(length)])
+    return reset_link

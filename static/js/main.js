@@ -53,12 +53,11 @@ $(document).ready(function () {
 
     checkEmptyRating();
 
-});
+}); // end of ready function
 
 
 function checkEmptyRating() {
-    
-    // Checks if div contains raiting span and adds text if no raiting exists
+    /* Checks if div contains raiting span and adds text if no raiting exists */
     const check = document.getElementsByClassName("rating-wrap");
     for  (let i = 0; i < check.length; i++) {
 	 if (check[i].children.length < 2) {
@@ -70,6 +69,8 @@ function checkEmptyRating() {
 }
 
   function deleteReviewWarning() {
+        /* Gets the user name for the particular review  and sets the "user" item 
+        to that name so that the AJAX call can delete the correct review.*/
         let user = $(this).siblings(".d-none").text();
         localStorage.setItem("user", user);
         $("#delete-review-warn").show();
@@ -99,11 +100,12 @@ function checkEmptyRating() {
     }
 
     $("#update-review").submit(function(e) {
+        /* Prevent the default action when submitting the form
+        and instead let the AJAX call redirect after response*/
     e.preventDefault();
 });
-  
+   
     function updateReview(form) {
-           
         $.ajax({
             method: "PUT",
             url: `/updatereview/${$("#title").text()}/${form.user.value}`,
@@ -118,7 +120,6 @@ function checkEmptyRating() {
 
      
     function updateMovie(form) {
-           
         $.ajax({
             method: "PUT",
             url: `/updatereview/${$("#title").text()}/${form.user.value}`,
