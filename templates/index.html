@@ -3,146 +3,139 @@
 Home
 {% endblock %}
 {% block maincontent %}
-<div class="row d-none d-md-block"><div class="col-12 background-img"></div></div>
-  
-      {% with flash_messages = get_flashed_messages() %}
-       {% if flash_messages %}       
-       {% for message in flash_messages %}
-           <h4 class="display-flash">{{ message }}</h4>
-       {% endfor %}
-       {% endif %}
-    {% endwith %}
-      
-    <div class="row top-mg-40">
+<div class="row d-none d-md-block">
+    <div class="col-12 background-img"></div>
+</div>
+{% with flash_messages = get_flashed_messages() %}
+{% if flash_messages %}
+{% for message in flash_messages %}
+<h4 class="display-flash">{{ message }}</h4>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="row top-mg-40">
     <div class="card mg-to-navbar col-10 offset-1 col-md-8 offset-md-2 col-lg-4 offset-lg-4">
-     <div class="row">
-    <div id="message-reciver" class="col-12"></div>
-    <div class="col-12 welcome-card top-btm-mg-10">
-    <h2 class="custom-h2">Movie R&R <i class="fas fa-film large-icon"><span class="sr-only">Film icon</span></i></h2>
-    </div>
-    <div class="col-10 offset-1">
-    <p class="padding-20 thick-text">
-    Welcome to Movie Ratings And Reviews, search for movies to find reviews and ratings or register and 
-    log in to add your own.
-    </p>
-    {% if not session.user %}
-    <div class="row top-btm-mg-20"><div class="col-6"><button class="login-link">Log In</button> 
-    </div>
-    <div class="col-6"><button class="register-link"><span>Register</span>
-   </button></div>
-   </div>
-   {%  endif %}
-  
-</div>
-  </div>
-</div>
+        <div class="row">
+            <div id="message-reciver" class="col-12"></div>
+            <div class="col-12 welcome-card top-btm-mg-10">
+                <h2 class="custom-h2">Movie R&R <i class="fas fa-film large-icon"><span class="sr-only">Film
+                            icon</span></i></h2>
+            </div>
+            <div class="col-10 offset-1">
+                <p class="padding-20 thick-text">
+                    Welcome to Movie Ratings And Reviews, search for movies to find reviews and ratings or register and
+                    log in to add your own.
+                </p>
+                {% if not session.user %}
+                <div class="row top-btm-mg-20">
+                    <div class="col-6"><button class="login-link">Log In</button>
+                    </div>
+                    <div class="col-6"><button class="register-link"><span>Register</span>
+                        </button></div>
+                </div>
+                {%  endif %}
 
-<div class="row center-div">
-<!--Bootstrap carousels-->
-
-<div class="carousel-wrapper col-10 offset-1 col-md-3 offset-md-0">
-<h5 class="carousel-h5 top-mg-10">Recently added</h5>
-<div id="carouselExampleFade3" class="carousel slide carousel-fade" data-bs-ride="carousel">
-  <div class="carousel-inner">
-   
-   {% for movie in recently_added_movies %}
-   {% if movie.title %}
-   {% if loop.index == 1 %}
-    <div class="carousel-item active" data-bs-interval="5000">
-        <a href="{{ url_for('movie_page', title=movie.title) }}">
-      <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
-      </a>
+            </div>
+        </div>
     </div>
-    {% else %}
-    <div class="carousel-item" data-bs-interval="5000">
-    <a href="{{ url_for('movie_page', title=movie.title) }}">
-    <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
-    </a>
+    <div class="row center-div">
+        <!--Bootstrap carousels-->
+        <div class="carousel-wrapper col-10 offset-1 col-md-3 offset-md-0">
+            <h5 class="carousel-h5 top-mg-10">Recently added</h5>
+            <div id="carouselExampleFade3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for movie in recently_added_movies %}
+                    {% if movie.title %}
+                    {% if loop.index == 1 %}
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <a href="{{ url_for('movie_page', title=movie.title) }}">
+                            <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <a href="{{ url_for('movie_page', title=movie.title) }}">
+                            <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade3" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade3" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="carousel-wrapper col-10 offset-1 col-md-3 offset-md-0">
+            <h5 class="carousel-h5 top-mg-10">Top rated</h5>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for movie in top_rated_movies %}
+                    {% if movie.title %}
+                    {% if loop.index == 1 %}
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <a href="{{ url_for('movie_page', title=movie.title) }}">
+                            <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <a href="{{ url_for('movie_page', title=movie.title) }}">
+                            <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="carousel-wrapper col-10 offset-1 col-md-3 offset-md-0">
+            <h5 class="carousel-h5 top-mg-10">Newest</h5>
+            <div id="carouselExampleFade2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for movie in newest_movies %}
+                    {% if movie.title %}
+                    {% if loop.index == 1 %}
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <a href="{{ url_for('movie_page', title=movie.title) }}">
+                            <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <a href="{{ url_for('movie_page', title=movie.title) }}">
+                            <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade2" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade2" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
     </div>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-    
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade3" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade3" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
-</div>
-<div class="carousel-wrapper col-10 offset-1 col-md-3 offset-md-0">
-<h5 class="carousel-h5 top-mg-10">Top rated</h5>
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-  <div class="carousel-inner">
-   
-   {% for movie in top_rated_movies %}
-   {% if movie.title %}
-   {% if loop.index == 1 %}
-    <div class="carousel-item active" data-bs-interval="5000">
-        <a href="{{ url_for('movie_page', title=movie.title) }}">
-      <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
-      </a>
-    </div>
-    {% else %}
-    <div class="carousel-item" data-bs-interval="5000">
-    <a href="{{ url_for('movie_page', title=movie.title) }}">
-    <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
-    </a>
-    </div>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-    
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
-</div>
-
-<div class="carousel-wrapper col-10 offset-1 col-md-3 offset-md-0">
-<h5 class="carousel-h5 top-mg-10">Newest</h5>
-<div id="carouselExampleFade2" class="carousel slide carousel-fade" data-bs-ride="carousel">
-  <div class="carousel-inner">
-   
-   {% for movie in newest_movies %}
-   {% if movie.title %}
-   {% if loop.index == 1 %}
-    <div class="carousel-item active" data-bs-interval="5000">
-        <a href="{{ url_for('movie_page', title=movie.title) }}">
-      <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
-      </a>
-    </div>
-    {% else %}
-    <div class="carousel-item" data-bs-interval="5000">
-    <a href="{{ url_for('movie_page', title=movie.title) }}">
-    <img src="{{ movie.img_url }}" class="d-block carousel-img" alt="Movie poster">
-    </a>
-    </div>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-    
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade2" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade2" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
-</div>
-</div>
 </div>
 {% endblock %}

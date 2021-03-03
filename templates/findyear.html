@@ -4,85 +4,86 @@ Find Movies
 {% endblock %}
 {% block maincontent %}
 <div class="row">
-<div class="col-12"><h3 class="custom-h3">Find Movies</h3></div>
+    <div class="col-12">
+        <h3 class="custom-h3">Find Movies</h3>
+    </div>
 </div>
 <form class="row" method="POST" action="{{ url_for('search_movies') }}">
-    <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1 no-padding align-center"><input class="search-field" type="text" name="search" id="search"></div>
-    <div class="col-12 col-md-1 no-padding search-wrap"><button class="search-button" type="submit"><i class="fas fa-search"></i></button></div>
+    <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1 no-padding align-center"><input class="search-field"
+            type="text" name="search" id="search"></div>
+    <div class="col-12 col-md-1 no-padding search-wrap"><button class="search-button" type="submit"><i
+                class="fas fa-search"></i></button></div>
 </form>
 <div class="row top-mg-20">
-<!--Pagination element from Bootstrap-->
-<div class="col-12"><nav aria-label="...">
-  <ul class="pagination">
-    {% if pages %}
-    {% for i in range(pages) %}
-    <li class="page-item">
-      <a class="page-link" href="{{ url_for('find_year', page=loop.index) }}" tabindex="-1">{{ loop.index }}</a>
-   </li>
-  {% endfor %}
-  {% endif %}
-</ul>
-</nav></div>
-<div class="col-12 align-center">
-<!--Bootstrap dropdown-->
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle sort-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Sort by
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="{{ url_for('find_recent') }}">Date added</a></li>
-    <li><a class="dropdown-item" href="{{ url_for('find_rating') }}">Rating</a></li>
-    <li><a class="dropdown-item" href="{{ url_for('find_year') }}">Release year</a></li>
-  </ul>
+    <!--Pagination element from Bootstrap-->
+    <div class="col-12">
+        <nav aria-label="...">
+            <ul class="pagination">
+                {% if pages %}
+                {% for i in range(pages) %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('find_year', page=loop.index) }}"
+                        tabindex="-1">{{ loop.index }}</a>
+                </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <div class="col-12 align-center">
+        <!--Bootstrap dropdown-->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle sort-btn" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{{ url_for('find_recent') }}">Date added</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('find_rating') }}">Rating</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('find_year') }}">Release year</a></li>
+            </ul>
+        </div>
+    </div>
+
+    {% if movies %}
+    {% for i in movies %}
+    {% if loop.index % 2 == 0 %}
+    <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result">
+        <div class="row">
+            <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
+            <div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+            <div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
+                {% if ratings %}
+                {% for rating in ratings %}
+                {% if i.title == rating.title %}
+                <span class="margin-left-10">{{ rating.rating }}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </a>
+    {% else %}
+    <a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result dark-grey-bg">
+        <div class="row">
+            <div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
+            <div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
+            <div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
+                {% if ratings %}
+                {% for rating in ratings %}
+                {% if i.title == rating.title %}
+                <span class="margin-left-10">{{ rating.rating }}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <p class="no-result-text">No search results found</p>
+    {% endif %}
 </div>
-</div>
-    
-{% if movies %}
-{% for i in movies %}
-{% if loop.index % 2 == 0 %}
-<a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result">
-<div class="row">
-<div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
-<div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
-{% if ratings %}
-{% for rating in ratings %}
-{% if i.title == rating.title %}
-<span class="margin-left-10">{{ rating.rating }}</span>
-{% endif %}
-{% endfor %}
-{% endif %}
-
-</div>
-</div>
-</a>
-{% else %}
-<a href="{{ url_for('movie_page', title=i.title) }}" class="col-12 search-result dark-grey-bg">
-<div class="row">
-<div class="col-4"><img class="thumbnail" src="{{ i.img_url }}" alt="Movie Poster"></div>
-<div class="col-8 col-md-4 center"><span class="description-item">{{ i.title }} ({{ i.year }})</span></div>
-<div id="{{ loop.index }}" class="col-12 col-md-4 center rating-wrap"><i class="fas fa-star star-icon"></i>
-{% if ratings %}
-{% for rating in ratings %}
-{% if i.title == rating.title %}
-<span class="margin-left-10">{{ rating.rating }}</span>
-{% endif %}
-{% endfor %}
-{% endif %}
-
-</div>
-</div>
-</a>
-{% endif %}
-{% endfor %}
-{% else %}
-<p class="no-result-text">No search results found</p>
-{% endif %}
-
-
-
-
-
-</div>
-
 {% endblock %}

@@ -4,86 +4,99 @@ Edit review
 {% endblock %}
 {% block maincontent %}
 <div class="row top-mg-100 align-center">
-  {% with flash_messages = get_flashed_messages() %}
-       {% if flash_messages %}       
-       {% for message in flash_messages %}
-           <h4 class="display_flash">{{ message }}</h4>
-       {% endfor %}
-       {% endif %}
+    {% with flash_messages = get_flashed_messages() %}
+    {% if flash_messages %}
+    {% for message in flash_messages %}
+    <h4 class="display_flash">{{ message }}</h4>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
-<div id="delete-movie-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
-<div class="row">
-<div class="col-12"><p class="top-mg-10 thick-text">Are you sure you want to delete this movie?</p></div>
-<div class="col-12"><form method="POST" action="{{ url_for('delete_movie', title = get_movie.title) }}">
-    <button class="delete-button" type="submit">Delete</button> 
-</form></div>
-<div class="col-12"><button id="cancel-delete-movie" class="cancel-button">Cancel</button></div>
-</div>
-</div>
+    <div id="delete-movie-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
+        <div class="row">
+            <div class="col-12">
+                <p class="top-mg-10 thick-text">Are you sure you want to delete this movie?</p>
+            </div>
+            <div class="col-12">
+                <form method="POST" action="{{ url_for('delete_movie', title = get_movie.title) }}">
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+            </div>
+            <div class="col-12"><button id="cancel-delete-movie" class="cancel-button">Cancel</button></div>
+        </div>
+    </div>
 
-<div id="delete-review-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
-<div class="row">
-<div class="col-12"><p class="top-mg-10 thick-text">Are you sure you want to delete this review?</p></div>
-<div class="col-12"><button id="confirm-delete-review" class="delete-button">Delete</button></div>
-<div class="col-12"><button id="cancel-delete-review" class="cancel-button">Cancel</button></div>
-</div>
-</div>
+    <div id="delete-review-warn" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
+        <div class="row">
+            <div class="col-12">
+                <p class="top-mg-10 thick-text">Are you sure you want to delete this review?</p>
+            </div>
+            <div class="col-12"><button id="confirm-delete-review" class="delete-button">Delete</button></div>
+            <div class="col-12"><button id="cancel-delete-review" class="cancel-button">Cancel</button></div>
+        </div>
+    </div>
 </div>
 
 <div class="row btm-mg-20">
-<div class="description-bg col-12 col-md-8 offset-md-2">
-<div class="row">
-<div id="poster-wrap" class="col-12 col-md-4"><img class="poster-image" src="{{ get_movie.img_url }}" alt="Movie poster"></div>
-<div class="col-10 offset-1 col-md-6 btm-mg-20">
-<div class="row">
-<div class="col-12 top-btm-mg-10"><h5 class="align-center thick-text top-mg-20"><span id="title">{{ get_movie.title }}</span> ({{ get_movie.year }})</h5></div>
-<div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
-    {% if rating %}
-    {{ rating }}
-    {% else %}
-    No Ratings Yet
-    {% endif %}
-</div>
+    <div class="description-bg col-12 col-md-8 offset-md-2">
+        <div class="row">
+            <div id="poster-wrap" class="col-12 col-md-4"><img class="poster-image" src="{{ get_movie.img_url }}"
+                    alt="Movie poster"></div>
+            <div class="col-10 offset-1 col-md-6 btm-mg-20">
+                <div class="row">
+                    <div class="col-12 top-btm-mg-10">
+                        <h5 class="align-center thick-text top-mg-20"><span id="title">{{ get_movie.title }}</span>
+                            ({{ get_movie.year }})</h5>
+                    </div>
+                    <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon"></i>
+                        {% if rating %}
+                        {{ rating }}
+                        {% else %}
+                        No Ratings Yet
+                        {% endif %}
+                    </div>
 
-<div class="col-12 top-btm-mg-10 top-mg-20 align-center underline">Directors:</div>
-<div class="col-12 top-btm-mg-10 top-mg-20 align-center">{{ get_movie.directors }}</div>
-<div class="col-12 top-btm-mg-10 underline align-center">Main Cast:</div>
-<div class="col-12 top-btm-mg-10 align-center">
-{% for member in get_movie.cast %}
-    {{ member }}
-    {% if not loop.last %},
-    {% endif %}
-{% endfor %}
-</div>
-</div>
-</div>
-</div>
+                    <div class="col-12 top-btm-mg-10 top-mg-20 align-center underline">Directors:</div>
+                    <div class="col-12 top-btm-mg-10 top-mg-20 align-center">{{ get_movie.directors }}</div>
+                    <div class="col-12 top-btm-mg-10 underline align-center">Main Cast:</div>
+                    <div class="col-12 top-btm-mg-10 align-center">
+                        {% for member in get_movie.cast %}
+                        {{ member }}
+                        {% if not loop.last %},
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-{% if session.user %}
+        {% if session.user %}
 
-<div class="row top-mg-20">
-<div class="col-12 no-padding">
-<div class="card review-card">
-  <div class="card-header">
-    Edit Your Review
-  </div>
-  <div class="card-body align-center">
-    <form method="POST" id="update-review" onsubmit="return updateReview(this)">
-    <textarea class="review-text-area" title="Max of 800 characters" maxlength="800" name="review" id="review" rows="6">
+        <div class="row top-mg-20">
+            <div class="col-12 no-padding">
+                <div class="card review-card">
+                    <div class="card-header">
+                        Edit Your Review
+                    </div>
+                    <div class="card-body align-center">
+                        <form method="POST" id="update-review" onsubmit="return updateReview(this)">
+                            <textarea class="review-text-area" title="Max of 800 characters" maxlength="800"
+                                name="review" id="review" rows="6">
     {{ description }}
     </textarea>
-    <input id="title" name="title" value="{{ get_movie.title }}" type="hidden">
-    <input id="user" name="user" value="{{ user }}" type="hidden">
-    <div class="align-center"><button class="sub-review-btn" type="submit">Edit</button>
-    <a href="{{ url_for('movie_page', title=get_movie.title) }}" class="cancel-button">Cancel</a>
+                            <input id="title" name="title" value="{{ get_movie.title }}" type="hidden">
+                            <input id="user" name="user" value="{{ user }}" type="hidden">
+                            <div class="align-center"><button class="sub-review-btn" type="submit">Edit</button>
+                                <a href="{{ url_for('movie_page', title=get_movie.title) }}"
+                                    class="cancel-button">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
-    </form>
-  </div>
-</div></div>
-</div>
-{% endif %}
-</div>
 </div>
 
 
