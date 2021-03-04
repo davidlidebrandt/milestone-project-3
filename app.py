@@ -5,7 +5,6 @@ from flask import (
     Flask, flash, render_template, redirect, request, session, url_for,
     )
 from flask_mail import Mail, Message
-from flask_cors import CORS
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -34,15 +33,6 @@ app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 mongo_con = PyMongo(app)
 
 mail = Mail(app)
-
-# CORS(app, support_credentials=True)
-
-
-"""@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    return response """
 
 
 @app.route("/")
@@ -142,7 +132,7 @@ def logout():
 @app.route("/findmovies/")
 @app.route("/findmovies/<int:page>")
 def find_movies(page=1):
-    
+
     """
     Triggers when the Findmovies link is pressed
     or user navigates the pagination buttons.
@@ -284,7 +274,7 @@ def find_year(page=1):
 def movie_page(title):
 
     """
-    Triggers when a user clicks a link for a 
+    Triggers when a user clicks a link for a
     particular movie.
     """
 
