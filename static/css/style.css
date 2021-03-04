@@ -489,6 +489,7 @@ main {
 
 .delete-button {
     color: #f4511e;
+    background-color: transparent;
 }
 
 .edit-button {
