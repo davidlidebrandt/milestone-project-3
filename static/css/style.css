@@ -310,7 +310,7 @@ main {
     background: url("../images/film.jpg");
     width: 100%;
     height: 600px;
-    background-size: contain;
+    background-size: cover;
     margin-bottom: 20px;
 }
 
@@ -650,3 +650,10 @@ main {
         height: fit-content;
     }
 }
+
+@media only screen and (max-width: 769px) {
+    .background-img {
+        background-size: contain;
+    }
+}
+

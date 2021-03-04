@@ -344,6 +344,35 @@ a text stating "No search results found" appear.
 
 * Using the dropdown to sort the movie list.
 
+**Expected:** Sorting the list by date added should diplay the last add movies in a descending order by
+date added. Sorting it by ratings and release year should also sort the list in a descending order by
+rating and release year respectivley.
+
+**Results:** The list sorts correctly by the right parameters and in a descending order.
+
+* Clicking the Back to all movies link
+
+**Expected:** Clicking the link should reload the Find Movies page and display all movies in a list.
+
+**Results:** Page reloads and all movies are displayed.
+
+* Clicking a link to a movie.
+
+**Expected:** Clicking the link should load that particular movies page.
+
+**Results:** The correct movie page loads.
+
+* Navigating the pagination buttons.
+
+**Expected:** The number one button should dipslay the first ten movies in the database, the second
+button the next ten movies and so on.
+
+**Results:** The buttons navigate to the right pages and displays the corresponding movies.
+
+#### Movie page
+
+
+
 
 
 
