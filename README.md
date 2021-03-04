@@ -188,9 +188,13 @@ the server.
 
 Custom Python code was written in conjunction with Flask to handle all of the backend processes.
 
+* [MongoDB](https://www.mongodb.com/3)
+
+MongoDB was the database used to store all of the information about the movies and users in the project.
+
 * [JQuery](https://jquery.com/)
 
-JQuery functions where used to manipulate the DOM and to take actions.
+JQuery functions where used to manipulate the DOM, take actions and do AJAX calls.
 
 * [Bootstrap](https://getbootstrap.com/)
 
@@ -326,6 +330,21 @@ appears in the junk mail folder.
 **Expected:** Links skould open their respective Log in and Register modal.
 
 **Result**: Both links open their intended modal.
+
+#### Find Movies page
+
+* Using the search bar function.
+
+**Expected:** Searching for movies with names that match results in the database should
+display those results in a list. When no results are found a message that no results were found 
+should appear.
+
+**Results:** When finding a match the site displays the results in a list. When no results are found
+a text stating "No search results found" appear.
+
+* Using the dropdown to sort the movie list.
+
+
 
 
 ### Answering User Stories
