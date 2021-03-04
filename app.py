@@ -142,6 +142,14 @@ def logout():
 @app.route("/findmovies/")
 @app.route("/findmovies/<int:page>")
 def find_movies(page=1):
+    
+    """
+    Triggers when the Findmovies link is pressed
+    or user navigates the pagination buttons.
+    Displays ten results at a time based on which
+    page is loaded.
+    """
+
     movies = list(mongo_con.db.movies.find())
     if page == 1:
         sub_list = movies[0:10]
@@ -163,6 +171,12 @@ def find_movies(page=1):
 
 @app.route("/findmvoies/search", methods=["POST"])
 def search_movies():
+
+    """
+    Triggers when the search bar form is submitted.
+    Searches for a match in the database.
+    """
+
     if request.method == "POST":
         sub_list = list(mongo_con.db.movies.find(
             {"$text": {"$search": request.form.get("search")}}))
@@ -179,6 +193,12 @@ def search_movies():
 @app.route("/findmovies/recent")
 @app.route("/findmovies/recent/<int:page>")
 def find_recent(page=1):
+
+    """
+    Triggers when the movie list is displayed by date added.
+    Sorts the movies by the date added in descending order.
+    """
+
     movies = list(mongo_con.db.movies.find().sort(
         "_id", -1))
     if page == 1:
@@ -203,6 +223,12 @@ def find_recent(page=1):
 @app.route("/findmovies/rating")
 @app.route("/findmovies/rating/<int:page>")
 def find_rating(page=1):
+
+    """
+    Triggers when the movie list is displayed by rating.
+    Sorts the movies by rating in descending order.
+    """
+
     movies = list(mongo_con.db.movies.find().sort(
         "rating", -1))
     if page == 1:
@@ -227,6 +253,12 @@ def find_rating(page=1):
 @app.route("/findmovies/year")
 @app.route("/findmovies/year/<int:page>")
 def find_year(page=1):
+
+    """
+    Triggers when the movie list is displayed by release year.
+    Sorts the movies by release year in descending order.
+    """
+
     movies = list(mongo_con.db.movies.find().sort(
         "year", -1))
     if page == 1:
@@ -250,6 +282,12 @@ def find_year(page=1):
 
 @app.route("/moviepage/<title>")
 def movie_page(title):
+
+    """
+    Triggers when a user clicks a link for a 
+    particular movie.
+    """
+
     get_movie = mongo_con.db.movies.find_one({"title": title})
     has_rating = get_movie.get("rating")
     return render_template(
@@ -266,6 +304,13 @@ def delete_movie(title):
 
 @app.route("/moviepage/rate/<title>", methods=["POST"])
 def rate_movie(title):
+
+    """
+    Triggers when a rating is posted.
+    Checks if a user is logged in and if they have rated
+    the current movie before.
+    """
+
     if request.method == "POST" and session["user"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         has_rating = get_movie.get("ratings")
@@ -297,6 +342,13 @@ def rate_movie(title):
 
 @app.route("/moviepage/review/<title>", methods=["POST"])
 def review_movie(title):
+
+    """
+    Triggers when a new review is posted.
+    Checks if a user is logged in and if they
+    have made a review for the current movie before.
+    """
+
     if request.method == "POST" and session["user"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         has_review = get_movie.get("reviews")
@@ -317,6 +369,13 @@ def review_movie(title):
 
 @app.route("/addmovie", methods=["GET", "POST"])
 def add_movie():
+
+    """
+    Get method triggers when an admin clicks the add movie button
+    and renders a template for adding movies.
+    Post method triggers when a admin submits the form for adding movies.
+    """
+
     if request.method == "POST" and session["admin"]:
         already_exist = mongo_con.db.movies.find_one(
             {"title": request.form.get("title")})
