@@ -51,8 +51,8 @@ Edit review
                     <div class="col-12 top-btm-mg-20 align-center"><i class="fas fa-star star-icon">
                         <span class="sr-only">Star icon</span>
                     </i>
-                        {% if rating %}
-                        {{ rating }}
+                        {% if get_movie.rating %}
+                        {{ get_movie.rating }}
                         {% else %}
                         No Ratings Yet
                         {% endif %}
@@ -88,7 +88,7 @@ Edit review
                                 name="review" id="review" rows="6">
     {{ description }}
     </textarea>
-                            <input id="title" name="title" value="{{ get_movie.title }}" type="hidden">
+                            <input id="movie-title" name="movie-title" value="{{ get_movie.title }}" type="hidden">
                             <input id="user" name="user" value="{{ user }}" type="hidden">
                             <div class="align-center"><button class="sub-review-btn" type="submit">Edit</button>
                                 <a href="{{ url_for('movie_page', title=get_movie.title) }}"

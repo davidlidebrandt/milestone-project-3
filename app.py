@@ -407,7 +407,7 @@ def delete_review(title, user):
         return "Review deleted"
 
 
-@app.route("/editreview/<title>/<user>/<description>")
+@app.route("/editreview/<title>/<user>/<description>", methods=["GET", "POST"])
 def edit_review(title, user, description):
 
     """
@@ -433,13 +433,10 @@ def update_review(title, user):
     """
 
     if user == session["user"]:
-        print(request.get_json()["description"])
         mongo_con.db.movies.update_one(
             {"title": title, "reviews.by_user": user},
             {"$set": {"reviews.$.description": request.get_json(
             )["description"]}})
-        print("Updated")
-        print(type(request.get_json()["description"]))
         flash("Your review was edited")
     return "Review updated"
 

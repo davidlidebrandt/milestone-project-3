@@ -315,6 +315,22 @@ appears in the junk mail folder.
 
 **Results:** The current modal closes.
 
+* Clicking the Add Movie button/link as an admin.
+
+**Expected:* The addmovie page should load and a form to fill out fields describing the movie should display.
+The form should not be submittable if not all fields are filled in. The filled in fields shoukd require
+the input tp follow the specified pattern. Upon submitting the form the index page should load, the movie
+should be added to the database and a message stating that the movie was added should be displayed. In case the 
+title already exists in the database the index page should load and a message saying that the movie already exists 
+should diplay.
+
+*Results:* When an admin presses the Add Movie button the addmovie page loads and form for adding a movie displays.
+The form is only submittable when all fields are filled in. The input is required to follow the specified patterns
+before submitted. Upon submitting the form the index page loads, the movie is added to the database and a message
+stating that the movie was added displays. In case the 
+title already exists in the database the index page loads and a message saying that the movie already exists 
+displays and nothing is added to the database.
+
 #### Footer 
 
 * Clicking any of the social media links
@@ -364,14 +380,82 @@ rating and release year respectivley.
 
 * Navigating the pagination buttons.
 
-**Expected:** The number one button should dipslay the first ten movies in the database, the second
+**Expected:** The number one button should display the first ten movies in the database, the second
 button the next ten movies and so on.
 
 **Results:** The buttons navigate to the right pages and displays the corresponding movies.
 
 #### Movie page
 
+* Submitting a rating as a logged in user.
 
+**Expected:** When a user rates and submits their raiting the current movie page should reload and a 
+message should be displayed. If the user has rated the movie before the rating should not be added and the message
+should read "You have already rated this movie". If the user have not rated the movie before the rating should be
+added and the message should read "Your rating was added".
+
+**Results:** Upon submitting the rating the page reloads, if the user have not made a rating yet the rating is added
+to the database and the text displays "Your rating was added". If a user previously has rated the movie the text displays
+"You have already rated this movie" and the rating is not added to the database.
+
+* Submitting a review as a logged in user.
+
+**Expected:** When a user rates and submits their review the current movie page should reload and a 
+message should be displayed. If the user has made a review for the movie before the review should not be added and the message
+should read "You have already made a review for this movie". If the user have not made a review for the movie before the review should be
+added and the message should read "Your review was added".
+
+**Results:** Upon submitting the review the page reloads, if the user have not made a review yet the it is added
+to the database and the text displays "Your review was added". If a user previously has reviewed the movie the text displays
+"You have already made a review for this movie" and the review is not added to the database.
+
+* Pressing the delete button on a review made by the current user or by an admin.
+
+**Expected:** A confirmation modal should display where the user can confirm the deletion. If the cancel button is pressed
+the modal should close, if the user confirms the deletion by pressing delete again the page should reload and
+the review should be deleted.
+
+**Results:** When a logged in user presses the delete review button on a review they have made or alternativly
+if the user is an admin and presses delete on any review a deletion confirmation modal displays.
+If the user pressses cancel the modal closes, if the user presses delete again the review is deleted and the page
+reloads.
+
+* Pressing the edit review button 
+
+**Expected:** When a user presses the edit button on a review they have made the editreview page should load
+and the review should be displayed in a form which the user can edit and submit. If the user presses cancel the
+page for the current movie page should load and no changes to the review be made. If a user edits and submits the
+review the review should be updated in the database, the movie page should reload and a message should be displayed
+saying that the review was edited.
+
+**Results:** When the edit button button is pressed the editreview page is loaded. If the cancel button is pressed
+the movie page loads and no changes are made. If the form is edited and submitted the review is updated in the 
+database, the movie page loads and a message stating that the review was edited displays.
+
+* Pressing the delete movie button as an admin
+
+**Expected:* A confirmation modal should display, if the user presses cancel the modal should close and no actions
+should be taken. If a user confirms the deletion by pressing the delete button in the modal the movie should be 
+deleted from the database, the index page should be loaded and an message should display stating that the movie 
+was deleted.
+
+*Results:*: When the delete button is presses a confirmation modal displays. If the cancel button is pressed the
+modal closes and no further actions are taken. If the delete button of the modal is pressed the movie is deleted
+from the database, the index page loads and a message stating that the movie was deleted displays.
+
+* Pressing the edit movie button as an admin.
+
+*Expected:* The edit movie should be loaded and a form with the prefilled current values for all fields should be
+displayed. The user should be able to change the values in the form, the form should not be submittable if not
+all fields are filled in and conforming to the pattern specified for the different fields. If the cancel button is pressed
+all changes should be disgarded and the movie page should load. If the form is submitted the movie should be updated
+in the database, the movie page should load and a message staing that the movie was updated displayed.
+
+*Results:* When the edit movie button is pressed the editmovie page loads. A form with the prefilled current values
+for each field is diplayed. The form values can be changed and the form is not submittable if all of the fields 
+are not filled in and following the specified patterns. If the cancel button is pressed the movie page loads and
+no changes are saved. If the form is submitted the movie page loads, the movie is updated in the database and 
+a message stating that the movie was updated displays.
 
 
 
