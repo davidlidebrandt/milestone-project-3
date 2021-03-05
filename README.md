@@ -1,19 +1,19 @@
 # Milestone Project 2
 
-<img src=""
-     alt=""
+<img src="/images/wireframes-mockups/index.png"
+     alt="index page"
      style="height: 200px; width: 400px;" />
      
-<img src=""
-     alt=""
+<img src="/images/wireframes-mockups/login.png"
+     alt="Log in form"
      style="height: 200px; width: 400px;" />
 
-<img src=""
-     alt=""
+<img src="/images/wireframes-mockups/findmovies.png"
+     alt="A list of avalible movies"
      style="height: 200px; width: 400px;" />
 
-<img src=""
-     alt=""
+<img src="/images/wireframes-mockups/addmovie.png"
+     alt="Form for adding movies"
      style="height: 200px; width: 400px;" />
 
  This project is intended to provide a service for movie ratings and reviews. Users can search for different movies
@@ -509,10 +509,6 @@ submitted and the information for the movie is updated.
 When opening up a review made by another user an admin user sees a delete button/link which can be
 pressed. A confirmation modal is opened an the review can be deleted or the admin can chose to cancel the
 operation.
-
-
-### Bugs
-
 
 
 ## Deployment
