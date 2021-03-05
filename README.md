@@ -1,18 +1,18 @@
 # Milestone Project 2
 
-<img src="/images/wireframes-mockups/index.png"
+<img src="static/images/wireframes-mockups/index.png"
      alt="index page"
      style="height: 200px; width: 400px;" />
      
-<img src="/images/wireframes-mockups/login.png"
+<img src="static/images/wireframes-mockups/login.png"
      alt="Log in form"
      style="height: 200px; width: 400px;" />
 
-<img src="/images/wireframes-mockups/findmovies.png"
+<img src="static/images/wireframes-mockups/findmovies.png"
      alt="A list of avalible movies"
      style="height: 200px; width: 400px;" />
 
-<img src="/images/wireframes-mockups/addmovie.png"
+<img src="static/images/wireframes-mockups/addmovie.png"
      alt="Form for adding movies"
      style="height: 200px; width: 400px;" />
 
@@ -99,13 +99,13 @@ alterations but the main structure and design follows the wireframes and mockups
 
 #### Wireframes and Mockups
 
-* [Wireframe Mobile](/images/wireframes-mockups/wireframe-mobile.png)
-* [Wireframe Tablet](/images/wireframes-mockups/wireframe-tablet.png)
-* [Wireframe Desktop](/images/wireframes-mockups/wireframe-desktop.png)
+* [Wireframe Mobile](static/images/wireframes-mockups/wireframe-mobile.png)
+* [Wireframe Tablet](static/images/wireframes-mockups/wireframe-tablet.png)
+* [Wireframe Desktop](static/images/wireframes-mockups/wireframe-desktop.png)
 
-* [Mockup Mobile](/images/wireframes-mockups/mockup-mobile.png)
-* [Mockup Tablet](/images/wireframes-mockups/mockup-tablet.png)
-* [Mockup Desktop](/images/wireframes-mockups/mockup-desktop.png)
+* [Mockup Mobile](static/images/wireframes-mockups/mockup-mobile.png)
+* [Mockup Tablet](static/images/wireframes-mockups/mockup-tablet.png)
+* [Mockup Desktop](static/images/wireframes-mockups/mockup-desktop.png)
    
 
 ## Features
@@ -126,7 +126,7 @@ recive a welcome email.
 
 * A log in form where users can log in to an existing account.
 
-### Findmovies page
+#### Findmovies page
 
 * A list of links to all the movies in the database that displays their title, release year and raiting.
 
