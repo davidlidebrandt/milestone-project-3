@@ -17,7 +17,7 @@
      style="height: 200px; width: 400px;" />
 
  This project is intended to provide a service for movie ratings and reviews. Users can search for different movies
- and read reviews and see ratings by other users. By registering and loggin in a user can add their own reviews and
+ and read reviews and see ratings by other users. By registering and logging in a user can add their own reviews and
  ratings as well as edit and delete old reviews they have made in the past.
 
 [Link to the deployed project](https://movie-r-and-r.herokuapp.com/)
@@ -317,14 +317,14 @@ appears in the junk mail folder.
 
 * Clicking the Add Movie button/link as an admin.
 
-**Expected:* The addmovie page should load and a form to fill out fields describing the movie should display.
+**Expected:** The addmovie page should load and a form to fill out fields describing the movie should display.
 The form should not be submittable if not all fields are filled in. The filled in fields shoukd require
 the input tp follow the specified pattern. Upon submitting the form the index page should load, the movie
 should be added to the database and a message stating that the movie was added should be displayed. In case the 
 title already exists in the database the index page should load and a message saying that the movie already exists 
 should diplay.
 
-*Results:* When an admin presses the Add Movie button the addmovie page loads and form for adding a movie displays.
+**Results:** When an admin presses the Add Movie button the addmovie page loads and form for adding a movie displays.
 The form is only submittable when all fields are filled in. The input is required to follow the specified patterns
 before submitted. Upon submitting the form the index page loads, the movie is added to the database and a message
 stating that the movie was added displays. In case the 
@@ -464,48 +464,48 @@ a message stating that the movie was updated displays.
 
 #### Regular user
 
-* As a user I want access to others reviews and rating of relevant movies:
+* As a user I want access to others reviews and rating of relevant movies:  
 All reviews and ratings can be easily found by scrolling through or searching for movies
 and accessing their particular page.
 
-* As a user I want to be able to write my own reviews and add my own ratings:
+* As a user I want to be able to write my own reviews and add my own ratings:  
 My enabling a user to register and log in to an account a user can write their own reviews and add their own
 rating to any movie of choice.
 
-* As a user I want to be able to edit and delete my own reviews:
+* As a user I want to be able to edit and delete my own reviews:  
 When logged in a user can locate a particular movies page and from there edit and delete any previous review made.
 
-* As a user I want to option to search for movies as well as being able to scroll through a selection of movies:
+* As a user I want to option to search for movies as well as being able to scroll through a selection of movies:  
 By navigating to the Findmovies page from the navigation bar a user can display a list of all avalible movies
 and even sort the list by date added, ratings or release year. A user also have the option to search for particular
 movies by using the search bar.
 
-* As a user I want a clear response to my actions such as adding, deleting and editing my reviews:
+* As a user I want a clear response to my actions such as adding, deleting and editing my reviews:  
 All actions such as adding, deleting, editing, logging in, registering and logging out are followed by
 a short confirmation message.
 
-* As a user I want navigation to be clear and consistent across the website:
+* As a user I want navigation to be clear and consistent across the website:  
 The navigation bar sits at a fixed position on the top of the screen for easy access and looks the same 
 across the pages to provide consistens and familiatary for the user.
 
-* As a user I want the top rated movies to be displayed when visiting the website:
+* As a user I want the top rated movies to be displayed when visiting the website:  
 On the index page a carousel diplays the five top rated movies, there are also two carousels displaying
 the most recently added movies and the movies with the newest release date respectivly.
 
 #### Administrative user
 
-* As an administrator I want to be able to add new movies to the database:
+* As an administrator I want to be able to add new movies to the database:  
 A user with administrative abbilties is able to new movies by navigating to the Add movie page from the
 navigation bar. By filling out a form with correct values and submitting it the movie is added 
 unless it already exists in the database.
 
-* As an administrator I want to be able to edit already added movies:
+* As an administrator I want to be able to edit already added movies:  
 An admin can navigate to a particular movies page, press the edit button below the description of the movie
 and be redirected to a page where the movie can be edited. The current values for the different fields are 
 pre filled in the form and any alterations that fit the required form format can be made and the form can be
 submitted and the information for the movie is updated.
 
-* As an administrator I want to be able to delete reviews made by other users:
+* As an administrator I want to be able to delete reviews made by other users:  
 When opening up a review made by another user an admin user sees a delete button/link which can be
 pressed. A confirmation modal is opened an the review can be deleted or the admin can chose to cancel the
 operation.
@@ -518,7 +518,7 @@ operation.
 
 ### Forking the project
 1. Go to and log in to https://github.com/.
-2. Go to the repository: https://github.com/davidlidebrandt/milestone-project-2
+2. Go to the repository: https://github.com/davidlidebrandt/milestone-project-3
 3. Press the fork button located on the right side.
 4. Make your changes to the project.
 5. If you wish to merge your changes to the original project:
@@ -530,7 +530,7 @@ operation.
 ### Cloning the project
 There are several ways of cloning the project, here I am going to describe how to do it using
 the URL and Git Bash.
-1. Go to the repository: https://github.com/davidlidebrandt/milestone-project-2
+1. Go to the repository: https://github.com/davidlidebrandt/milestone-project-3
 2. Click the Code button.
 3. Choose HTTPS and copy the link that is provided.
 4. Open Git Bash and navigate to the directory where you want to save the cloned project.

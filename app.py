@@ -35,6 +35,34 @@ mongo_con = PyMongo(app)
 mail = Mail(app)
 
 
+
+def send_welcome(user, email):
+
+    """
+    Sends a welcome mail to newly registered users.
+    Takes two arguments, user and email.
+    """
+
+    msg = Message(f"Welcome {user}",
+                  sender="my-flask-manager@outlook.com", recipients=[email])
+    msg.body = "Welcome to Movie Ratings And Reviews"
+    mail.send(msg)
+
+
+# Answer by user MSeifert was used to generate a random string
+# https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
+def generate_random_string(length):
+
+    """
+    Generates a random string.
+    Takes 1 argument, length.
+    """
+
+    reset_link = "".join([choice(string.ascii_uppercase + string.digits)
+                         for i in range(length)])
+    return reset_link
+
+
 @app.route("/")
 @app.route("/index")
 def index():
@@ -77,7 +105,8 @@ def register():
                                 "email-reg"), "is_admin": "false"})
         reg_user = request.form.get("user-reg")
         session["user"] = request.form.get("user-reg")
-        flash(f"Registration succesful, welcome {reg_user}")
+        flash(f"""Registration succesful, welcome {reg_user}. A welcome mail has been sent,
+        please check your junk mail box if you haven't recived it""")
         send_welcome(reg_user, request.form.get("email-reg"))
     return redirect(url_for("index"))
 
@@ -303,7 +332,7 @@ def rate_movie(title):
 
     if request.method == "POST" and session["user"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
-        has_rating = get_movie.get("ratings")
+        has_rating = get_movie.get("rating")
         check_rating_exists = get_movie.get("rated_by_users")
         if check_rating_exists:
             for user in check_rating_exists:
@@ -489,30 +518,3 @@ def no_such_page(error):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(
         os.environ.get("PORT")), debug=True)
-
-
-def send_welcome(user, email):
-
-    """
-    Sends a welcome mail to newly registered users.
-    Takes two arguments, user and email.
-    """
-
-    msg = Message(f"Welcome {user}",
-                  sender="my-flask-manager@outlook.com", recipients=[email])
-    msg.body = "Welcome to Movie Ratings And Reviews"
-    mail.send(msg)
-
-
-# Answer by user MSeifert was used to generate a random string
-# https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
-def generate_random_string(length):
-
-    """
-    Generates a random string.
-    Takes 1 argument, length.
-    """
-
-    reset_link = "".join([choice(string.ascii_uppercase + string.digits)
-                         for i in range(length)])
-    return reset_link
