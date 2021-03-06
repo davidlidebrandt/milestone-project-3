@@ -34,13 +34,13 @@
 
 ## Database
 
-The database chosen for the project is MongoDB which is a NoSQL database. The two main enteties stored in the
-datbase are users and movies. The user entety stores the username, password, email and an admin
+The database chosen for the project is MongoDB which is a NoSQL database. The two main entities stored in the
+database are users and movies. The user entity stores the username, password, email and an admin
 check for different users. All of the fields are stored in simple key value pairs.
-The movies entety stores data in both simple key value pairs and in a nested structure.
+The movies entity stores data in both simple key value pairs and in a nested structure.
 The simple key value pairs that are stored are title, director, rating, year and image URL
 Reviews are stored in an array as a nested object with the key value pairs of author and description.
-Cast is stored as an array of names and the has rated entety stores values of user names that has already 
+Cast is stored as an array of names and the has rated entity stores values of user names that has already 
 rated a particular movie in an array.
 
 
@@ -49,15 +49,15 @@ rated a particular movie in an array.
 ### Overall purpose
 
 The goal of the project is to create a fullstack website for accessing ratings and reviews for movies.
-Any user should have the abbiltiy to see reviews and raitings for the avalible movies. Users should be able
-to list all avalible movies in a sorted way as well as searching for particular ones. To add their own reviews
+Any user should have the ability to see reviews and ratings for the available movies. Users should be able
+to list all available movies in a sorted way as well as searching for particular ones. To add their own reviews
 and ratings a user will be able to register and log in to an account. All users will have the option to delete 
-and edit old reviews they have made. Any administrative user will have the abbiltiy to add new movies to the database
+and edit old reviews they have made. Any administrative user will have the ability to add new movies to the database
 as well as editing and deleting old movies and deleting reviews made by other users.
 
 ### Goal of the developer
 
-The goal of the developer is to showcase proficancy in creating a fullstack website. The project will inclued
+The goal of the developer is to showcase proficiency in creating a fullstack website. The project will included
 writing HTML, CSS and JavaScript code for the frontend as well as writing Python code and
 working with the MongoDB database and Flask framework on the backend. The file structure of the project has been
 kept simple because of time restrictions, even though it is not the best practice. A better way would have been to use Flask Blueprints and
@@ -112,7 +112,7 @@ alterations but the main structure and design follows the wireframes and mockups
 
 ### Existing Features
 
-* A navigation bar at the top where users can navigate the site, looks the same accross the pages.
+* A navigation bar at the top where users can navigate the site, looks the same across the pages.
 
 * A footer with social media links which sits at the bottom of the screen and looks the same across the pages.
 (Do not link to an actual account since the purpose of the site is educational)
@@ -121,14 +121,14 @@ alterations but the main structure and design follows the wireframes and mockups
 
 * Three carousels which displays movies based on date added, release year and ratings.
 
-* A register form where new users can register an account. When a user registers succesfully they will 
-recive a welcome email.
+* A register form where new users can register an account. When a user registers successfully they will 
+receive a welcome email.
 
 * A log in form where users can log in to an existing account.
 
 #### Findmovies page
 
-* A list of links to all the movies in the database that displays their title, release year and raiting.
+* A list of links to all the movies in the database that displays their title, release year and rating.
 
 * Pagination which limits the above movie list to only display ten movies at a time.
 
@@ -140,7 +140,7 @@ recive a welcome email.
 
 #### Moviepage
 
-* A page for each movie wich displays descriptions of the movie, ratings and reviews.
+* A page for each movie which displays descriptions of the movie, ratings and reviews.
 
 * A slider where logged in users can add their own rating.
 
@@ -148,7 +148,7 @@ recive a welcome email.
 
 * An accordion with all the current reviews for that movie.
 
-* Abiilty to edit and delete reviews made by the user themselves.
+* Ability to edit and delete reviews made by the user themselves.
 
 #### Administrative features
 
@@ -159,7 +159,7 @@ edit movies.
 
 ### Future Features
 
-* Abiilty to reset a lost password for already registered users by sending a reset password link.
+* Ability to reset a lost password for already registered users by sending a reset password link.
 
 * Embedding trailers/video clips of the movies from services as YouTube.
 
@@ -241,7 +241,7 @@ For downloading the Calibre font.
 
 * The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
 the Jinja2 templating language. Since Flask is creating HTML files by using templates and injecting variables
-from the backend the validator gives errors that are not acually present at runtime.
+from the backend the validator gives errors that are not actually present at runtime.
 
 * The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
 unused variables, these can be ignored since these functions are used and called when submitting forms.
@@ -252,19 +252,19 @@ the Python code throughout the project.
 * The responsiveness was tested by simulating a vide variety of devices such as phones, tablets and desktops using
 the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test.
 
-* The site was tested on three different browsers: Google Chrome, Mozilla Fireforx and Microsoft Edge.
+* The site was tested on three different browsers: Google Chrome, Mozilla Firefox and Microsoft Edge.
 
-All of the testing of the functions where made manually, throughout the development process print statments for
+All of the testing of the functions where made manually, throughout the development process print statements for
 the Python code and console log statements for the JavaScript code was added to make sure everything was 
 working as intended. The project was also posted on Code Institutes Slack workspace for peer reviewing by other
-students, as well as being shared with firends and family for input.
+students, as well as being shared with friends and family for input.
 
 
 ### Manual tests of functions and features
 
 #### Navigation bar
 
-* Clicking the links for Home, Findmovies, Add movies and brand logo link.
+* Clicking the links for Home, Find movies, Add movies and brand logo link.
 
 **Expected:** all links should load the intended page.  
 
@@ -273,7 +273,7 @@ students, as well as being shared with firends and family for input.
 
 * Clicking the Log in and Register links.
 
-**Expected:** both links skould open their respective modal for logging in and registering.  
+**Expected:** both links should open their respective modal for logging in and registering.  
 
 **Result:** both links open their respective modal.
 ***
@@ -284,7 +284,7 @@ students, as well as being shared with firends and family for input.
 by removing the session cookie "user" and "admin" incase the user is and admin.
 
 **Results:** The index page loads, an alert message saying the user has been logged out displays, all links
-to logged in functions dissapears and the session cookie "user" dissapears as well as the "admin" session cookie
+to logged in functions disappear and the session cookie "user" disappears as well as the "admin" session cookie
 incase the user was an admin.
 ***
 
@@ -295,27 +295,27 @@ entered the index page should load and a welcome message would be displayed. If 
 is entered the index page should be loaded with and error message being displayed.  
 
 **Result:** form is only submittable when all fields are filled in, if a correct password and username is provided
-the index page loads and an welcome message diplays. If an incorrect password or username is entered the index page
-loads and an errror message is displayed.
+the index page loads and an welcome message displays. If an incorrect password or username is entered the index page
+loads and an error message is displayed.
 ***
 
 * Filling out and submitting Register form.
 
 **Expected:** The form should only be submittable if all the fields are filled in as well as containing values
 which matched the specified patterns. If a username is taken the index page should load and an error message should
-be displayed. If the registration is succesfull the index page should load and a welcome message should be displayed,
+be displayed. If the registration is successful the index page should load and a welcome message should be displayed,
 a welcome mail should also be sent to the users email address.
 
 **Result:**: The form is only submittable when all of the fields are entered, it also requires that the format 
 of the input matches the pattern specified. When trying to register an account with a already taken username the
-index page loads and an error message is displayed. When a registration is succesfull the index page loads and
-a welcome message is displayed. A welcome mail is also recived to the submitted email address but sometimes 
+index page loads and an error message is displayed. When a registration is successful the index page loads and
+a welcome message is displayed. A welcome mail is also received to the submitted email address but sometimes 
 appears in the junk mail folder.
 ***
 
 * Clicking the redirect links from the Log in and Register modals
 
-**Expected:** The links skould open the opposite modal as well as closing the current one.
+**Expected:** The links should open the opposite modal as well as closing the current one.
 
 **Results:** Both links open the opposite modal and closes the current one.
 ***
@@ -329,14 +329,14 @@ appears in the junk mail folder.
 
 * Clicking the Add Movie button/link as an admin.
 
-**Expected:** The addmovie page should load and a form to fill out fields describing the movie should display.
-The form should not be submittable if not all fields are filled in. The filled in fields shoukd require
+**Expected:** The add movie page should load and a form to fill out fields describing the movie should display.
+The form should not be submittable if not all fields are filled in. The filled in fields should require
 the input tp follow the specified pattern. Upon submitting the form the index page should load, the movie
 should be added to the database and a message stating that the movie was added should be displayed. In case the 
 title already exists in the database the index page should load and a message saying that the movie already exists 
-should diplay.
+should display.
 
-**Results:** When an admin presses the Add Movie button the addmovie page loads and form for adding a movie displays.
+**Results:** When an admin presses the Add Movie button the add movie page loads and form for adding a movie displays.
 The form is only submittable when all fields are filled in. The input is required to follow the specified patterns
 before submitted. Upon submitting the form the index page loads, the movie is added to the database and a message
 stating that the movie was added displays. In case the 
@@ -348,16 +348,16 @@ displays and nothing is added to the database.
 
 * Clicking any of the social media links
 
-**Expected:** All links skould open the index page of their respective brands website in a new tab.
+**Expected:** All links should open the index page of their respective brands website in a new tab.
 
 **Results:** All links open their respective brands websites index page in a new tab.
 ***
 
 #### Index page
 
-* Clicking the Log in and Reggister buttons on the main card.
+* Clicking the Log in and Register buttons on the main card.
 
-**Expected:** Links skould open their respective Log in and Register modal.
+**Expected:** Links should open their respective Log in and Register modal.
 
 **Result**: Both links open their intended modal.
 ***
@@ -376,9 +376,9 @@ a text stating "No search results found" appear.
 
 * Using the dropdown to sort the movie list.
 
-**Expected:** Sorting the list by date added should diplay the last add movies in a descending order by
+**Expected:** Sorting the list by date added should display the last add movies in a descending order by
 date added. Sorting it by ratings and release year should also sort the list in a descending order by
-rating and release year respectivley.
+rating and release year respectively.
 
 **Results:** The list sorts correctly by the right parameters and in a descending order.
 ***
@@ -409,7 +409,7 @@ button the next ten movies and so on.
 
 * Submitting a rating as a logged in user.
 
-**Expected:** When a user rates and submits their raiting the current movie page should reload and a 
+**Expected:** When a user rates and submits their rating the current movie page should reload and a 
 message should be displayed. If the user has rated the movie before the rating should not be added and the message
 should read "You have already rated this movie". If the user have not rated the movie before the rating should be
 added and the message should read "Your rating was added".
@@ -437,21 +437,21 @@ to the database and the text displays "Your review was added". If a user previou
 the modal should close, if the user confirms the deletion by pressing delete again the page should reload and
 the review should be deleted.
 
-**Results:** When a logged in user presses the delete review button on a review they have made or alternativly
+**Results:** When a logged in user presses the delete review button on a review they have made or alternatively
 if the user is an admin and presses delete on any review a deletion confirmation modal displays.
-If the user pressses cancel the modal closes, if the user presses delete again the review is deleted and the page
+If the user presses cancel the modal closes, if the user presses delete again the review is deleted and the page
 reloads.
 ***
 
 * Pressing the edit review button 
 
-**Expected:** When a user presses the edit button on a review they have made the editreview page should load
+**Expected:** When a user presses the edit button on a review they have made the edit review page should load
 and the review should be displayed in a form which the user can edit and submit. If the user presses cancel the
 page for the current movie page should load and no changes to the review be made. If a user edits and submits the
 review the review should be updated in the database, the movie page should reload and a message should be displayed
 saying that the review was edited.
 
-**Results:** When the edit button button is pressed the editreview page is loaded. If the cancel button is pressed
+**Results:** When the edit button button is pressed the edit review page is loaded. If the cancel button is pressed
 the movie page loads and no changes are made. If the form is edited and submitted the review is updated in the 
 database, the movie page loads and a message stating that the review was edited displays.
 ***
@@ -470,14 +470,14 @@ from the database, the index page loads and a message stating that the movie was
 
 * Pressing the edit movie button as an admin.
 
-*Expected:* The edit movie should be loaded and a form with the prefilled current values for all fields should be
+*Expected:* The edit movie should be loaded and a form with the pre filled current values for all fields should be
 displayed. The user should be able to change the values in the form, the form should not be submittable if not
 all fields are filled in and conforming to the pattern specified for the different fields. If the cancel button is pressed
-all changes should be disgarded and the movie page should load. If the form is submitted the movie should be updated
-in the database, the movie page should load and a message staing that the movie was updated displayed.
+all changes should be discarded and the movie page should load. If the form is submitted the movie should be updated
+in the database, the movie page should load and a message stating that the movie was updated displayed.
 
-*Results:* When the edit movie button is pressed the editmovie page loads. A form with the prefilled current values
-for each field is diplayed. The form values can be changed and the form is not submittable if all of the fields 
+*Results:* When the edit movie button is pressed the edit movie page loads. A form with the pre filled current values
+for each field is displayed. The form values can be changed and the form is not submittable if all of the fields 
 are not filled in and following the specified patterns. If the cancel button is pressed the movie page loads and
 no changes are saved. If the form is submitted the movie page loads, the movie is updated in the database and 
 a message stating that the movie was updated displays.
@@ -499,7 +499,7 @@ rating to any movie of choice.
 When logged in a user can locate a particular movies page and from there edit and delete any previous review made.
 
 * *As a user I want to option to search for movies as well as being able to scroll through a selection of movies:*    
-By navigating to the Findmovies page from the navigation bar a user can display a list of all avalible movies
+By navigating to the Find movies page from the navigation bar a user can display a list of all available movies
 and even sort the list by date added, ratings or release year. A user also have the option to search for particular
 movies by using the search bar.
 
@@ -509,16 +509,16 @@ a short confirmation message.
 
 * *As a user I want navigation to be clear and consistent across the website:*    
 The navigation bar sits at a fixed position on the top of the screen for easy access and looks the same 
-across the pages to provide consistens and familiatary for the user.
+across the pages to provide consistency and familiarity for the user.
 
 * *As a user I want the top rated movies to be displayed when visiting the website:*  
-On the index page a carousel diplays the five top rated movies, there are also two carousels displaying
-the most recently added movies and the movies with the newest release date respectivly.
+On the index page a carousel displays the five top rated movies, there are also two carousels displaying
+the most recently added movies and the movies with the newest release date respectively.
 
 #### Administrative user
 
 * *As an administrator I want to be able to add new movies to the database:*  
-A user with administrative abbilties is able to new movies by navigating to the Add movie page from the
+A user with administrative abilities is able to new movies by navigating to the Add movie page from the
 navigation bar. By filling out a form with correct values and submitting it the movie is added 
 unless it already exists in the database.
 
@@ -579,12 +579,14 @@ the URL and Git Bash.
 
 ### Content
 
-All of the content where created by the developer.
+All of the content were created by the developer.
 
 ### Media
 
-Main image on index page by user geralt:
+Main image on index page by user "geralt":
 https://pixabay.com/sv/illustrations/filmen-biograf-video-kamera-1328405/
+
+All of the poster images came from [Amazon](https://www.amazon.com/) via [IMDB](https://www.imdb.com/).
 
 ### Acknowledgments
 
