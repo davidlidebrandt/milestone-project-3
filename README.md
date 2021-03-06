@@ -265,11 +265,13 @@ the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test.
 
 **Result:** every link loads their intended page.
 
+
 * Clicking the Log in and Register links.
 
 **Expected:** both links skould open their respective modal for logging in and registering.  
 
 **Result:** both links open their respective modal.
+
 
 * Clicking the Log out link
 
@@ -280,6 +282,7 @@ by removing the session cookie "user" and "admin" incase the user is and admin.
 to logged in functions dissapears and the session cookie "user" dissapears as well as the "admin" session cookie
 incase the user was an admin.
 
+
 * Filling out and submitting Log in form.
 
 **Expected:** the form should only be submittable with all fields being filled in. If a correct password and username is
@@ -289,6 +292,7 @@ is entered the index page should be loaded with and error message being displaye
 **Result:** form is only submittable when all fields are filled in, if a correct password and username is provided
 the index page loads and an welcome message diplays. If an incorrect password or username is entered the index page
 loads and an errror message is displayed.
+
 
 * Filling out and submitting Register form.
 
@@ -303,17 +307,20 @@ index page loads and an error message is displayed. When a registration is succe
 a welcome message is displayed. A welcome mail is also recived to the submitted email address but sometimes 
 appears in the junk mail folder.
 
+
 * Clicking the redirect links from the Log in and Register modals
 
 **Expected:** The links skould open the opposite modal as well as closing the current one.
 
 **Results:** Both links open the opposite modal and closes the current one.
 
+
 * Clicking the close button from the Log in and Register modals.
 
 **Expected** Clicking the button should close the current modal.
 
 **Results:** The current modal closes.
+
 
 * Clicking the Add Movie button/link as an admin.
 
@@ -331,6 +338,7 @@ stating that the movie was added displays. In case the
 title already exists in the database the index page loads and a message saying that the movie already exists 
 displays and nothing is added to the database.
 
+
 #### Footer 
 
 * Clicking any of the social media links
@@ -339,6 +347,7 @@ displays and nothing is added to the database.
 
 **Results:** All links open their respective brands websites index page in a new tab.
 
+
 #### Index page
 
 * Clicking the Log in and Reggister buttons on the main card.
@@ -346,6 +355,7 @@ displays and nothing is added to the database.
 **Expected:** Links skould open their respective Log in and Register modal.
 
 **Result**: Both links open their intended modal.
+
 
 #### Find Movies page
 
@@ -358,6 +368,7 @@ should appear.
 **Results:** When finding a match the site displays the results in a list. When no results are found
 a text stating "No search results found" appear.
 
+
 * Using the dropdown to sort the movie list.
 
 **Expected:** Sorting the list by date added should diplay the last add movies in a descending order by
@@ -366,11 +377,13 @@ rating and release year respectivley.
 
 **Results:** The list sorts correctly by the right parameters and in a descending order.
 
+
 * Clicking the Back to all movies link
 
 **Expected:** Clicking the link should reload the Find Movies page and display all movies in a list.
 
 **Results:** Page reloads and all movies are displayed.
+
 
 * Clicking a link to a movie.
 
@@ -378,12 +391,14 @@ rating and release year respectivley.
 
 **Results:** The correct movie page loads.
 
+
 * Navigating the pagination buttons.
 
 **Expected:** The number one button should display the first ten movies in the database, the second
 button the next ten movies and so on.
 
 **Results:** The buttons navigate to the right pages and displays the corresponding movies.
+
 
 #### Movie page
 
@@ -398,6 +413,7 @@ added and the message should read "Your rating was added".
 to the database and the text displays "Your rating was added". If a user previously has rated the movie the text displays
 "You have already rated this movie" and the rating is not added to the database.
 
+
 * Submitting a review as a logged in user.
 
 **Expected:** When a user rates and submits their review the current movie page should reload and a 
@@ -409,6 +425,7 @@ added and the message should read "Your review was added".
 to the database and the text displays "Your review was added". If a user previously has reviewed the movie the text displays
 "You have already made a review for this movie" and the review is not added to the database.
 
+
 * Pressing the delete button on a review made by the current user or by an admin.
 
 **Expected:** A confirmation modal should display where the user can confirm the deletion. If the cancel button is pressed
@@ -419,6 +436,7 @@ the review should be deleted.
 if the user is an admin and presses delete on any review a deletion confirmation modal displays.
 If the user pressses cancel the modal closes, if the user presses delete again the review is deleted and the page
 reloads.
+
 
 * Pressing the edit review button 
 
@@ -432,6 +450,7 @@ saying that the review was edited.
 the movie page loads and no changes are made. If the form is edited and submitted the review is updated in the 
 database, the movie page loads and a message stating that the review was edited displays.
 
+
 * Pressing the delete movie button as an admin
 
 **Expected:* A confirmation modal should display, if the user presses cancel the modal should close and no actions
@@ -442,6 +461,7 @@ was deleted.
 *Results:*: When the delete button is presses a confirmation modal displays. If the cancel button is pressed the
 modal closes and no further actions are taken. If the delete button of the modal is pressed the movie is deleted
 from the database, the index page loads and a message stating that the movie was deleted displays.
+
 
 * Pressing the edit movie button as an admin.
 
@@ -456,8 +476,6 @@ for each field is diplayed. The form values can be changed and the form is not s
 are not filled in and following the specified patterns. If the cancel button is pressed the movie page loads and
 no changes are saved. If the form is submitted the movie page loads, the movie is updated in the database and 
 a message stating that the movie was updated displays.
-
-
 
 
 ### Answering User Stories
@@ -515,6 +533,21 @@ operation.
 
 ### Publishing the project
 
+The project was deployed on https://dashboard.heroku.com/, the following steps were taken:
+
+1. Created a requirements.txt file by typing: "pip3 freeze --local > requirements.txt" in the terminal.
+2. Created a procfile by typing echo web: "python app.py > Procfile" in the terminal.
+3. Logged in to Heroku.
+4. Pressed the button "new" and then "create new app".
+5. Chose an app name and a region and pressed create app.
+6. Went to deployment section.
+7. Under deployment method pressed Github.
+8. Chose the right repository in the list, pressed search and then connect.
+9. Pressed enable automatic deploys under automatic deploys.
+10. Went to settings.
+11. Added all the config vars needed for the project.
+12. Pressed open app.
+
 
 ### Forking the project
 1. Go to and log in to https://github.com/.
@@ -526,6 +559,7 @@ operation.
 7. Press the button new pull request.
 8. Choose the branches you wish to merge.
 9. Press the Create pull request button.
+
 
 ### Cloning the project
 There are several ways of cloning the project, here I am going to describe how to do it using
