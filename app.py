@@ -470,8 +470,8 @@ def update_review(title, user):
     return "Review updated"
 
 
-@app.route("/editmovie/<title>", methods=["GET", "POST"])
-def edit_movie(title):
+@app.route("/editmovie/<title>/<id>", methods=["GET", "POST"])
+def edit_movie(title, id):
 
     """
     Triggers when the edit movie button is pressed by an admin.
@@ -479,18 +479,8 @@ def edit_movie(title):
     Updates the movie fields upon submitting the form.
     """
 
-    if request.method == "POST" and session["admin"]:
-        cast_list = list(request.form.get("cast").split(","))
-        mongo_con.db.movies.update_one(
-                {"title": title}, {"$set": {"title": request.form.get(
-                    "title"), "directors": request.form.get(
-                    "directors"), "year": request.form.get(
-                    "year"), "cast": cast_list, "img_url":
-                    request.form.get("img_url")}})
-        flash("Movie Edited")
-        return redirect(url_for("movie_page", title=title))
     if session["admin"]:
-        get_movie = mongo_con.db.movies.find_one({"title": title})
+        get_movie = mongo_con.db.movies.find_one({"_id": ObjectId(id)})
         temp = get_movie.get("cast")
         cast_string = ""
         if temp:
@@ -499,9 +489,23 @@ def edit_movie(title):
                 cast_string += ","
         cast_string = cast_string[0:-1]
         return render_template(
-            "editmovie.html", get_movie=get_movie, get_cast=cast_string)
+            "editmovie.html", get_movie=get_movie, get_cast=cast_string, id=id)
     else:
         return redirect(url_for("index"))
+
+
+@app.route("/updatemovie/<id>", methods=["PUT"])
+def update_movie(id):
+    if session["admin"]:
+        cast_list = list(request.get_json()["cast"].split(","))
+        mongo_con.db.movies.update_one(
+            {"_id": ObjectId(id)}, {"$set": {"title": request.get_json(
+            )["title"], "directors": request.get_json(
+            )["directors"], "year": request.get_json(
+            )["year"], "cast": cast_list, "img_url": request.get_json(
+            )["img_url"]}})
+        flash("Movie was edited")
+        return "Movie was edited"
 
 
 @app.errorhandler(404)

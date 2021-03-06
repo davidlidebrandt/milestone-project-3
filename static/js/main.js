@@ -99,11 +99,10 @@ function checkEmptyRating() {
          });
     }
 
-    $("#update-review").submit(function(e) {
+    $("#update-review").submit(function(event) {
         /* Prevent the default action when submitting the form
         and instead let the AJAX call redirect after response*/
-    e.preventDefault();
-});
+    event.preventDefault(); });
    
     function updateReview(form) {
         $.ajax({
@@ -115,6 +114,27 @@ function checkEmptyRating() {
         })
         .done(function() {
             window.location = `/moviepage/${$("#title").text()}`;
+         });
+    }
+
+
+    $("#update-movie").submit(function(event) {
+        /* Prevent the default action when submitting the form
+        and instead let the AJAX call redirect after response*/
+    event.preventDefault(); });
+
+
+    function updateMovie(form) {
+        $.ajax({
+            method: "PUT",
+            url: `/updatemovie/${form.id.value}`,
+            data: JSON.stringify({title: form.title.value, year: form.year.value, directors: form.directors.value
+            , cast: form.cast.value, img_url: form.img_url.value}),
+            contentType:"application/json; charset=utf-8",
+            xhrFields: {withCredentials: true}
+        })
+        .done(function() {
+            window.location = "/index";
          });
     }
 
