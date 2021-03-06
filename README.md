@@ -254,6 +254,11 @@ the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test.
 
 * The site was tested on three different browsers: Google Chrome, Mozilla Fireforx and Microsoft Edge.
 
+All of the testing of the functions where made manually, throughout the development process print statments for
+the Python code and console log statements for the JavaScript code was added to make sure everything was 
+working as intended. The project was also posted on Code Institutes Slack workspace for peer reviewing by other
+students, as well as being shared with firends and family for input.
+
 
 ### Manual tests of functions and features
 
@@ -264,14 +269,14 @@ the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test.
 **Expected:** all links should load the intended page.  
 
 **Result:** every link loads their intended page.
-
+***
 
 * Clicking the Log in and Register links.
 
 **Expected:** both links skould open their respective modal for logging in and registering.  
 
 **Result:** both links open their respective modal.
-
+***
 
 * Clicking the Log out link
 
@@ -281,7 +286,7 @@ by removing the session cookie "user" and "admin" incase the user is and admin.
 **Results:** The index page loads, an alert message saying the user has been logged out displays, all links
 to logged in functions dissapears and the session cookie "user" dissapears as well as the "admin" session cookie
 incase the user was an admin.
-
+***
 
 * Filling out and submitting Log in form.
 
@@ -292,7 +297,7 @@ is entered the index page should be loaded with and error message being displaye
 **Result:** form is only submittable when all fields are filled in, if a correct password and username is provided
 the index page loads and an welcome message diplays. If an incorrect password or username is entered the index page
 loads and an errror message is displayed.
-
+***
 
 * Filling out and submitting Register form.
 
@@ -306,21 +311,21 @@ of the input matches the pattern specified. When trying to register an account w
 index page loads and an error message is displayed. When a registration is succesfull the index page loads and
 a welcome message is displayed. A welcome mail is also recived to the submitted email address but sometimes 
 appears in the junk mail folder.
-
+***
 
 * Clicking the redirect links from the Log in and Register modals
 
 **Expected:** The links skould open the opposite modal as well as closing the current one.
 
 **Results:** Both links open the opposite modal and closes the current one.
-
+***
 
 * Clicking the close button from the Log in and Register modals.
 
 **Expected** Clicking the button should close the current modal.
 
 **Results:** The current modal closes.
-
+***
 
 * Clicking the Add Movie button/link as an admin.
 
@@ -337,7 +342,7 @@ before submitted. Upon submitting the form the index page loads, the movie is ad
 stating that the movie was added displays. In case the 
 title already exists in the database the index page loads and a message saying that the movie already exists 
 displays and nothing is added to the database.
-
+***
 
 #### Footer 
 
@@ -346,7 +351,7 @@ displays and nothing is added to the database.
 **Expected:** All links skould open the index page of their respective brands website in a new tab.
 
 **Results:** All links open their respective brands websites index page in a new tab.
-
+***
 
 #### Index page
 
@@ -355,7 +360,7 @@ displays and nothing is added to the database.
 **Expected:** Links skould open their respective Log in and Register modal.
 
 **Result**: Both links open their intended modal.
-
+***
 
 #### Find Movies page
 
@@ -367,7 +372,7 @@ should appear.
 
 **Results:** When finding a match the site displays the results in a list. When no results are found
 a text stating "No search results found" appear.
-
+***
 
 * Using the dropdown to sort the movie list.
 
@@ -376,21 +381,21 @@ date added. Sorting it by ratings and release year should also sort the list in 
 rating and release year respectivley.
 
 **Results:** The list sorts correctly by the right parameters and in a descending order.
-
+***
 
 * Clicking the Back to all movies link
 
 **Expected:** Clicking the link should reload the Find Movies page and display all movies in a list.
 
 **Results:** Page reloads and all movies are displayed.
-
+***
 
 * Clicking a link to a movie.
 
 **Expected:** Clicking the link should load that particular movies page.
 
 **Results:** The correct movie page loads.
-
+***
 
 * Navigating the pagination buttons.
 
@@ -398,7 +403,7 @@ rating and release year respectivley.
 button the next ten movies and so on.
 
 **Results:** The buttons navigate to the right pages and displays the corresponding movies.
-
+***
 
 #### Movie page
 
@@ -412,7 +417,7 @@ added and the message should read "Your rating was added".
 **Results:** Upon submitting the rating the page reloads, if the user have not made a rating yet the rating is added
 to the database and the text displays "Your rating was added". If a user previously has rated the movie the text displays
 "You have already rated this movie" and the rating is not added to the database.
-
+***
 
 * Submitting a review as a logged in user.
 
@@ -424,7 +429,7 @@ added and the message should read "Your review was added".
 **Results:** Upon submitting the review the page reloads, if the user have not made a review yet the it is added
 to the database and the text displays "Your review was added". If a user previously has reviewed the movie the text displays
 "You have already made a review for this movie" and the review is not added to the database.
-
+***
 
 * Pressing the delete button on a review made by the current user or by an admin.
 
@@ -436,7 +441,7 @@ the review should be deleted.
 if the user is an admin and presses delete on any review a deletion confirmation modal displays.
 If the user pressses cancel the modal closes, if the user presses delete again the review is deleted and the page
 reloads.
-
+***
 
 * Pressing the edit review button 
 
@@ -449,7 +454,7 @@ saying that the review was edited.
 **Results:** When the edit button button is pressed the editreview page is loaded. If the cancel button is pressed
 the movie page loads and no changes are made. If the form is edited and submitted the review is updated in the 
 database, the movie page loads and a message stating that the review was edited displays.
-
+***
 
 * Pressing the delete movie button as an admin
 
@@ -461,7 +466,7 @@ was deleted.
 *Results:*: When the delete button is presses a confirmation modal displays. If the cancel button is pressed the
 modal closes and no further actions are taken. If the delete button of the modal is pressed the movie is deleted
 from the database, the index page loads and a message stating that the movie was deleted displays.
-
+***
 
 * Pressing the edit movie button as an admin.
 
@@ -476,54 +481,54 @@ for each field is diplayed. The form values can be changed and the form is not s
 are not filled in and following the specified patterns. If the cancel button is pressed the movie page loads and
 no changes are saved. If the form is submitted the movie page loads, the movie is updated in the database and 
 a message stating that the movie was updated displays.
-
+***
 
 ### Answering User Stories
 
 #### Regular user
 
-* As a user I want access to others reviews and rating of relevant movies:  
+* *As a user I want access to others reviews and rating of relevant movies:*  
 All reviews and ratings can be easily found by scrolling through or searching for movies
 and accessing their particular page.
 
-* As a user I want to be able to write my own reviews and add my own ratings:  
+* *As a user I want to be able to write my own reviews and add my own ratings:*  
 My enabling a user to register and log in to an account a user can write their own reviews and add their own
 rating to any movie of choice.
 
-* As a user I want to be able to edit and delete my own reviews:  
+* *As a user I want to be able to edit and delete my own reviews:*    
 When logged in a user can locate a particular movies page and from there edit and delete any previous review made.
 
-* As a user I want to option to search for movies as well as being able to scroll through a selection of movies:  
+* *As a user I want to option to search for movies as well as being able to scroll through a selection of movies:*    
 By navigating to the Findmovies page from the navigation bar a user can display a list of all avalible movies
 and even sort the list by date added, ratings or release year. A user also have the option to search for particular
 movies by using the search bar.
 
-* As a user I want a clear response to my actions such as adding, deleting and editing my reviews:  
+* *As a user I want a clear response to my actions such as adding, deleting and editing my reviews:*    
 All actions such as adding, deleting, editing, logging in, registering and logging out are followed by
 a short confirmation message.
 
-* As a user I want navigation to be clear and consistent across the website:  
+* *As a user I want navigation to be clear and consistent across the website:*    
 The navigation bar sits at a fixed position on the top of the screen for easy access and looks the same 
 across the pages to provide consistens and familiatary for the user.
 
-* As a user I want the top rated movies to be displayed when visiting the website:  
+* *As a user I want the top rated movies to be displayed when visiting the website:*  
 On the index page a carousel diplays the five top rated movies, there are also two carousels displaying
 the most recently added movies and the movies with the newest release date respectivly.
 
 #### Administrative user
 
-* As an administrator I want to be able to add new movies to the database:  
+* *As an administrator I want to be able to add new movies to the database:*  
 A user with administrative abbilties is able to new movies by navigating to the Add movie page from the
 navigation bar. By filling out a form with correct values and submitting it the movie is added 
 unless it already exists in the database.
 
-* As an administrator I want to be able to edit already added movies:  
+* *As an administrator I want to be able to edit already added movies:*   
 An admin can navigate to a particular movies page, press the edit button below the description of the movie
 and be redirected to a page where the movie can be edited. The current values for the different fields are 
 pre filled in the form and any alterations that fit the required form format can be made and the form can be
 submitted and the information for the movie is updated.
 
-* As an administrator I want to be able to delete reviews made by other users:  
+* *As an administrator I want to be able to delete reviews made by other users:*    
 When opening up a review made by another user an admin user sees a delete button/link which can be
 pressed. A confirmation modal is opened an the review can be deleted or the admin can chose to cancel the
 operation.
