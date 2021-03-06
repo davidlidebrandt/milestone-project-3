@@ -57,7 +57,7 @@ $(document).ready(function () {
 
 
 function checkEmptyRating() {
-    /* Checks if div contains raiting span and adds text if no raiting exists */
+    /* Checks if div contains raiting span and adds text if no rating exists */
     const check = document.getElementsByClassName("rating-wrap");
     for  (let i = 0; i < check.length; i++) {
 	 if (check[i].children.length < 2) {
