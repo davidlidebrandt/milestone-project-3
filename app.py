@@ -415,8 +415,7 @@ def add_movie():
         this_date = datetime.datetime.now()
         this_year = this_date.year
         return render_template("addmovie.html", this_year=this_year)
-    else:
-        return redirect(url_for("index"))
+    return redirect(url_for("index"))
 
 
 @app.route("/deletereview/<title>/<user>", methods=["DELETE"])
