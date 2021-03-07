@@ -24,24 +24,14 @@
 
 # Table Of Contents
 
-* [Database](#datbase)
+
 * [UX](#ux)
 * [Features](#features)
+* [Database](#database)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
 * [Deployment](#deployment)
 * [Credits](#credits)
-
-## Database
-
-The database chosen for the project is MongoDB which is a NoSQL database. The two main entities stored in the
-database are users and movies. The user entity stores the username, password, email and an admin
-check for different users. All of the fields are stored in simple key value pairs.
-The movies entity stores data in both simple key value pairs and in a nested structure.
-The simple key value pairs that are stored are title, director, rating, year and image URL
-Reviews are stored in an array as a nested object with the key value pairs of author and description.
-Cast is stored as an array of names and the has rated entity stores values of user names that has already 
-rated a particular movie in an array.
 
 
 ## UX
@@ -106,6 +96,18 @@ alterations but the main structure and design follows the wireframes and mockups
 * [Mockup Mobile](static/images/wireframes-mockups/mockup-mobile.png)
 * [Mockup Tablet](static/images/wireframes-mockups/mockup-tablet.png)
 * [Mockup Desktop](static/images/wireframes-mockups/mockup-desktop.png)
+
+
+## Database
+
+The database chosen for the project is MongoDB which is a NoSQL database. The two main entities stored in the
+database are users and movies. The user entity stores the username, password, email and an admin
+check for different users. All of the fields are stored in simple key value pairs.
+The movies entity stores data in both simple key value pairs and in a nested structure.
+The simple key value pairs that are stored are title, director, rating, year and image URL
+Reviews are stored in an array as a nested object with the key value pairs of author and description.
+Cast is stored as an array of names and the has rated entity stores values of user names that has already 
+rated a particular movie in an array.
    
 
 ## Features
@@ -492,7 +494,7 @@ All reviews and ratings can be easily found by scrolling through or searching fo
 and accessing their particular page.
 
 * *As a user I want to be able to write my own reviews and add my own ratings:*  
-My enabling a user to register and log in to an account a user can write their own reviews and add their own
+By enabling a user to register and log in to an account a user can write their own reviews and add their own
 rating to any movie of choice.
 
 * *As a user I want to be able to edit and delete my own reviews:*    
@@ -573,7 +575,7 @@ the URL and Git Bash.
 2. Click the Code button.
 3. Choose HTTPS and copy the link that is provided.
 4. Open Git Bash and navigate to the directory where you want to save the cloned project.
-5. Type git clone followed by the url you copied, git clone https://github.com/davidlidebrandt/milestone-project-2.git
+5. Type git clone followed by the url you copied, git clone https://github.com/davidlidebrandt/milestone-project-3.git
 
 ## Credits 
 
@@ -584,7 +586,7 @@ All of the information regarding the movies came from [IMDB](https://www.imdb.co
 ### Media
 
 Main image on index page by user "geralt":
-https://pixabay.com/sv/illustrations/filmen-biograf-video-kamera-1328405/
+https://pixabay.com/sv/illustrations/filmen-biograf-video-kamera-1328405/.
 
 All of the poster images came from [Amazon](https://www.amazon.com/) via [IMDB](https://www.imdb.com/). Since there 
 new movies will be added continuously adding attributions to each one is not possible.
