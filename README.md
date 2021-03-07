@@ -538,7 +538,7 @@ operation.
 
 ### Publishing the project
 
-The project was deployed on https://dashboard.heroku.com/, the following steps were taken:
+The project was deployed on [Heroku]https://dashboard.heroku.com/, the following steps were taken:
 
 1. Created a requirements.txt file by typing: "pip3 freeze --local > requirements.txt" in the terminal.
 2. Created a procfile by typing echo web: "python app.py > Procfile" in the terminal.
@@ -579,14 +579,15 @@ the URL and Git Bash.
 
 ### Content
 
-All of the content were created by the developer.
+All of the information regarding the movies came from [IMDB](https://www.imdb.com/).
 
 ### Media
 
 Main image on index page by user "geralt":
 https://pixabay.com/sv/illustrations/filmen-biograf-video-kamera-1328405/
 
-All of the poster images came from [Amazon](https://www.amazon.com/) via [IMDB](https://www.imdb.com/).
+All of the poster images came from [Amazon](https://www.amazon.com/) via [IMDB](https://www.imdb.com/). Since there 
+new movies will be added continuously adding attributions to each one is not possible.
 
 ### Acknowledgments
 

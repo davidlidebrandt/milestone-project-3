@@ -35,7 +35,6 @@ mongo_con = PyMongo(app)
 mail = Mail(app)
 
 
-
 def send_welcome(user, email):
 
     """
@@ -49,7 +48,7 @@ def send_welcome(user, email):
     mail.send(msg)
 
 
-# Answer by user MSeifert was used to generate a random string
+# Answer by user "MSeifert" was used to generate a random string
 # https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
 def generate_random_string(length):
 
@@ -105,8 +104,8 @@ def register():
                                 "email-reg"), "is_admin": "false"})
         reg_user = request.form.get("user-reg")
         session["user"] = request.form.get("user-reg")
-        flash(f"""Registration succesful, welcome {reg_user}. A welcome mail has been sent,
-        please check your junk mail box if you haven't recived it""")
+        flash(f"""Registration successful, welcome {reg_user}. A welcome mail has been sent,
+        please check your junk mail box if you haven't received it""")
         send_welcome(reg_user, request.form.get("email-reg"))
     return redirect(url_for("index"))
 
@@ -188,7 +187,7 @@ def find_movies(page=1):
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
 
-@app.route("/findmvoies/search", methods=["POST"])
+@app.route("/findmovies/search", methods=["POST"])
 def search_movies():
 
     """
@@ -196,15 +195,14 @@ def search_movies():
     Searches for a match in the database.
     """
 
-    if request.method == "POST":
-        sub_list = list(mongo_con.db.movies.find(
-            {"$text": {"$search": request.form.get("search")}}))
-        ratings = []
-        for movie in sub_list:
-            if movie.get("rating"):
-                ratings.append({"title": movie.get(
+    sub_list = list(mongo_con.db.movies.find(
+          {"$text": {"$search": request.form.get("search")}}))
+    ratings = []
+    for movie in sub_list:
+        if movie.get("rating"):
+            ratings.append({"title": movie.get(
                     "title"), "rating": movie.get("rating")})
-        return render_template(
+    return render_template(
             "findmovies.html", movies=sub_list,
             pages=None, ratings=ratings, post=True)
 
@@ -315,7 +313,7 @@ def movie_page(title):
 
 @app.route("/moviepage/delete_movie/<title>", methods=["DELETE"])
 def delete_movie(title):
-    if request.method == "DELETE" and session["admin"]:
+    if session["admin"]:
         mongo_con.db.movies.delete_one({"title": title})
         flash("Movie was deleted")
     return "Movie was deleted"
@@ -330,7 +328,7 @@ def rate_movie(title):
     the current movie before.
     """
 
-    if request.method == "POST" and session["user"]:
+    if session["user"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         has_rating = get_movie.get("rating")
         check_rating_exists = get_movie.get("rated_by_users")
@@ -368,7 +366,7 @@ def review_movie(title):
     have made a review for the current movie before.
     """
 
-    if request.method == "POST" and session["user"]:
+    if session["user"]:
         get_movie = mongo_con.db.movies.find_one({"title": title})
         has_review = get_movie.get("reviews")
         if has_review:
@@ -483,8 +481,8 @@ def edit_movie(title, id):
         temp = get_movie.get("cast")
         cast_string = ""
         if temp:
-            for memeber in temp:
-                cast_string += memeber
+            for member in temp:
+                cast_string += member
                 cast_string += ","
         cast_string = cast_string[0:-1]
         return render_template(
