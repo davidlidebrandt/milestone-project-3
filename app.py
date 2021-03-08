@@ -8,8 +8,6 @@ from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from secrets import choice
-import string
 if os.path.exists("env.py"):
     import env
 
@@ -48,18 +46,19 @@ def send_welcome(user, email):
     mail.send(msg)
 
 
-# Answer by user "MSeifert" was used to generate a random string
-# https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits/41464693#41464693
-def generate_random_string(length):
+def get_ratings(sub_list):
 
     """
-    Generates a random string.
-    Takes 1 argument, length.
+    Gets ratings for a subset of movies.
+    Takes one argument: sub_list.
     """
 
-    reset_link = "".join([choice(string.ascii_uppercase + string.digits)
-                         for i in range(length)])
-    return reset_link
+    ratings = []
+    for movie in sub_list:
+        if movie.get("rating"):
+            ratings.append({"title": movie.get(
+                "title"), "rating": movie.get("rating")})
+    return ratings
 
 
 @app.route("/")
@@ -175,14 +174,8 @@ def find_movies(page=1):
         start = page * 10 - 10
         end = start + 10
         sub_list = movies[start:end]
-    counter = len(movies)
-    counter = counter/10
-    counter = math.ceil(counter)
-    ratings = []
-    for movie in sub_list:
-        if movie.get("rating"):
-            ratings.append({"title": movie.get(
-                "title"), "rating": movie.get("rating")})
+    counter = math.ceil((len(movies))/(10))
+    ratings = get_ratings(sub_list)
     return render_template(
         "findmovies.html", movies=sub_list, pages=counter, ratings=ratings)
 
@@ -197,11 +190,7 @@ def search_movies():
 
     sub_list = list(mongo_con.db.movies.find(
           {"$text": {"$search": request.form.get("search")}}))
-    ratings = []
-    for movie in sub_list:
-        if movie.get("rating"):
-            ratings.append({"title": movie.get(
-                    "title"), "rating": movie.get("rating")})
+    ratings = get_ratings(sub_list)
     return render_template(
             "findmovies.html", movies=sub_list,
             pages=None, ratings=ratings, post=True)
@@ -224,14 +213,8 @@ def find_recent(page=1):
         start = page * 10 - 10
         end = start + 10
         sub_list = movies[start:end]
-    counter = len(movies)
-    counter = counter/10
-    counter = math.ceil(counter)
-    ratings = []
-    for movie in sub_list:
-        if movie.get("rating"):
-            ratings.append({"title": movie.get(
-                "title"), "rating": movie.get("rating")})
+    counter = math.ceil((len(movies)/(10)))
+    ratings = get_ratings(sub_list)
     return render_template(
         "findrecent.html", movies=sub_list,
         pages=counter, ratings=ratings)
@@ -254,14 +237,8 @@ def find_rating(page=1):
         start = page * 10 - 10
         end = start + 10
         sub_list = movies[start:end]
-    counter = len(movies)
-    counter = counter/10
-    counter = math.ceil(counter)
-    ratings = []
-    for movie in sub_list:
-        if movie.get("rating"):
-            ratings.append({"title": movie.get(
-                "title"), "rating": movie.get("rating")})
+    counter = math.ceil((len(movies)/(10)))
+    ratings = get_ratings(sub_list)
     return render_template(
         "findrating.html", movies=sub_list,
         pages=counter, ratings=ratings)
@@ -284,14 +261,8 @@ def find_year(page=1):
         start = page * 10 - 10
         end = start + 10
         sub_list = movies[start:end]
-    counter = len(movies)
-    counter = counter/10
-    counter = math.ceil(counter)
-    ratings = []
-    for movie in sub_list:
-        if movie.get("rating"):
-            ratings.append({"title": movie.get(
-                "title"), "rating": movie.get("rating")})
+    counter = math.ceil((len(movies)/(10)))
+    ratings = get_ratings(sub_list)
     return render_template(
         "findyear.html", movies=sub_list,
         pages=counter, ratings=ratings)
