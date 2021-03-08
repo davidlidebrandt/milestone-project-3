@@ -77,6 +77,7 @@ Movie
             {% endif %}
         </div>
         {% if session.user %}
+        {% if can_rate %}
         <div class="row">
             <div class="col-6 offset-3 col-md-4 offset-md-4">
                 <form class="row rating-form" method="POST" action="{{ url_for('rate_movie', title=get_movie.title)}}">
@@ -88,6 +89,8 @@ Movie
                 </form>
             </div>
         </div>
+        {% endif %}
+        {% if can_review %}
         <div class="row">
             <div class="col-12 no-padding">
                 <!--Bootstrap card-->
@@ -99,13 +102,14 @@ Movie
                         <form method="POST" action="{{ url_for('review_movie', title=get_movie.title) }}">
                             <textarea class="review-text-area" title="Min of 20 characters, max of 800" maxlength="800"
                                 minlength="20" name="review" id="review" rows="6">
-    </textarea>
+                             </textarea>
                             <div class="align-center"><button class="sub-review-btn" type="submit">Submit</button></div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endif %}
     </div>
 </div>

@@ -278,8 +278,19 @@ def movie_page(title):
 
     get_movie = mongo_con.db.movies.find_one({"title": title})
     has_rating = get_movie.get("rating")
+    can_rate = True
+    if get_movie.get("rated_by_users"):
+        for users in get_movie.get("rated_by_users"):
+            if users == session["user"]:
+                can_rate = False
+    can_review = True
+    if get_movie.get("reviews"):
+        for users in get_movie.get("reviews"):
+            if session["user"] == (users.get("by_user")):
+                can_review = False
     return render_template(
-        "moviepage.html", get_movie=get_movie, rating=has_rating)
+        "moviepage.html", get_movie=get_movie, rating=has_rating,
+        can_rate=can_rate, can_review=can_review)
 
 
 @app.route("/moviepage/delete_movie/<title>", methods=["DELETE"])
