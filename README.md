@@ -1,4 +1,4 @@
-# Milestone Project 2
+# Movie Ratings And Reviews
 
 <img src="static/images/wireframes-mockups/index.png"
      alt="index page"
