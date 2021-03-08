@@ -564,6 +564,8 @@ main {
     border: #fb8c00 2px solid;
     border-radius: 0;
     box-shadow: none;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 #poster-wrap {
