@@ -2,19 +2,19 @@
 
 <img src="static/images/wireframes-mockups/index.png"
      alt="index page"
-     style="height: 200px; width: 400px;" />
+     style="height: 100px; width: 200px;" />
      
 <img src="static/images/wireframes-mockups/login.png"
      alt="Log in form"
-     style="height: 200px; width: 400px;" />
+     style="height: 100px; width: 200px;" />
 
 <img src="static/images/wireframes-mockups/findmovies.png"
      alt="A list of avalible movies"
-     style="height: 200px; width: 400px;" />
+     style="height: 100px; width: 200px;" />
 
 <img src="static/images/wireframes-mockups/addmovie.png"
      alt="Form for adding movies"
-     style="height: 200px; width: 400px;" />
+     style="height: 100px; width: 200px;" />
 
  This project is intended to provide a service for movie ratings and reviews. Users can search for different movies
  and read reviews and see ratings by other users. By registering and logging in a user can add their own reviews and
@@ -461,25 +461,25 @@ database, the movie page loads and a message stating that the review was edited 
 
 * Pressing the delete movie button as an admin
 
-**Expected:* A confirmation modal should display, if the user presses cancel the modal should close and no actions
+**Expected:** A confirmation modal should display, if the user presses cancel the modal should close and no actions
 should be taken. If a user confirms the deletion by pressing the delete button in the modal the movie should be 
 deleted from the database, the index page should be loaded and an message should display stating that the movie 
 was deleted.
 
-*Results:*: When the delete button is presses a confirmation modal displays. If the cancel button is pressed the
+**Results:** When the delete button is presses a confirmation modal displays. If the cancel button is pressed the
 modal closes and no further actions are taken. If the delete button of the modal is pressed the movie is deleted
 from the database, the index page loads and a message stating that the movie was deleted displays.
 ***
 
 * Pressing the edit movie button as an admin.
 
-*Expected:* The edit movie should be loaded and a form with the pre filled current values for all fields should be
+**Expected:** The edit movie should be loaded and a form with the pre filled current values for all fields should be
 displayed. The user should be able to change the values in the form, the form should not be submittable if not
 all fields are filled in and conforming to the pattern specified for the different fields. If the cancel button is pressed
 all changes should be discarded and the movie page should load. If the form is submitted the movie should be updated
 in the database, the movie page should load and a message stating that the movie was updated displayed.
 
-*Results:* When the edit movie button is pressed the edit movie page loads. A form with the pre filled current values
+**Results:** When the edit movie button is pressed the edit movie page loads. A form with the pre filled current values
 for each field is displayed. The form values can be changed and the form is not submittable if all of the fields 
 are not filled in and following the specified patterns. If the cancel button is pressed the movie page loads and
 no changes are saved. If the form is submitted the movie page loads, the movie is updated in the database and 
@@ -541,7 +541,7 @@ operation.
 
 ### Publishing the project
 
-The project was deployed on [Heroku]https://dashboard.heroku.com/, the following steps were taken:
+The project was deployed on [Heroku](https://dashboard.heroku.com/), the following steps were taken:
 
 1. Created a requirements.txt file by typing: "pip3 freeze --local > requirements.txt" in the terminal.
 2. Created a procfile by typing echo web: "python app.py > Procfile" in the terminal.
