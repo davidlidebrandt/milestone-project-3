@@ -97,8 +97,8 @@ Movie
                     </div>
                     <div class="card-body align-center">
                         <form method="POST" action="{{ url_for('review_movie', title=get_movie.title) }}">
-                            <textarea class="review-text-area" title="Max of 800 characters" maxlength="800"
-                                name="review" id="review" rows="6">
+                            <textarea class="review-text-area" title="Min of 20 characters, max of 800" maxlength="800"
+                                minlength="20" name="review" id="review" rows="6">
     </textarea>
                             <div class="align-center"><button class="sub-review-btn" type="submit">Submit</button></div>
                         </form>

@@ -81,8 +81,8 @@ Edit review
                     </div>
                     <div class="card-body align-center">
                         <form method="POST" id="update-review" onsubmit="return updateReview(this)">
-                            <textarea class="review-text-area" title="Max of 800 characters" maxlength="800"
-                                name="review" id="review" rows="6">
+                            <textarea class="review-text-area" title="Min of 20 characters, max of 800" maxlength="800" 
+                                minlength="20" name="review" id="review" rows="6">
                                 {{ description }}
                             </textarea>
                             <input id="movie-title" name="movie-title" value="{{ get_movie.title }}" type="hidden">
