@@ -57,7 +57,7 @@ def get_ratings(sub_list):
     for movie in sub_list:
         if movie.get("rating"):
             ratings.append({"title": movie.get(
-                "title"), "rating": movie.get("rating")})
+                "title"), "rating": round(movie.get("rating"),1)})
     return ratings
 
 
@@ -278,6 +278,8 @@ def movie_page(title):
 
     get_movie = mongo_con.db.movies.find_one({"title": title})
     has_rating = get_movie.get("rating")
+    if has_rating:
+        has_rating = round(has_rating, 1)
     can_rate = True
     if get_movie.get("rated_by_users"):
         for users in get_movie.get("rated_by_users"):
