@@ -613,6 +613,16 @@ main {
     letter-spacing: 1px;
 }
 
+/* 404 page*/
+
+.redirect-home {
+    color: #fb8c00;
+}
+
+.redirect-home:hover {
+    color: #263238;
+}
+
 /*Media queries*/
 
 @media only screen and (max-width: 767.5px) {
