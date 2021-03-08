@@ -82,7 +82,7 @@ Movie
                 <form class="row rating-form" method="POST" action="{{ url_for('rate_movie', title=get_movie.title)}}">
                     <div class="col-12 align-center top-btm-mg-10"><label for="rating">Rate this movie</label></div>
                     <div class="col-12 align-center"><input class="slider" type="range" name="rating" id="rating"
-                            min="0" max="10" step="0.1" required></div>
+                            min="0" max="10" step="0.1"></div>
                     <div id="display" class="col-12 align-center thick-text top-mg-10"></div>
                     <div class="col-12 align-center"><button class="rate-btn" type="submit">Rate</button></div>
                 </form>
@@ -120,7 +120,7 @@ Movie
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse{{ loop.index }}" aria-expanded="false"
                         aria-controls="collapse{{ loop.index }}">
-                        <div class="col-12 accordion-text">By: {{ review.by_user }} </div>
+                        <span class="col-12 accordion-text">By: {{ review.by_user }} </span>
                     </button>
                 </h2>
                 <div id="collapse{{ loop.index }}" class="accordion-collapse collapse"
@@ -135,7 +135,7 @@ Movie
                                 class="edit-button">Edit</a>
                             <div class="col-12 align-center"><button id="ensure-delete-review"
                                     class="delete-button">Delete</button> 
-                                    <!--d-none class from Boostrap-->
+                                    <!--d-none class from Bootstrap-->
                                     <span class="d-none">{{ review.by_user }}</span>
                                 {% endif %}
                             </div>

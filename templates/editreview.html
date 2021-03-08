@@ -3,7 +3,7 @@
 Edit review
 {% endblock %}
 {% block maincontent %}
-<!--row,col and offset classes from Boostrap-->
+<!--row,col and offset classes from Bootstrap-->
 <div class="row top-mg-100 align-center">
     {% with flash_messages = get_flashed_messages() %}
     {% if flash_messages %}
@@ -71,10 +71,7 @@ Edit review
                 </div>
             </div>
         </div>
-
-
         {% if session.user %}
-
         <div class="row top-mg-20">
             <div class="col-12 no-padding">
                 <!--Bootstrap card-->
@@ -86,8 +83,8 @@ Edit review
                         <form method="POST" id="update-review" onsubmit="return updateReview(this)">
                             <textarea class="review-text-area" title="Max of 800 characters" maxlength="800"
                                 name="review" id="review" rows="6">
-    {{ description }}
-    </textarea>
+                                {{ description }}
+                            </textarea>
                             <input id="movie-title" name="movie-title" value="{{ get_movie.title }}" type="hidden">
                             <input id="user" name="user" value="{{ user }}" type="hidden">
                             <div class="align-center"><button class="sub-review-btn" type="submit">Edit</button>
@@ -102,7 +99,4 @@ Edit review
         {% endif %}
     </div>
 </div>
-
-
-
 {% endblock %}

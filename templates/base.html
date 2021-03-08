@@ -16,14 +16,10 @@
     <script src="https://kit.fontawesome.com/30b290cadc.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-        crossorigin="anonymous" />
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo-icon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='fonts/calibre/style.css') }}" type="text/css">
 </head>
-
 <body>
     <header>
         <!--Bootstrap navbar-->
@@ -54,7 +50,7 @@
             </div>
         </nav>
     </header>
-    <!--container, row, col and offset classes from Boostrap-->
+    <!--container, row, col and offset classes from Bootstrap-->
     <main class="container-fluid">
         <div class="row">
             <div id="register" class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 base-modal">
@@ -128,12 +124,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block script %}
     {%  endblock %}
 </body>
-
 </html>

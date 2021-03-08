@@ -252,7 +252,8 @@ unused variables, these can be ignored since these functions are used and called
 the Python code throughout the project.
 
 * The responsiveness was tested by simulating a vide variety of devices such as phones, tablets and desktops using
-the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test.
+the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test. The sites look well down to 320 pixels
+wide.
 
 * The site was tested on three different browsers: Google Chrome, Mozilla Firefox and Microsoft Edge.
 

@@ -21,7 +21,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-# This turtorial was used to help set up how to send emails:
+# This tutorial was used to help set up how to send emails:
 # https://overiq.com/flask-101/sending-email-in-flask/
 app.config["MAIL_SERVER"] = "smtp.office365.com."
 app.config["MAIL_PORT"] = 587
