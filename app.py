@@ -369,7 +369,7 @@ def add_movie():
             {"title": request.form.get("title")})
         if already_exist:
             flash("Movie already exists")
-            return redirect(url_for("index"))
+            return redirect(url_for("add_movie"))
         else:
             cast_list = list(request.form.get("cast").split(","))
             mongo_con.db.movies.insert_one(
@@ -379,7 +379,8 @@ def add_movie():
                             "year"), "cast": cast_list, "img_url":
                                 request.form.get("img_url")})
             flash("Movie Added")
-            return redirect(url_for("index"))
+            return redirect(url_for(
+                "movie_page", title=request.form.get("title")))
     if session["admin"]:
         this_date = datetime.datetime.now()
         this_year = this_date.year

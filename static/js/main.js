@@ -100,7 +100,7 @@ function checkEmptyRating() {
             xhrFields: {withCredentials: true}
         })
         .done(function() {
-            window.location = "/index";
+            window.location = "/findmovies";
          });
     }
 

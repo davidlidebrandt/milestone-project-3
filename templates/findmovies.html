@@ -6,6 +6,15 @@ Find Movies
 <!--row,col and offset classes from Bootstrap-->
 <div class="row">
     <div class="col-12">
+        {% with flash_messages = get_flashed_messages() %}
+        {% if flash_messages %}
+        {% for message in flash_messages %}
+        <h4 class="display-flash">{{ message }}</h4>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="col-12">
         <h3 class="custom-h3">Find Movies</h3>
     </div>
 </div>
