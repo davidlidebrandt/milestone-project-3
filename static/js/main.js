@@ -51,6 +51,11 @@ $(document).ready(function () {
 
     $(".page-link").click(checkEmptyRating);
 
+    setTimeout(function() {
+        $(".display-flash").hide()
+    }, 5000
+    )
+
     checkEmptyRating();
 
 }); // end of ready function
