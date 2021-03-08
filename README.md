@@ -196,13 +196,13 @@ MongoDB was the database used to store all of the information about the movies a
 
 * [JQuery](https://jquery.com/)
 
-JQuery functions where used to manipulate the DOM, take actions and do AJAX calls.
+JQuery functions where used to manipulate the DOM, take actions and to make AJAX calls.
 
 * [Bootstrap](https://getbootstrap.com/)
 
 Bootstrap was used to provide structure and responsiveness to the site by using their container
 , row and col classes. Carousels, a dropdown, a
-accordion, a pagination element and some cards were components that where inclued from Bootstrap.
+accordion, a pagination element and some cards were components that where included from Bootstrap.
 
 * [Github](https://github.com/)
 
@@ -214,7 +214,7 @@ Gitpod was the IDE used to create the project.
 
 * [Git](https://git-scm.com/) 
 
-For version control through the gitpod terminal.
+For version control through the Gitpod terminal.
 
 * [Adobe XD](https://www.adobe.com/products/xd.html)
 
