@@ -8,6 +8,7 @@ from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import smtplib
 if os.path.exists("env.py"):
     import env
 
@@ -103,9 +104,13 @@ def register():
                                 "email-reg"), "is_admin": "false"})
         reg_user = request.form.get("user-reg")
         session["user"] = request.form.get("user-reg")
-        flash(f"""Registration successful, welcome {reg_user}. A welcome mail has been sent,
+        try:
+            send_welcome(reg_user, request.form.get("email-reg"))
+            flash(f"""Registration successful, welcome {reg_user}. A welcome mail has been sent,
         please check your junk mail box if you haven't received it""")
-        send_welcome(reg_user, request.form.get("email-reg"))
+        except smtplib.SMTPAuthenticationError:
+            flash(f"""Registration successful, welcome {reg_user}. An error occurred
+            when trying to send your welcome email""")
     return redirect(url_for("index"))
 
 
