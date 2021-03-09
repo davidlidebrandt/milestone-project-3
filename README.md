@@ -584,8 +584,8 @@ In order for the application to work a MongoDB database needs to be set up.
 20. The following environment variables will need to be setup in your project:
 
 app.config["MONGO_DBNAME"] = "Your database name"
-app.config["MONGO_URI"] = "The connection string"
-app.secret_key = "The password you chose"
+app.config["MONGO_URI"] = "The connection string, replace the password placeholder with your actual user password"
+app.secret_key = "A long random hidden string"
 
 To send the welcome mail an outlook mail account is required.
 
