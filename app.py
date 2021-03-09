@@ -57,7 +57,7 @@ def get_ratings(sub_list):
     for movie in sub_list:
         if movie.get("rating"):
             ratings.append({"title": movie.get(
-                "title"), "rating": round(movie.get("rating"),1)})
+                "title"), "rating": round(movie.get("rating"), 1)})
     return ratings
 
 
@@ -281,15 +281,21 @@ def movie_page(title):
     if has_rating:
         has_rating = round(has_rating, 1)
     can_rate = True
-    if get_movie.get("rated_by_users"):
-        for users in get_movie.get("rated_by_users"):
-            if users == session["user"]:
-                can_rate = False
     can_review = True
-    if get_movie.get("reviews"):
-        for users in get_movie.get("reviews"):
-            if session["user"] == (users.get("by_user")):
-                can_review = False
+    user = ""
+    try:
+        user = session["user"]
+    except KeyError:
+        user = None
+    if user:
+        if get_movie.get("rated_by_users"):
+            for users in get_movie.get("rated_by_users"):
+                if session["user"] == users:
+                    can_rate = False
+        if get_movie.get("reviews"):
+            for users in get_movie.get("reviews"):
+                if session["user"] == (users.get("by_user")):
+                    can_review = False
     return render_template(
         "moviepage.html", get_movie=get_movie, rating=has_rating,
         can_rate=can_rate, can_review=can_review)
