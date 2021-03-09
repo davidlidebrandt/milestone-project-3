@@ -557,6 +557,47 @@ The project was deployed on [Heroku](https://dashboard.heroku.com/), the followi
 12. Pressed open app.
 
 
+### Setting up the database to fork or clone the project.
+
+In order for the application to work a MongoDB database needs to be set up.
+
+1. Go to https://www.mongodb.com/cloud/atlas.
+2. Press the try free button.
+3. Fill out and submit the form to create an account.
+4. Navigate to clusters and press create new cluster.
+5. Select Starter Clusters and click Create a Cluster.
+6. Chose a provider and a region.
+7. Select the M0 Sandbox tier.
+8. Add a cluster name.
+9. Press Create Cluster.
+10. Navigate to Clusters and press Collections.
+11. Create a database named what you like.
+12. Press the database name and then add collection.
+12. Add one collection called movies and one called users.
+13. Navigate to Security and Database access.
+14. Click create add new database user.
+15. Give the user a name and a secure password, save the password.
+16. Go to Clusters and click connect.
+17. Press connect your application.
+18. Chose python version 3.6.
+19. Save the connection string.
+20. The following environment variables will need to be setup in your project:
+
+app.config["MONGO_DBNAME"] = "Your database name"
+app.config["MONGO_URI"] = "The connection string"
+app.secret_key = "The password you chose"
+
+To send the welcome mail an outlook mail account is required.
+
+app.config["MAIL_SERVER"] = "smtp.office365.com."
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_SSL"] = False
+app.config["MAIL_USERNAME"] = "An outlook email address to send mails from"
+app.config["MAIL_DEFAULT_SENDER"] = "The same email address as above")
+app.config["MAIL_PASSWORD"] = "The password to that email"
+
+
 ### Forking the project
 1. Go to and log in to https://github.com/.
 2. Go to the repository: https://github.com/davidlidebrandt/milestone-project-3
