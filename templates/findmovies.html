@@ -4,6 +4,7 @@ Find Movies
 {% endblock %}
 {% block maincontent %}
 <!--row,col and offset classes from Bootstrap-->
+<div class="container">
 <div class="row">
     <div class="col-12">
         {% with flash_messages = get_flashed_messages() %}
@@ -107,5 +108,6 @@ Find Movies
     {% else %}
     <div class="col-12 align-center top-mg-20"><p class="no-result-text">No search results found</p></div>
     {% endif %}
+</div>
 </div>
 {% endblock %}
