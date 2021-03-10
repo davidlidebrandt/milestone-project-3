@@ -440,9 +440,13 @@ def edit_review(title, user, description):
 
     if session["user"] == user:
         get_movie = mongo_con.db.movies.find_one({"title": title})
+        has_rating = get_movie.get("rating")
+        rating = None
+        if has_rating:
+            rating = round(has_rating, 1)
         return render_template(
             "editreview.html", get_movie=get_movie,
-            description=description, user=user)
+            description=description, user=user, rating=rating)
     return redirect(url_for("index"))
 
 
