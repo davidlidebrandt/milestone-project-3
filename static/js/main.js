@@ -38,7 +38,7 @@ $(document).ready(function () {
         $("#delete-movie-warn").hide();
     });
     
-    $("#ensure-delete-review").click(deleteReviewWarning);
+    $(".ensure-delete-review").click(deleteReviewWarning);
     
     $("#cancel-delete-review").click(function() {
         $("#delete-review-warn").hide();
