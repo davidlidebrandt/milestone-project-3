@@ -467,7 +467,7 @@ def update_review(title, user):
     return "Review updated"
 
 
-@app.route("/editmovie/<title>/<id>", methods=["GET", "POST"])
+@app.route("/editmovie/<title>/<id>")
 def edit_movie(title, id):
 
     """
@@ -475,9 +475,8 @@ def edit_movie(title, id):
     Renders the editmovie template with the present values prefilled.
     Updates the movie fields upon submitting the form.
     """
-
+    get_movie = mongo_con.db.movies.find_one({"_id": ObjectId(id)})
     if session["admin"]:
-        get_movie = mongo_con.db.movies.find_one({"_id": ObjectId(id)})
         temp = get_movie.get("cast")
         cast_string = ""
         if temp:
