@@ -583,19 +583,19 @@ In order for the application to work a MongoDB database needs to be set up.
 19. Save the connection string.
 20. The following environment variables will need to be setup in your project:
 
-app.config["MONGO_DBNAME"] = "Your database name"
-app.config["MONGO_URI"] = "The connection string, replace the password placeholder with your actual user password"
-app.secret_key = "A long random hidden string"
+app.config["MONGO_DBNAME"] = "Your database name"  
+app.config["MONGO_URI"] = "The connection string, replace the password placeholder with your actual user password"  
+app.secret_key = "A long random hidden string"  
 
-To send the welcome mail an outlook mail account is required.
+To send the welcome mail an outlook mail account is required.  
 
-app.config["MAIL_SERVER"] = "smtp.office365.com."
-app.config["MAIL_PORT"] = 587
-app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USE_SSL"] = False
-app.config["MAIL_USERNAME"] = "An outlook email address to send mails from"
-app.config["MAIL_DEFAULT_SENDER"] = "The same email address as above")
-app.config["MAIL_PASSWORD"] = "The password to that email"
+app.config["MAIL_SERVER"] = "smtp.office365.com."  
+app.config["MAIL_PORT"] = 587  
+app.config["MAIL_USE_TLS"] = True  
+app.config["MAIL_USE_SSL"] = False  
+app.config["MAIL_USERNAME"] = "An outlook email address to send mails from"  
+app.config["MAIL_DEFAULT_SENDER"] = "The same email address as above")  
+app.config["MAIL_PASSWORD"] = "The password to that email"  
 
 
 ### Forking the project
