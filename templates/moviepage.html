@@ -145,23 +145,23 @@ Movie
                         <div class="col-12 align-center"><a
                                 href="{{ url_for('edit_review', title=get_movie.title, user=review.by_user, description=review.description) }}"
                                 class="edit-button">Edit</a>
+                             </div>
                             {% endif %}
                             {% if review.by_user == session.user or session.admin == True %} 
                             <div class="col-12 align-center"><button
                                     class="delete-button ensure-delete-review">Delete</button> 
                                     <!--d-none class from Bootstrap-->
                                     <span class="d-none">{{ review.by_user }}</span>
+                                </div>
                                 {% endif %}
-                            </div>
-                        </div>
+                    </div>
                     </div>
                     </div>
                     {% endfor %}
-                    </div>
+                </div>
                 {% else %}
                 <p class="no-reviews-text">No reviews yet</p>
                 {% endif %}
-        </div>
     </div>
     {% endblock %}
     {% block script %}
